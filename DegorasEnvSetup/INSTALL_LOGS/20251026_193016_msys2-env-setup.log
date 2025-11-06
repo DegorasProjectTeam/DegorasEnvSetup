@@ -1,0 +1,34 @@
+=================================================================
+  DEGORAS-PROJECT MSYS2 UCRT64 ENVIRONMENT SETUP SCRIPT
+-----------------------------------------------------------------
+  Author:  Angel Vera Herrera
+  Updated: 26/10/2025
+  Version: 251026
+=================================================================
+Parameters:
+-----------------------------------------------------------------
+Drive Letter     = D
+MSYS2 URL        = https://repo.msys2.org/distrib/msys2-x86_64-latest.sfx.exe
+CMake URL        = https://mirror.msys2.org/mingw/x86_64/mingw-w64-ucrt-x86_64-cmake-3.31.6-1-any.pkg.tar.zst
+Ninja URL        = https://mirror.msys2.org/mingw/x86_64/mingw-w64-ucrt-x86_64-ninja-1.13.1-1-any.pkg.tar.zst
+GCC URL          = https://mirror.msys2.org/mingw/x86_64/mingw-w64-ucrt-x86_64-gcc-15.2.0-1-any.pkg.tar.zst
+GCC Libs URL     = https://mirror.msys2.org/mingw/x86_64/mingw-w64-ucrt-x86_64-gcc-libs-15.2.0-1-any.pkg.tar.zst
+GDB URL          = https://mirror.msys2.org/mingw/x86_64/mingw-w64-ucrt-x86_64-gdb-16.2-1-any.pkg.tar.zst
+Make URL         = https://mirror.msys2.org/mingw/x86_64/mingw-w64-ucrt-x86_64-make-4.4.1-2-any.pkg.tar.zst
+Current Path     = C:\Users\rigesenv\Desktop\DEGORAS-PROJECT_ENVIRONMENT_SETUP-20251026T1930
+MSYS2 Packs Path = C:\Users\rigesenv\Desktop\DEGORAS-PROJECT_ENVIRONMENT_SETUP-20251026T1930\PACKAGES_MSYS2
+=================================================================
+[2025-10-26T19:30:16Z][INFO][STEP 1: Initial checks and preparations.]
+[2025-10-26T19:30:16Z][INFO][Checking permissions...]
+[2025-10-26T19:30:16Z][INFO][Checking letter format...]
+[2025-10-26T19:30:16Z][INFO][Checking if Dev Drive exists...]
+[2025-10-26T19:30:17Z][INFO][Dev Drive detected at D:\]
+[2025-10-26T19:30:17Z][INFO][Checking if MSYS64 folder exists...]
+[2025-10-26T19:30:17Z][INFO][Checking if local MSYS2 packages folder exists...]
+[2025-10-26T19:30:17Z][INFO][Using existing MSYS2 package cache at: C:\Users\rigesenv\Desktop\DEGORAS-PROJECT_ENVIRONMENT_SETUP-20251026T1930\PACKAGES_MSYS2]
+[2025-10-26T19:30:17Z][INFO][STEP 1: OK]
+[2025-10-26T19:30:17Z][INFO][STEP 2: Download MSYS2 and required packages if not present.]
+[2025-10-26T19:30:17Z][INFO][Downloading: https://repo.msys2.org/distrib/msys2-x86_64-latest.sfx.exe]
+[2025-10-26T19:31:14Z][INFO][Downloading: https://mirror.msys2.org/mingw/x86_64/mingw-w64-ucrt-x86_64-make-4.4.1-2-any.pkg.tar.zst]
+[2025-10-26T19:31:14Z][ERROR][Failed to download package: https://mirror.msys2.org/mingw/x86_64/mingw-w64-ucrt-x86_64-make-4.4.1-2-any.pkg.tar.zst]
+[2025-10-26T19:31:14Z][ERROR][Setup failed!]

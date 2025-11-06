@@ -1,0 +1,74 @@
+===========================================================
+  DEGORAS-PROJECT DEVELOPMENT DRIVE SETUP SCRIPT
+-----------------------------------------------------------------
+  Author:  Ángel Vera Herrera
+  Updated: 26/10/2025
+  Version: 251026
+=================================================================
+Parameters:
+-----------------------------------------------------------------
+Drive Label        = DEGORAS_PROJECT_DEVELOP
+Drive Letter       = D
+Size (GB)          = 10
+VHDX Root          = C:\
+VHDX Path          = C:\DevDrives
+VHDX Filepath      = C:\DevDrives\DEGORAS_PROJECT_DEVELOP.vhdx
+Current Path       = C:\Users\rigesenv\Desktop\DEGORAS-PROJECT_ENVIRONMENT_SETUP-20251026T1930
+Test Examples Path = C:\Users\rigesenv\Desktop\DEGORAS-PROJECT_ENVIRONMENT_SETUP-20251026T1930\CODE_EXAMPLES
+Setup Scripts Path = C:\Users\rigesenv\Desktop\DEGORAS-PROJECT_ENVIRONMENT_SETUP-20251026T1930\SCRIPTS_ENV
+=================================================================
+[2025-10-26T19:09:39Z][INFO][STEP 1: Initial checks and preparations.]
+[2025-10-26T19:09:39Z][INFO][Checking permissions...]
+[2025-10-26T19:09:39Z][INFO][Checking letter format...]
+[2025-10-26T19:09:39Z][INFO][Checking if VHD already exists...]
+[2025-10-26T19:09:39Z][INFO][Checking if drive letter is in use...]
+[2025-10-26T19:09:42Z][INFO][Checking disk space...]
+[2025-10-26T19:09:42Z][INFO][Available Space = 39141068800 bytes]
+[2025-10-26T19:09:42Z][INFO][Required Space  = 10737418240 bytes]
+[2025-10-26T19:09:42Z][INFO][Checking VHD folder...]
+[2025-10-26T19:09:42Z][INFO][Checking examples folder...]
+[2025-10-26T19:09:42Z][INFO][Checking setup scrips folder...]
+[2025-10-26T19:09:42Z][INFO][STEP 1: OK]
+[2025-10-26T19:09:42Z][INFO][STEP 2: Disable AutoplayHandlers to avoid Windows popup.]
+[2025-10-26T19:09:42Z][INFO][Disabling AutoplayHandlers temporarily...]
+[2025-10-26T19:09:42Z][INFO][STEP 2: OK]
+[2025-10-26T19:09:42Z][INFO][STEP 3: Create and Attach the VHD.]
+[2025-10-26T19:09:42Z][INFO][Creating and attaching VHD at C:\DevDrives\DEGORAS_PROJECT_DEVELOP.vhdx...]
+[2025-10-26T19:09:44Z][INFO][STEP 3: OK]
+[2025-10-26T19:09:44Z][INFO][STEP 4: Format Partition and Register as Dev Drive.]
+[2025-10-26T19:09:44Z][INFO][Formatting partition as DevDrive...]
+[2025-10-26T19:09:47Z][INFO][Trusting volume as Dev Drive...]
+[2025-10-26T19:09:47Z][INFO][Disabling antivirus for Dev Drive...]
+[2025-10-26T19:09:47Z][INFO][STEP 4: OK]
+[2025-10-26T19:09:47Z][INFO][STEP 5: Unmount and Reattach to Apply Policies.]
+[2025-10-26T19:09:47Z][INFO][Unmounting Dev Drive temporarily to apply antivirus exclusion...]
+[2025-10-26T19:09:50Z][INFO][Mounting Dev Drive again...]
+[2025-10-26T19:09:52Z][INFO][Dev Drive is re-mounted and ready at D:]
+[2025-10-26T19:09:52Z][INFO][STEP 5: OK]
+[2025-10-26T19:09:52Z][INFO][STEP 6: Create Workspace Folder Structure.]
+[2025-10-26T19:09:52Z][INFO][Creating workspace folder tree inside drive D...]
+[2025-10-26T19:09:52Z][INFO][Created folder: D:\deploys]
+[2025-10-26T19:09:52Z][INFO][Created folder: D:\packages\vcpkg]
+[2025-10-26T19:09:52Z][INFO][Created folder: D:\workspace]
+[2025-10-26T19:09:52Z][INFO][Copying bash scripts...]
+[2025-10-26T19:09:52Z][INFO][Copied: degoras-env-bootstrap.sh]
+[2025-10-26T19:09:52Z][INFO][Copying bat scripts...]
+[2025-10-26T19:09:52Z][INFO][Copied: degoras-env-launcher.bat]
+[2025-10-26T19:09:52Z][INFO][Copying examples...]
+[2025-10-26T19:09:52Z][INFO][Extracting test example: HelloWorldVcpkg.zip to D:\workspace]
+[2025-10-26T19:09:52Z][INFO][Extracted: HelloWorldVcpkg.zip]
+[2025-10-26T19:09:52Z][INFO][STEP 6: OK]
+[2025-10-26T19:09:52Z][INFO][STEP 7: Restore AutoplayHandlers.]
+[2025-10-26T19:09:52Z][INFO][Re-enabling AutoplayHandlers...]
+[2025-10-26T19:09:52Z][INFO][STEP 7: OK]
+[2025-10-26T19:09:52Z][INFO][STEP 8: Setup environment variables and shortcout.]
+[2025-10-26T19:09:52Z][INFO][DEGORAS_DEVDRIVE = D:]
+[2025-10-26T19:09:52Z][INFO][DEGORAS_DEPLOYS = D:\deploys]
+[2025-10-26T19:09:52Z][INFO][DEGORAS_WORKSPACE = D:\workspace]
+[2025-10-26T19:09:52Z][INFO][Appending environment variables to D:\degoras-env-variables.env]
+[2025-10-26T19:09:52Z][INFO][Creating shortcut to Dev Drive on desktop...]
+[2025-10-26T19:09:52Z][INFO][Shortcut created: C:\Users\rigesenv\Desktop\DEGORAS_PROJECT_DEVELOP.lnk]
+[2025-10-26T19:09:52Z][INFO][STEP 8: OK]
+[2025-10-26T19:09:53Z][INFO][STEP 9: Configure automatic mount at startup.]
+[2025-10-26T19:09:54Z][INFO][STEP 9: OK]
+[2025-10-26T19:09:54Z][INFO][DEGORAS-PROJECT Dev Drive created successfully at D:]

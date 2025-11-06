@@ -1,0 +1,64 @@
+=================================================================
+  DEGORAS-PROJECT VCPKG QT6 DEPS SETUP SCRIPT
+-----------------------------------------------------------------
+  Author:  Angel Vera Herrera
+  Updated: 26/10/2025
+  Version: 251026
+=================================================================
+Parameters:
+-----------------------------------------------------------------
+Install Drive    = D
+MSYS2 bin path   = D:\msys64\usr\bin
+-----------------------------------------------------------------
+[2025-11-05T08:44:26Z][INFO][STEP 1: Initial checks and preparations.]
+[2025-11-05T08:44:26Z][INFO][Checking permissions...]
+[2025-11-05T08:44:26Z][INFO][Checking letter format...]
+[2025-11-05T08:44:26Z][INFO][Checking if Dev Drive exists...]
+[2025-11-05T08:44:27Z][INFO][Dev Drive detected at D:\]
+[2025-11-05T08:44:28Z][INFO][Checking if msys2 bash exists...]
+[2025-11-05T08:44:28Z][INFO][STEP 1: OK]
+[2025-11-05T08:44:28Z][INFO][STEP 1.5: Creating temporary JOM shim...]
+[2025-11-05T08:44:28Z][INFO][Fake jom.exe shim created at D:\\vcpkg\downloads\tools\jom\jom-1_1_4\jom.exe]
+[2025-11-05T08:44:28Z][INFO][STEP 2: Install required Qt6 deps packages with triplet 'x64-mingw-dynamic-degoras']
+[2025-11-05T08:44:28Z][INFO][Installing 'qwt'...]
+Computing installation plan...
+The following packages will be built and installed:
+    qwt:x64-mingw-dynamic-degoras@6.3.0
+Detecting compiler hash for triplet x64-mingw-dynamic-degoras...
+Compiler found: D:/msys64/ucrt64/bin/x86_64-w64-mingw32-g++.exe
+Restored 1 package(s) from D:\packages\vcpkg in 32.8 ms. Use --debug to see more details.
+Installing 1/1 qwt:x64-mingw-dynamic-degoras@6.3.0...
+Elapsed time to handle qwt:x64-mingw-dynamic-degoras: 33.8 ms
+qwt:x64-mingw-dynamic-degoras package ABI: 7d9ad8e73b0adfce335d0a22e7e888631f663356388899b3393ab55eb2be15db
+Total install time: 35.6 ms
+Installed contents are licensed to you by owners. Microsoft is not responsible for, nor does it grant any licenses to, third-party packages.
+Some packages did not declare an SPDX license. Check the `copyright` file for each package for more information about their licensing.
+qwt provides CMake targets:
+
+  # this is heuristically generated, and may not be correct
+  find_package(unofficial-qwt CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE unofficial::qwt::qwt)
+
+All requested installations completed successfully in: 35.6 ms
+[2025-11-05T08:44:30Z][INFO]['qwt' installed successfully.]
+[2025-11-05T08:44:30Z][INFO][Installing 'qt-advanced-docking-system'...]
+Computing installation plan...
+The following packages are already installed:
+    qt-advanced-docking-system:x64-mingw-dynamic-degoras@4.4.1
+Total install time: 750 us
+qt-advanced-docking-system provides CMake targets:
+
+  # this is heuristically generated, and may not be correct
+  find_package(qtadvanceddocking-qt6 CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE ads::qtadvanceddocking-qt6)
+
+All requested installations completed successfully in: 750 us
+[2025-11-05T08:44:31Z][INFO]['qt-advanced-docking-system' installed successfully.]
+[2025-11-05T08:44:31Z][INFO][STEP 2: OK]
+[2025-11-05T08:44:31Z][INFO][STEP 2.5: Restoring original JOM state...]
+[2025-11-05T08:44:31Z][INFO][Original jom.exe restored.]
+[2025-11-05T08:44:31Z][INFO][STEP 3: Retrieve versions of installed packages]
+[2025-11-05T08:44:31Z][INFO][Installed: qwt version 6.3.0]
+[2025-11-05T08:44:31Z][INFO][STEP 3: OK]
+[2025-11-05T08:44:31Z][INFO][DEGORAS-PROJECT VCPKG Qt6 deps setup completed successfully.]
+[2025-11-05T08:44:31Z][INFO][TOTAL EXECUTION TIME: 5.5485575 seconds  (00:00:05)]

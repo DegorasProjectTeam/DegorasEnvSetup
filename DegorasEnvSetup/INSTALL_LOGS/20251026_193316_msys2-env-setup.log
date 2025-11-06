@@ -1,0 +1,78 @@
+=================================================================
+  DEGORAS-PROJECT MSYS2 UCRT64 ENVIRONMENT SETUP SCRIPT
+-----------------------------------------------------------------
+  Author:  Angel Vera Herrera
+  Updated: 26/10/2025
+  Version: 251026
+=================================================================
+Parameters:
+-----------------------------------------------------------------
+Drive Letter     = D
+MSYS2 URL        = https://repo.msys2.org/distrib/msys2-x86_64-latest.sfx.exe
+CMake URL        = https://repo.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-cmake-3.30.5-1-any.pkg.tar.zst
+Ninja URL        = https://repo.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-ninja-1.12.1-1-any.pkg.tar.zst
+GCC URL          = https://repo.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-gcc-14.2.0-3-any.pkg.tar.zst
+GCC Libs URL     = https://repo.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-gcc-libs-14.2.0-3-any.pkg.tar.zst
+GDB URL          = https://repo.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-gdb-16.2-1-any.pkg.tar.zst
+Make URL         = https://repo.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-make-4.4.1-2-any.pkg.tar.zst
+Current Path     = C:\Users\rigesenv\Desktop\DEGORAS-PROJECT_ENVIRONMENT_SETUP-20251026T1930
+MSYS2 Packs Path = C:\Users\rigesenv\Desktop\DEGORAS-PROJECT_ENVIRONMENT_SETUP-20251026T1930\PACKAGES_MSYS2
+=================================================================
+[2025-10-26T19:33:16Z][INFO][STEP 1: Initial checks and preparations.]
+[2025-10-26T19:33:16Z][INFO][Checking permissions...]
+[2025-10-26T19:33:16Z][INFO][Checking letter format...]
+[2025-10-26T19:33:16Z][INFO][Checking if Dev Drive exists...]
+[2025-10-26T19:33:16Z][INFO][Dev Drive detected at D:\]
+[2025-10-26T19:33:16Z][INFO][Checking if MSYS64 folder exists...]
+[2025-10-26T19:33:16Z][INFO][Checking if local MSYS2 packages folder exists...]
+[2025-10-26T19:33:16Z][INFO][Using existing MSYS2 package cache at: C:\Users\rigesenv\Desktop\DEGORAS-PROJECT_ENVIRONMENT_SETUP-20251026T1930\PACKAGES_MSYS2]
+[2025-10-26T19:33:16Z][INFO][STEP 1: OK]
+[2025-10-26T19:33:16Z][INFO][STEP 2: Download MSYS2 and required packages if not present.]
+[2025-10-26T19:33:16Z][INFO][Package already exists: C:\Users\rigesenv\Desktop\DEGORAS-PROJECT_ENVIRONMENT_SETUP-20251026T1930\PACKAGES_MSYS2\msys2-x86_64-latest.sfx.exe]
+[2025-10-26T19:33:16Z][INFO][Downloading: https://repo.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-make-4.4.1-2-any.pkg.tar.zst]
+[2025-10-26T19:33:16Z][INFO][Downloading: https://repo.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-ninja-1.12.1-1-any.pkg.tar.zst]
+[2025-10-26T19:33:17Z][INFO][Downloading: https://repo.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-gdb-16.2-1-any.pkg.tar.zst]
+[2025-10-26T19:33:22Z][INFO][Downloading: https://repo.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-cmake-3.30.5-1-any.pkg.tar.zst]
+[2025-10-26T19:33:31Z][INFO][Downloading: https://repo.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-gcc-14.2.0-3-any.pkg.tar.zst]
+[2025-10-26T19:34:21Z][INFO][Downloading: https://repo.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-gcc-libs-14.2.0-3-any.pkg.tar.zst]
+[2025-10-26T19:34:22Z][INFO][STEP 2: OK]
+[2025-10-26T19:34:22Z][INFO][STEP 3: Extract MSYS2 and perform initial run.]
+[2025-10-26T19:34:22Z][INFO][Extracting MSYS2 to: D:\]
+[2025-10-26T19:34:25Z][INFO][Extraction complete.]
+[2025-10-26T19:34:25Z][INFO][Running MSYS2 bash for initial keyring setup...]
+[2025-10-26T19:34:40Z][INFO][MSYS2 keyring initialized.]
+[2025-10-26T19:34:40Z][INFO][STEP 3: OK]
+[2025-10-26T19:34:40Z][INFO][STEP 4: Upgrade MSYS2 core system.]
+[2025-10-26T19:34:40Z][INFO][Running core system upgrade pass 1...]
+[2025-10-26T19:34:46Z][INFO][Running core system upgrade pass 2...]
+[2025-10-26T19:34:55Z][INFO][Running core system upgrade pass 3...]
+[2025-10-26T19:34:58Z][INFO][STEP 4: OK]
+[2025-10-26T19:34:58Z][INFO][STEP 5: Install toolchain and utilities.]
+[2025-10-26T19:34:58Z][INFO][Installing generic development dependencies...]
+[2025-10-26T19:35:09Z][INFO][Installing GNU Make...]
+[2025-10-26T19:35:13Z][INFO][Creating make.exe symlink...]
+[2025-10-26T19:35:13Z][INFO][Symlink created successfully.]
+[2025-10-26T19:35:13Z][INFO][Installing Ninja...]
+[2025-10-26T19:35:14Z][INFO][Installing GDB...]
+[2025-10-26T19:35:33Z][INFO][Installing CMake...]
+[2025-10-26T19:35:43Z][INFO][Installing GCC and runtime libs...]
+[2025-10-26T19:35:45Z][INFO][STEP 5: OK]
+[2025-10-26T19:35:45Z][INFO][STEP 6: Show toolchain versions.]
+[2025-10-26T19:35:46Z][INFO][GCC   - ]
+[2025-10-26T19:35:46Z][INFO][CMake - cmake version 3.30.5]
+[2025-10-26T19:35:46Z][INFO][Ninja - 1.12.1]
+[2025-10-26T19:35:46Z][INFO][Make  - GNU Make 4.4.1]
+[2025-10-26T19:35:46Z][INFO][GDB   - GNU gdb (GDB) 16.2]
+[2025-10-26T19:35:46Z][INFO][Git   - git version 2.51.1]
+[2025-10-26T19:35:46Z][INFO][STEP 6: OK]
+[2025-10-26T19:35:46Z][INFO][STEP 7: Setup environment variables and shortcout.]
+[2025-10-26T19:35:46Z][INFO][UCRT64_ROOT = D:\msys64\ucrt64]
+[2025-10-26T19:35:46Z][INFO][MINGW_ROOT = D:\msys64\ucrt64]
+[2025-10-26T19:35:46Z][INFO][MSYS2_ROOT = D:\msys64]
+[2025-10-26T19:35:46Z][INFO][MSYS2_BASH = D:\msys64\usr\bin\bash.exe]
+[2025-10-26T19:35:46Z][INFO][Appending environment variables to D:\degoras-env-variables.env]
+[2025-10-26T19:35:46Z][INFO][Creating shortcuts]
+[2025-10-26T19:35:46Z][INFO][Shortcut created on desktop: MSYS2 UCRT64]
+[2025-10-26T19:35:46Z][INFO][Shortcut created on desktop: DEGORAS-PROJECT Environment]
+[2025-10-26T19:35:46Z][INFO][STEP 7: OK]
+[2025-10-26T19:35:46Z][INFO][MSYS2 environment setup completed successfully.]

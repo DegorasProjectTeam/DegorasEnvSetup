@@ -1,0 +1,364 @@
+=================================================================
+  DEGORAS-PROJECT VCPKG QT6 SETUP SCRIPT
+-----------------------------------------------------------------
+  Author:  Angel Vera Herrera
+  Updated: 26/10/2025
+  Version: 251026
+=================================================================
+Parameters:
+-----------------------------------------------------------------
+Install Drive    = D
+MSYS2 bin path   = D:\msys64\usr\bin
+-----------------------------------------------------------------
+[2025-10-27T01:42:42Z][INFO][STEP 1: Initial checks and preparations.]
+[2025-10-27T01:42:42Z][INFO][Checking permissions...]
+[2025-10-27T01:42:42Z][INFO][Checking letter format...]
+[2025-10-27T01:42:42Z][INFO][Checking if Dev Drive exists...]
+[2025-10-27T01:42:42Z][INFO][Dev Drive detected at D:\]
+[2025-10-27T01:42:42Z][INFO][Checking if msys2 bash exists...]
+[2025-10-27T01:42:42Z][INFO][STEP 1: OK]
+[2025-10-27T01:42:42Z][INFO][STEP 2: Install required Qt6 packages with triplet 'x64-mingw-dynamic-degoras']
+[2025-10-27T01:42:42Z][INFO][Installing 'qtbase'...]
+Computing installation plan...
+The following packages are already installed:
+    qtbase[core,zstd,widgets,thread,testlib,sql-sqlite,sql-psql,sql,png,pcre2,openssl,opengl,network,jpeg,icu,harfbuzz,gui,freetype,doubleconversion,dnslookup,dbus,concurrent,brotli]:x64-mingw-dynamic-degoras@6.9.1#1
+Total install time: 775 us
+qtbase provides CMake targets:
+
+  # this is heuristically generated, and may not be correct
+  find_package(Qt6 CONFIG REQUIRED)
+  # note: 37 additional targets are not displayed.
+  target_link_libraries(main PRIVATE DB2::DB2 PPS::PPS Oracle::OCI Libb2::Libb2)
+
+  find_package(Qt6Concurrent CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::Concurrent)
+
+  find_package(Qt6ConcurrentPrivate CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::ConcurrentPrivate)
+
+  find_package(Qt6Core CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::Core)
+
+  find_package(Qt6CorePrivate CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::CorePrivate)
+
+  find_package(Qt6DBus CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::DBus)
+
+  find_package(Qt6DBusPrivate CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::DBusPrivate)
+
+  find_package(Qt6DeviceDiscoverySupportPrivate CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::DeviceDiscoverySupportPrivate)
+
+  find_package(Qt6EntryPointPrivate CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::EntryPointPrivate Qt6::EntryPointImplementation)
+
+  find_package(Qt6ExampleIconsPrivate CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::ExampleIconsPrivate Qt6::ExampleIconsPrivate_resources_1)
+
+  find_package(Qt6ExamplesAssetDownloaderPrivate CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::ExamplesAssetDownloaderPrivate)
+
+  find_package(Qt6FbSupportPrivate CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::FbSupportPrivate)
+
+  find_package(Qt6Gui CONFIG REQUIRED)
+  # note: 5 additional targets are not displayed.
+  target_link_libraries(main PRIVATE Qt6::Gui Qt6::QGifPlugin Qt6::QICOPlugin Qt6::QJpegPlugin)
+
+  find_package(Qt6GuiPrivate CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::GuiPrivate)
+
+  find_package(Qt6Network CONFIG REQUIRED)
+  # note: 1 additional targets are not displayed.
+  target_link_libraries(main PRIVATE Qt6::Network Qt6::QNLMNIPlugin Qt6::QSchannelBackendPlugin Qt6::QTlsBackendOpenSSLPlugin)
+
+  find_package(Qt6NetworkPrivate CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::NetworkPrivate)
+
+  find_package(Qt6OpenGL CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::OpenGL)
+
+  find_package(Qt6OpenGLPrivate CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::OpenGLPrivate)
+
+  find_package(Qt6OpenGLWidgets CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::OpenGLWidgets)
+
+  find_package(Qt6OpenGLWidgetsPrivate CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::OpenGLWidgetsPrivate)
+
+  find_package(Qt6PrintSupport CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::PrintSupport)
+
+  find_package(Qt6PrintSupportPrivate CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::PrintSupportPrivate)
+
+  find_package(Qt6Sql CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::Sql Qt6::QPSQLDriverPlugin Qt6::QSQLiteDriverPlugin)
+
+  find_package(Qt6SqlPrivate CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::SqlPrivate)
+
+  find_package(Qt6Test CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::Test)
+
+  find_package(Qt6TestInternalsPrivate CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::TestInternalsPrivate)
+
+  find_package(Qt6TestPrivate CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::TestPrivate)
+
+  find_package(Qt6Widgets CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::Widgets Qt6::QModernWindowsStylePlugin)
+
+  find_package(Qt6WidgetsPrivate CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::WidgetsPrivate)
+
+  find_package(Qt6Xml CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::Xml)
+
+  find_package(Qt6XmlPrivate CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::XmlPrivate)
+
+qtbase provides pkg-config modules:
+
+  # Qt Concurrent module
+  Qt6Concurrent
+
+  # Qt Core module
+  Qt6Core
+
+  # Qt DBus module
+  Qt6DBus
+
+  # Qt Gui module
+  Qt6Gui
+
+  # Qt Network module
+  Qt6Network
+
+  # Qt OpenGL module
+  Qt6OpenGL
+
+  # Qt OpenGLWidgets module
+  Qt6OpenGLWidgets
+
+  # Qt Platform module
+  Qt6Platform
+
+  # Qt PrintSupport module
+  Qt6PrintSupport
+
+  # Qt Sql module
+  Qt6Sql
+
+  # Qt Test module
+  Qt6Test
+
+  # Qt Widgets module
+  Qt6Widgets
+
+  # Qt Xml module
+  Qt6Xml
+
+All requested installations completed successfully in: 775 us
+[2025-10-27T01:42:44Z][INFO]['qtbase' installed successfully.]
+[2025-10-27T01:42:44Z][INFO][Installing 'qt5compat'...]
+Computing installation plan...
+The following packages are already installed:
+    qt5compat[core,textcodec,qml,codecs,big-codecs]:x64-mingw-dynamic-degoras@6.9.1
+Total install time: 733 us
+qt5compat provides CMake targets:
+
+  # this is heuristically generated, and may not be correct
+  find_package(Qt6Core5Compat CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::Core5Compat)
+
+  find_package(Qt6Core5CompatPrivate CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::Core5CompatPrivate)
+
+qt5compat provides pkg-config modules:
+
+  # Qt Core5Compat module
+  Qt6Core5Compat
+
+All requested installations completed successfully in: 733 us
+[2025-10-27T01:42:45Z][INFO]['qt5compat' installed successfully.]
+[2025-10-27T01:42:45Z][INFO][Installing 'qtnetworkauth'...]
+Computing installation plan...
+The following packages are already installed:
+    qtnetworkauth:x64-mingw-dynamic-degoras@6.9.1
+Total install time: 724 us
+qtnetworkauth provides CMake targets:
+
+  # this is heuristically generated, and may not be correct
+  find_package(Qt6NetworkAuth CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::NetworkAuth)
+
+  find_package(Qt6NetworkAuthPrivate CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::NetworkAuthPrivate)
+
+qtnetworkauth provides pkg-config modules:
+
+  # Qt NetworkAuth module
+  Qt6NetworkAuth
+
+All requested installations completed successfully in: 724 us
+[2025-10-27T01:42:46Z][INFO]['qtnetworkauth' installed successfully.]
+[2025-10-27T01:42:46Z][INFO][Installing 'qtmultimedia'...]
+Computing installation plan...
+The following packages are already installed:
+    qtmultimedia[core,widgets]:x64-mingw-dynamic-degoras@6.9.1
+Total install time: 722 us
+qtmultimedia provides CMake targets:
+
+  # this is heuristically generated, and may not be correct
+  find_package(Qt6BundledResonanceAudio CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::BundledResonanceAudio)
+
+  find_package(Qt6Multimedia CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::Multimedia Qt6::QWindowsMediaPlugin)
+
+  find_package(Qt6MultimediaPrivate CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::MultimediaPrivate)
+
+  find_package(Qt6MultimediaTestLibPrivate CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::MultimediaTestLibPrivate)
+
+  find_package(Qt6MultimediaWidgets CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::MultimediaWidgets)
+
+  find_package(Qt6MultimediaWidgetsPrivate CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::MultimediaWidgetsPrivate)
+
+  find_package(Qt6SpatialAudio CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::SpatialAudio)
+
+  find_package(Qt6SpatialAudioPrivate CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE Qt6::SpatialAudioPrivate)
+
+qtmultimedia provides pkg-config modules:
+
+  # Qt Multimedia module
+  Qt6Multimedia
+
+  # Qt MultimediaWidgets module
+  Qt6MultimediaWidgets
+
+  # Qt SpatialAudio module
+  Qt6SpatialAudio
+
+All requested installations completed successfully in: 722 us
+[2025-10-27T01:42:47Z][INFO]['qtmultimedia' installed successfully.]
+[2025-10-27T01:42:47Z][INFO][Installing 'qwt'...]
+Computing installation plan...
+The following packages will be built and installed:
+  * pkgconf:x64-mingw-dynamic-degoras@2.5.1#3
+    qwt:x64-mingw-dynamic-degoras@6.3.0
+  * vcpkg-qmake:x64-mingw-dynamic-degoras@2025-05-19
+Additional packages (*) will be modified to complete this operation.
+Detecting compiler hash for triplet x64-mingw-dynamic-degoras...
+Compiler found: D:/msys64/ucrt64/bin/x86_64-w64-mingw32-g++.exe
+Restored 0 package(s) from D:\packages\vcpkg in 154 us. Use --debug to see more details.
+Installing 1/3 pkgconf:x64-mingw-dynamic-degoras@2.5.1#3...
+Building pkgconf:x64-mingw-dynamic-degoras@2.5.1#3...
+D:\vcpkg\triplets\community\x64-mingw-dynamic-degoras.cmake: info: loaded community triplet from here. Community triplets are not built in the curated registry and are thus less likely to succeed.
+-- Using DEGORAS-PROJECT custom triplet
+-- Found Python version '3.12.12 at D:/msys64/ucrt64/bin/python.exe'
+-- Using meson: D:/vcpkg/downloads/tools/meson-1.9.0-d1fcc2/meson.py
+Downloading https://github.com/pkgconf/pkgconf/archive/pkgconf-2.5.1.tar.gz -> pkgconf-pkgconf-pkgconf-2.5.1.tar.gz
+Successfully downloaded pkgconf-pkgconf-pkgconf-2.5.1.tar.gz
+-- Extracting source D:/vcpkg/downloads/pkgconf-pkgconf-pkgconf-2.5.1.tar.gz
+-- Applying patch 001-unveil-fixes.patch
+-- Using source at D:/vcpkg/buildtrees/pkgconf/src/conf-2.5.1-5bc6f0da3f.clean
+-- Configuring x64-mingw-dynamic-degoras-rel
+-- Getting CMake variables for x64-mingw-dynamic-degoras
+-- Loading CMake variables from D:/vcpkg/buildtrees/pkgconf/cmake-get-vars_C_CXX-x64-mingw-dynamic-degoras.cmake.log
+-- Configuring x64-mingw-dynamic-degoras-rel done
+-- Package x64-mingw-dynamic-degoras-rel
+-- Fixing pkgconfig file: D:/vcpkg/packages/pkgconf_x64-mingw-dynamic-degoras/lib/pkgconfig/libpkgconf.pc
+-- Installing: D:/vcpkg/packages/pkgconf_x64-mingw-dynamic-degoras/share/pkgconf/copyright
+-- Performing post-build validation
+Starting submission of pkgconf:x64-mingw-dynamic-degoras@2.5.1#3 to 1 binary cache(s) in the background
+Elapsed time to handle pkgconf:x64-mingw-dynamic-degoras: 16 s
+pkgconf:x64-mingw-dynamic-degoras package ABI: 87dd95468e240995538efc89897a9180ee3b7777a145b06fdb11599424dfe0f3
+Installing 2/3 vcpkg-qmake:x64-mingw-dynamic-degoras@2025-05-19...
+Building vcpkg-qmake:x64-mingw-dynamic-degoras@2025-05-19...
+D:\vcpkg\triplets\community\x64-mingw-dynamic-degoras.cmake: info: loaded community triplet from here. Community triplets are not built in the curated registry and are thus less likely to succeed.
+-- Using DEGORAS-PROJECT custom triplet
+-- Installing: D:/vcpkg/packages/vcpkg-qmake_x64-mingw-dynamic-degoras/share/vcpkg-qmake/vcpkg_qmake_configure.cmake
+-- Installing: D:/vcpkg/packages/vcpkg-qmake_x64-mingw-dynamic-degoras/share/vcpkg-qmake/vcpkg_qmake_build.cmake
+-- Installing: D:/vcpkg/packages/vcpkg-qmake_x64-mingw-dynamic-degoras/share/vcpkg-qmake/vcpkg_qmake_install.cmake
+-- Installing: D:/vcpkg/packages/vcpkg-qmake_x64-mingw-dynamic-degoras/share/vcpkg-qmake/z_vcpkg_qmake_fix_makefiles.cmake
+-- Installing: D:/vcpkg/packages/vcpkg-qmake_x64-mingw-dynamic-degoras/share/vcpkg-qmake/vcpkg-port-config.cmake
+-- Installing: D:/vcpkg/packages/vcpkg-qmake_x64-mingw-dynamic-degoras/share/vcpkg-qmake/copyright
+-- Performing post-build validation
+Starting submission of vcpkg-qmake:x64-mingw-dynamic-degoras@2025-05-19 to 1 binary cache(s) in the background
+Elapsed time to handle vcpkg-qmake:x64-mingw-dynamic-degoras: 78.4 ms
+vcpkg-qmake:x64-mingw-dynamic-degoras package ABI: 2bf3f61d8fefe00444e0645b79f60fecda91c799f178b3dac78d178d01dcadbb
+Completed submission of pkgconf:x64-mingw-dynamic-degoras@2.5.1#3 to 1 binary cache(s) in 70.7 ms
+Installing 3/3 qwt:x64-mingw-dynamic-degoras@6.3.0...
+Building qwt:x64-mingw-dynamic-degoras@6.3.0...
+D:\vcpkg\triplets\community\x64-mingw-dynamic-degoras.cmake: info: loaded community triplet from here. Community triplets are not built in the curated registry and are thus less likely to succeed.
+-- Using DEGORAS-PROJECT custom triplet
+Downloading qwt-6.3.0.zip, trying https://sourceforge.net/projects/qwt/files/qwt/6.3.0/qwt-6.3.0.zip/download
+Successfully downloaded qwt-6.3.0.zip
+-- Extracting source D:/vcpkg/downloads/qwt-6.3.0.zip
+-- Applying patch config.patch
+-- Applying patch fix_dll_install.patch
+-- Using source at D:/vcpkg/buildtrees/qwt/src/qwt-6-4f5cea8b1d.clean
+-- Getting CMake variables for x64-mingw-dynamic-degoras
+-- Loading CMake variables from D:/vcpkg/buildtrees/qwt/cmake-get-vars_C_CXX-x64-mingw-dynamic-degoras.cmake.log
+-- Configuring x64-mingw-dynamic-degoras-rel
+-- Configuring x64-mingw-dynamic-degoras-rel done
+Downloading jom_1_1_4.zip, trying https://download.qt.io/official_releases/jom/jom_1_1_4.zip
+Successfully downloaded jom_1_1_4.zip
+-- Package makefiles-x64-mingw-dynamic-degoras-rel
+CMake Error at scripts/cmake/vcpkg_execute_build_process.cmake:134 (message):
+    Command failed: D:/vcpkg/downloads/tools/jom/jom-1_1_4/jom.exe -j 9 qmake_all
+    Working Directory: D:/vcpkg/buildtrees/qwt/x64-mingw-dynamic-degoras-rel
+    See logs for more information:
+      D:\vcpkg\buildtrees\qwt\package-makefiles-x64-mingw-dynamic-degoras-rel-err.log
+
+Call Stack (most recent call first):
+  installed/x64-mingw-dynamic-degoras/share/vcpkg-qmake/vcpkg_qmake_build.cmake:5 (vcpkg_execute_build_process)
+  installed/x64-mingw-dynamic-degoras/share/vcpkg-qmake/vcpkg_qmake_build.cmake:65 (z_run_jom_build)
+  installed/x64-mingw-dynamic-degoras/share/vcpkg-qmake/vcpkg_qmake_install.cmake:39 (vcpkg_qmake_build)
+  ports/qwt/portfile.cmake:25 (vcpkg_qmake_install)
+  scripts/ports.cmake:206 (include)
+
+
+error: building qwt:x64-mingw-dynamic-degoras failed with: BUILD_FAILED
+See https://learn.microsoft.com/vcpkg/troubleshoot/build-failures?WT.mc_id=vcpkg_inproduct_cli for more information.
+Elapsed time to handle qwt:x64-mingw-dynamic-degoras: 17 s
+Please ensure you're using the latest port files with `git pull` and `vcpkg update`.
+Then check for known issues at:
+  https://github.com/microsoft/vcpkg/issues?q=is%3Aissue+is%3Aopen+in%3Atitle+qwt
+You can submit a new issue at:
+  https://github.com/microsoft/vcpkg/issues/new?title=%5Bqwt%5D%20build%20error%20on%20x64-mingw-dynamic-degoras&body=Copy%20issue%20body%20from%20D%3A%2Fvcpkg%2Finstalled%2Fvcpkg%2Fissue_body.md
+
+Completed submission of vcpkg-qmake:x64-mingw-dynamic-degoras@2025-05-19 to 1 binary cache(s) in 26.1 ms
+[2025-10-27T01:43:22Z][INFO]['qwt' installed successfully.]
+[2025-10-27T01:43:22Z][INFO][Installing 'qt-advanced-docking-system'...]
+Computing installation plan...
+The following packages are already installed:
+    qt-advanced-docking-system:x64-mingw-dynamic-degoras@4.4.1
+Total install time: 811 us
+qt-advanced-docking-system provides CMake targets:
+
+  # this is heuristically generated, and may not be correct
+  find_package(qtadvanceddocking-qt6 CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE ads::qtadvanceddocking-qt6)
+
+All requested installations completed successfully in: 811 us
+[2025-10-27T01:43:23Z][INFO]['qt-advanced-docking-system' installed successfully.]
+[2025-10-27T01:43:23Z][INFO][STEP 2: OK]
+[2025-10-27T01:43:23Z][INFO][STEP 3: Retrieve versions of installed packages]
+[2025-10-27T01:43:23Z][INFO][Installed: qt5compat version 6.9.1]
+[2025-10-27T01:43:23Z][INFO][Installed: qtbase version 6.9.1#1]
+[2025-10-27T01:43:23Z][INFO][Installed: qtmultimedia version 6.9.1]
+[2025-10-27T01:43:23Z][INFO][Installed: qtnetworkauth version 6.9.1]
+[2025-10-27T01:43:23Z][INFO][STEP 3: OK]
+[2025-10-27T01:43:23Z][INFO][DEGORAS-PROJECT VCPKG Qt6 setup completed successfully.]

@@ -1,0 +1,16 @@
+=================================================================
+  DEGORAS-PROJECT VCPKG QT6 SETUP SCRIPT
+-----------------------------------------------------------------
+  Author:  Angel Vera Herrera
+  Updated: 26/10/2025
+  Version: 251026
+=================================================================
+Parameters:
+-----------------------------------------------------------------
+Install Drive    = D
+MSYS2 bin path   = D:\msys64\usr\bin
+-----------------------------------------------------------------
+[2025-11-05T00:55:09Z][INFO][STEP 1: Initial checks and preparations.]
+[2025-11-05T00:55:09Z][INFO][Checking permissions...]
+[2025-11-05T00:55:09Z][ERROR][This script must be run as Administrator.]
+[2025-11-05T00:55:09Z][ERROR][Setup failed!]

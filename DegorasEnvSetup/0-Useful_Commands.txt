@@ -1,0 +1,60 @@
+# =====================================================================
+# DEGORAS PROJECT - DEV DRIVE MANAGEMENT COMMANDS
+# =====================================================================
+
+# --- 1. PERMITIR EJECUCIÓN DE SCRIPTS DE POWERSHELL ---
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+
+# --- 2. DESMONTAR UNIDAD DEV DRIVE EXISTENTE ---
+# Cierra todas las aplicaciones que estén usando la unidad antes de desmontar
+Dismount-DiskImage -ImagePath "C:\DevDrives\DEGORAS_DEV.vhdx"
+Dismount-DiskImage -Image Path "C:\DevDrives\DEGORAS_PROJECT_DEVELOP.vhdx"
+
+# --- 3. ELIMINAR ARCHIVO DE DISCO (SI DESEA RECREARLO) ---
+Remove-Item -Path "C:\DevDrives\DEGORAS_DEV.vhdx" -Force
+Remove-Item -Path "C:\DevDrives\DEGORAS_PROJECT_DEVELOP.vhdx" -Force
+
+# --- 4. MONTAR MANUALMENTE UN DEV DRIVE EXISTENTE ---
+Mount-DiskImage -ImagePath "C:\DevDrives\DEGORAS_DEV.vhdx"
+
+# --- 5. REDIMENSIONAR EL DISCO VIRTUAL ---
+# Aumenta el tamaño del archivo VHDX a 40 GB
+Resize-VHD -Path "C:\DevDrives\DEGORAS_PROJECT_DEVELOP.vhdx" -SizeBytes 40GB
+
+# --- 6. VERIFICAR TAMAÑO ACTUAL DEL DISCO ---
+Get-VHD -Path "C:\DevDrives\DEGORAS_PROJECT_DEVELOP.vhdx" | Select Path, FileSize, Size
+
+# =====================================================================
+# DEGORAS PROJECT - INSTALL QWT 6.3 USING VCPKG TRIPLET
+# =====================================================================
+
+TODO Automatic process with local port
+
+In the environment:
+
+cd /d/workspace
+git clone https://git.code.sf.net/p/qwt/git qwt
+
+
+
+# =====================================================================
+# DEGORAS PROJECT - INSTALL QT / QT CREATOR IN MSYS2 COMMANDS
+# =====================================================================
+
+In the environment:
+
+pacman -S --needed --noconfirm \
+  mingw-w64-ucrt-x86_64-qt6-base \
+  mingw-w64-ucrt-x86_64-qt6-5compat \
+  mingw-w64-ucrt-x86_64-qt6-declarative \
+  mingw-w64-ucrt-x86_64-qt6-svg \
+  mingw-w64-ucrt-x86_64-qt6-tools \
+  mingw-w64-ucrt-x86_64-qt6-multimedia \
+  mingw-w64-ucrt-x86_64-qt6-shadertools \
+  mingw-w64-ucrt-x86_64-qt6-networkauth \
+  pacman -S mingw-w64-ucrt-x86_64-qt6-doc
+
+pacman -S --needed --noconfirm \
+  mingw-w64-ucrt-x86_64-qt-creator \
+  mingw-w64-ucrt-x86_64-clang \
+  mingw-w64-ucrt-x86_64-clang-tools-extra
