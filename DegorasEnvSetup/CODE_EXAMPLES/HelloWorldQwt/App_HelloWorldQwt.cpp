@@ -20,6 +20,7 @@
 #include <QTimer>
 #include <QVBoxLayout>
 #include <QPen>
+#include <QElapsedTimer>
 
 // QWT INCLUDES
 #include <qwt/qwt_plot.h>
@@ -43,6 +44,8 @@ public:
         curve_static_(new QwtPlotCurve("y = sin(x)")),
         curve_animated_(new QwtPlotCurve("y = sin(x + t)")),
         timer_(new QTimer(this)),
+		elapsed_(),               
+        last_frame_time_(0),      
         phase_(0.0)
     {
         // Set background
@@ -90,6 +93,8 @@ public:
         this->resize(800, 600);
         this->setWindowTitle("Hello QWT C++ Example – Static + Animated Sine");
 
+		elapsed_.start();
+		
         // Timer Setup for 120 Hz.
         this->timer_->setTimerType(Qt::PreciseTimer);
         this->connect(this->timer_, &QTimer::timeout, this, &MainWindow::updateAnimatedCurve);
@@ -107,6 +112,8 @@ private slots:
         qint64 now = elapsed_.elapsed();
         double dt = (now - last_frame_time_) / 1000.0;
         this->last_frame_time_ = now;
+		if (dt < 0 || dt > 1.0) 
+			dt = 0.0; 
 
         // Update phase for wave motion
         constexpr double speed = 5.0; // rad/s
@@ -159,6 +166,7 @@ int main(int argc, char** argv)
     QApplication app(argc, argv);
 
     MainWindow window;
+	window.setWindowState(window.windowState() & ~Qt::WindowMinimized);
     window.show();
 
     return app.exec();

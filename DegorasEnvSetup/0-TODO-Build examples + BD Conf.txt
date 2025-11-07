@@ -1,0 +1,32 @@
+# -----------------------------------
+# FOR MANUAL DB INITIALIZATION -> TODO
+
+-> Check Windows services.
+
+# -----------------------------------
+# FOR COMPILE DEBUG
+
+-> Launch new Degoras Environment.
+
+cd workspace/HelloWorldQwt/RigesCoreProject
+cmake --preset rigescore-env-mingw64-debug
+cmake --build 
+
+# -----------------------------------
+# FOR COMPILE RELEASE
+
+-> Launch new RIGES-CORE Environment.
+
+cd /v/workspace/RigesCoreProject/RigesCoreProject
+cmake --preset rigescore-env-mingw64-release
+cmake --build 
+
+# -----------------------------------
+# FOR DEBUG
+
+
+
+# -----------------------------------
+# FOR RELEASE
+
+
