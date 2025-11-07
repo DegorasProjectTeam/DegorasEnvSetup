@@ -1,0 +1,132 @@
+=================================================================
+  DEGORAS-PROJECT VCPKG QT6 DEPS SETUP SCRIPT
+-----------------------------------------------------------------
+  Author:  Angel Vera Herrera
+  Updated: 26/10/2025
+  Version: 251026
+=================================================================
+Parameters:
+-----------------------------------------------------------------
+Install Drive    = E
+MSYS2 bin path   = E:\msys64\usr\bin
+-----------------------------------------------------------------
+[2025-11-07T03:09:39Z][INFO][STEP 1: Initial checks and preparations.]
+[2025-11-07T03:09:39Z][INFO][Checking permissions...]
+[2025-11-07T03:09:39Z][INFO][Checking letter format...]
+[2025-11-07T03:09:39Z][INFO][Checking if Dev Drive exists...]
+[2025-11-07T03:09:39Z][INFO][Dev Drive detected at E:\]
+[2025-11-07T03:09:39Z][INFO][Checking if msys2 bash exists...]
+[2025-11-07T03:09:39Z][INFO][STEP 1: OK]
+[2025-11-07T03:09:39Z][INFO][STEP 1.5: Creating temporary JOM shim...]
+[2025-11-07T03:09:39Z][INFO][Fake jom.exe shim created at E:\\vcpkg\downloads\tools\jom\jom-1_1_4\jom.exe]
+[2025-11-07T03:09:39Z][INFO][STEP 2: Install required Qt6 deps packages with triplet 'x64-mingw-dynamic-degoras']
+[2025-11-07T03:09:39Z][INFO][Installing 'qwt'...]
+Computing installation plan...
+The following packages will be built and installed:
+    qwt:x64-mingw-dynamic-degoras@6.3.0
+  * vcpkg-qmake:x64-mingw-dynamic-degoras@2025-05-19
+Additional packages (*) will be modified to complete this operation.
+Detecting compiler hash for triplet x64-mingw-dynamic-degoras...
+-- Setting "%HTTP_PROXY%" environment variables to "http://proxy.roa:8080".
+Compiler found: E:/msys64/ucrt64/bin/x86_64-w64-mingw32-g++.exe
+Restored 0 package(s) from E:\packages\vcpkg in 46.2 us. Use --debug to see more details.
+Installing 1/2 vcpkg-qmake:x64-mingw-dynamic-degoras@2025-05-19...
+Building vcpkg-qmake:x64-mingw-dynamic-degoras@2025-05-19...
+E:\vcpkg\triplets\community\x64-mingw-dynamic-degoras.cmake: info: loaded community triplet from here. Community triplets are not built in the curated registry and are thus less likely to succeed.
+-- [DEGORAS] Using DEGORAS-PROJECT custom triplet
+-- Installing: E:/vcpkg/packages/vcpkg-qmake_x64-mingw-dynamic-degoras/share/vcpkg-qmake/vcpkg_qmake_configure.cmake
+-- Installing: E:/vcpkg/packages/vcpkg-qmake_x64-mingw-dynamic-degoras/share/vcpkg-qmake/vcpkg_qmake_build.cmake
+-- Installing: E:/vcpkg/packages/vcpkg-qmake_x64-mingw-dynamic-degoras/share/vcpkg-qmake/vcpkg_qmake_install.cmake
+-- Installing: E:/vcpkg/packages/vcpkg-qmake_x64-mingw-dynamic-degoras/share/vcpkg-qmake/z_vcpkg_qmake_fix_makefiles.cmake
+-- Installing: E:/vcpkg/packages/vcpkg-qmake_x64-mingw-dynamic-degoras/share/vcpkg-qmake/vcpkg-port-config.cmake
+-- Installing: E:/vcpkg/packages/vcpkg-qmake_x64-mingw-dynamic-degoras/share/vcpkg-qmake/copyright
+-- Performing post-build validation
+Starting submission of vcpkg-qmake:x64-mingw-dynamic-degoras@2025-05-19 to 1 binary cache(s) in the background
+Elapsed time to handle vcpkg-qmake:x64-mingw-dynamic-degoras: 46.2 ms
+vcpkg-qmake:x64-mingw-dynamic-degoras package ABI: d26fc14d028e697dcb6f76bb4855ce127e89e26506366c97be6a38bcb8f6c540
+Installing 2/2 qwt:x64-mingw-dynamic-degoras@6.3.0...
+Building qwt:x64-mingw-dynamic-degoras@6.3.0...
+E:\vcpkg\triplets\community\x64-mingw-dynamic-degoras.cmake: info: loaded community triplet from here. Community triplets are not built in the curated registry and are thus less likely to succeed.
+-- [DEGORAS] Using DEGORAS-PROJECT custom triplet
+Downloading qwt-6.3.0.zip, trying https://sourceforge.net/projects/qwt/files/qwt/6.3.0/qwt-6.3.0.zip/download
+Successfully downloaded qwt-6.3.0.zip
+-- Extracting source E:/vcpkg/downloads/qwt-6.3.0.zip
+-- Applying patch config.patch
+-- Applying patch fix_dll_install.patch
+-- Using source at E:/vcpkg/buildtrees/qwt/src/qwt-6-4f5cea8b1d.clean
+-- Getting CMake variables for x64-mingw-dynamic-degoras
+-- Loading CMake variables from E:/vcpkg/buildtrees/qwt/cmake-get-vars_C_CXX-x64-mingw-dynamic-degoras.cmake.log
+-- Configuring x64-mingw-dynamic-degoras-rel
+-- Configuring x64-mingw-dynamic-degoras-rel done
+-- Package makefiles-x64-mingw-dynamic-degoras-rel
+-- Package build-x64-mingw-dynamic-degoras-rel
+-- Package install-x64-mingw-dynamic-degoras-rel
+-- Installing: E:/vcpkg/packages/qwt_x64-mingw-dynamic-degoras/share/qwt/copyright
+-- Performing post-build validation
+E:\vcpkg\ports\qwt\portfile.cmake: warning: The folder ${CURRENT_PACKAGES_DIR}/include is empty or not present. This usually means that headers are not correctly installed. If this is a CMake helper port, add set(VCPKG_POLICY_CMAKE_HELPER_PORT enabled). If this is not a CMake helper port but this is otherwise intentional, add set(VCPKG_POLICY_EMPTY_INCLUDE_FOLDER enabled) to suppress this message.
+E:\vcpkg\ports\qwt\portfile.cmake: warning: Found 1 post-build check problem(s). These are usually caused by bugs in portfile.cmake or the upstream build system. Please correct these before submitting this port to the curated registry.
+Starting submission of qwt:x64-mingw-dynamic-degoras@6.3.0 to 1 binary cache(s) in the background
+Elapsed time to handle qwt:x64-mingw-dynamic-degoras: 22 s
+qwt:x64-mingw-dynamic-degoras package ABI: 45ebe4735e46e3dba95ecaf426efd31cadc4d46637b86ca0c43ea241454265d9
+Total install time: 22 s
+Installed contents are licensed to you by owners. Microsoft is not responsible for, nor does it grant any licenses to, third-party packages.
+Some packages did not declare an SPDX license. Check the `copyright` file for each package for more information about their licensing.
+Packages installed in this vcpkg installation declare the following licenses:
+MIT
+qwt provides CMake targets:
+
+  # this is heuristically generated, and may not be correct
+  find_package(unofficial-qwt CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE unofficial::qwt::qwt)
+
+Completed submission of vcpkg-qmake:x64-mingw-dynamic-degoras@2025-05-19 to 1 binary cache(s) in 20.4 ms
+Waiting for 1 remaining binary cache submissions...
+Completed submission of qwt:x64-mingw-dynamic-degoras@6.3.0 to 1 binary cache(s) in 20.2 ms (1/1)
+All requested installations completed successfully in: 22 s
+[2025-11-07T03:10:02Z][INFO]['qwt' installed successfully.]
+[2025-11-07T03:10:02Z][INFO][Installing 'qt-advanced-docking-system'...]
+Computing installation plan...
+The following packages will be built and installed:
+    qt-advanced-docking-system:x64-mingw-dynamic-degoras@4.4.1
+Detecting compiler hash for triplet x64-mingw-dynamic-degoras...
+-- Setting "%HTTP_PROXY%" environment variables to "http://proxy.roa:8080".
+Compiler found: E:/msys64/ucrt64/bin/x86_64-w64-mingw32-g++.exe
+Restored 0 package(s) from E:\packages\vcpkg in 23.7 us. Use --debug to see more details.
+Installing 1/1 qt-advanced-docking-system:x64-mingw-dynamic-degoras@4.4.1...
+Building qt-advanced-docking-system:x64-mingw-dynamic-degoras@4.4.1...
+E:\vcpkg\triplets\community\x64-mingw-dynamic-degoras.cmake: info: loaded community triplet from here. Community triplets are not built in the curated registry and are thus less likely to succeed.
+-- [DEGORAS] Using DEGORAS-PROJECT custom triplet
+Downloading https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System/archive/4.4.1.tar.gz -> githubuser0xFFFF-Qt-Advanced-Docking-System-4.4.1.tar.gz
+Successfully downloaded githubuser0xFFFF-Qt-Advanced-Docking-System-4.4.1.tar.gz
+-- Extracting source E:/vcpkg/downloads/githubuser0xFFFF-Qt-Advanced-Docking-System-4.4.1.tar.gz
+-- Using source at E:/vcpkg/buildtrees/qt-advanced-docking-system/src/4.4.1-a2309e5bdf.clean
+-- Configuring x64-mingw-dynamic-degoras
+-- Building x64-mingw-dynamic-degoras-rel
+-- Installing: E:/vcpkg/packages/qt-advanced-docking-system_x64-mingw-dynamic-degoras/share/qt-advanced-docking-system/gnu-lgpl-v2.1.md
+-- Installing: E:/vcpkg/packages/qt-advanced-docking-system_x64-mingw-dynamic-degoras/share/qt-advanced-docking-system/copyright
+-- Performing post-build validation
+Starting submission of qt-advanced-docking-system:x64-mingw-dynamic-degoras@4.4.1 to 1 binary cache(s) in the background
+Elapsed time to handle qt-advanced-docking-system:x64-mingw-dynamic-degoras: 10 s
+qt-advanced-docking-system:x64-mingw-dynamic-degoras package ABI: c9b4e713219635562f079dfd385ac7101fedc07c667427fb3a761d6787ec91fb
+Total install time: 10 s
+Installed contents are licensed to you by owners. Microsoft is not responsible for, nor does it grant any licenses to, third-party packages.
+Packages installed in this vcpkg installation declare the following licenses:
+LGPL-2.1-only
+qt-advanced-docking-system provides CMake targets:
+
+  # this is heuristically generated, and may not be correct
+  find_package(qtadvanceddocking-qt6 CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE ads::qtadvanceddocking-qt6)
+
+Waiting for 1 remaining binary cache submissions...
+Completed submission of qt-advanced-docking-system:x64-mingw-dynamic-degoras@4.4.1 to 1 binary cache(s) in 111 ms (1/1)
+All requested installations completed successfully in: 10 s
+[2025-11-07T03:10:14Z][INFO]['qt-advanced-docking-system' installed successfully.]
+[2025-11-07T03:10:14Z][INFO][STEP 2: OK]
+[2025-11-07T03:10:14Z][INFO][STEP 2.5: Restoring original JOM state...]
+[2025-11-07T03:10:14Z][INFO][Removed temporary shim.]
+[2025-11-07T03:10:14Z][INFO][STEP 3: Retrieve versions of installed packages]
+[2025-11-07T03:10:14Z][INFO][Installed: qwt version 6.3.0]
+[2025-11-07T03:10:14Z][INFO][STEP 3: OK]
+[2025-11-07T03:10:14Z][INFO][DEGORAS-PROJECT VCPKG Qt6 deps setup completed successfully.]
+[2025-11-07T03:10:14Z][INFO][TOTAL EXECUTION TIME: 35.54676 seconds  (00:00:35)]

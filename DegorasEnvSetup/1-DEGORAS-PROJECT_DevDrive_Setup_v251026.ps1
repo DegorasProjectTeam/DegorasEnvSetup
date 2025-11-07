@@ -16,9 +16,9 @@
 param 
 (
     [string]$driveLabel = "DEGORAS_DEV",
-    [string]$driveLetter = "D",
-    [int]   $sizeGB = 40,
-    [string]$vhdPath = "C:\DevDrives"
+    [string]$driveLetter = "E",
+    [int]   $sizeGB = 100,
+    [string]$vhdPath = "D:\DevDrives"
 )
 
 # FUNCTIONS

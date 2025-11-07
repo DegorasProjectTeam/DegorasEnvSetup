@@ -21,8 +21,8 @@ param
 (
 	[string]$vcpkgGitUrl = "https://github.com/microsoft/vcpkg.git",
 	[string]$vcpkgBaseline = "446682c6c338d68ed986972ffc3529f7d63c1555",
-    [string]$devDrive = "D",
-	[string]$msys64BinPath = "D:\msys64\usr\bin"
+    [string]$devDrive = "E",
+	[string]$msys64BinPath = "E:\msys64\usr\bin"
 )
 
 # FUNCTIONS
@@ -260,9 +260,11 @@ else
 	$bootstrapScript = "$installRootUnix/bootstrap-vcpkg.sh"
 	$bashBootstrapCmd = "cd $installRootUnix && bash $bootstrapScript"
 
-	$proc = Start-Process -FilePath $msys64BashPath `
-						  -ArgumentList "-l", "-c", "`"$bashBootstrapCmd`"" `
-						  -Wait -PassThru
+    $bootstrapBat = Join-Path $installRoot "bootstrap-vcpkg.bat"
+    $proc = Start-Process -FilePath $bootstrapBat `
+                          -ArgumentList "-disableMetrics","-debug" `
+                          -WorkingDirectory $installRoot `
+                          -Wait -PassThru
 
 
 	if ($proc.ExitCode -ne 0) 

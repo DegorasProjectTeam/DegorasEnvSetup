@@ -13,14 +13,14 @@
 
 param 
 (
-    [string]$devDrive   = "D",
+    [string]$devDrive   = "E",
     [string]$msys2Url   = "https://repo.msys2.org/distrib/msys2-x86_64-latest.sfx.exe",
     [string]$ninjaUrl   = "https://repo.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-ninja-1.12.1-1-any.pkg.tar.zst",
     [string]$gdbUrl     = "https://repo.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-gdb-16.2-1-any.pkg.tar.zst",
     [string]$gccUrl     = "https://repo.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-gcc-15.2.0-8-any.pkg.tar.zst",
     [string]$gccLibsUrl = "https://repo.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-gcc-libs-15.2.0-8-any.pkg.tar.zst",
     [string]$makeUrl    = "https://repo.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-make-4.4.1-2-any.pkg.tar.zst",
-    [string]$cmakeUrl   = "https://repo.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-cmake-3.30.5-1-any.pkg.tar.zst",
+    [string]$cmakeUrl   = "https://repo.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-cmake-4.1.2-1-any.pkg.tar.zst",
 	[string]$doxygenUrl = "https://repo.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-doxygen-1.12.0-1-any.pkg.tar.zst",
     [string]$graphvizUrl = "https://repo.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-graphviz-12.2.1-1-any.pkg.tar.zst"
   )
@@ -136,8 +136,8 @@ Write-NoFormat "GCC URL          = $gccUrl"
 Write-NoFormat "GCC Libs URL     = $gccLibsUrl"
 Write-NoFormat "GDB URL          = $gdbUrl"
 Write-NoFormat "Make URL         = $makeUrl"
-Write-NoFormat "Doxygen URL          = $doxygenUrl"
-Write-NoFormat "Graphviz URL         = $graphvizUrl"
+Write-NoFormat "Doxygen URL      = $doxygenUrl"
+Write-NoFormat "Graphviz URL     = $graphvizUrl"
 Write-NoFormat "Current Path     = $scriptDir"
 Write-NoFormat "MSYS2 Packs Path = $localPkgDir"
 Write-NoFormat "================================================================="
@@ -166,7 +166,7 @@ if ($devDrive -notmatch '^[A-Z]$')
 # Normalize format and prepare paths.
 $driveLetterOnly = $devDrive.ToUpper()
 $devDrive = "$driveLetterOnly`:\"
-$msys2Path = Join-Path $devDrive "msys2"
+$msys2Path = Join-Path $devDrive "msys64"
 $bashPath  = Join-Path $msys2Path "usr\bin\bash.exe"
 $trustDbPath = Join-Path $msys2Path "etc\pacman.d\gnupg\trustdb.gpg"
 
@@ -183,8 +183,8 @@ catch
     Abort-WithError
 }
 
-# Check if the MSYS64 folder already exists.
-Write-Info "Checking if MSYS64 folder exists..."
+# Check if the MSYS2 folder already exists.
+Write-Info "Checking if MSYS2 folder exists..."
 if ((Test-Path $msys2Path) -and ((Get-ChildItem -Path $msys2Path -Force) | Where-Object { $_.PSIsContainer -or $_.Length -gt 0 })) 
 {
     Write-Error "The MSYS2 directory '$msys2Path' already exists and is not empty."

@@ -13,8 +13,8 @@
 
 param
 (
-    [string]$devDrive = "D",
-	[string]$msys64BinPath = "D:\msys64\usr\bin"
+    [string]$devDrive = "E",
+	[string]$msys64BinPath = "E:\msys64\usr\bin"
 )
 
 # FUNCTIONS
@@ -228,6 +228,10 @@ export VCPKG_ROOT="$installRootUnix"
 export VCPKG_DEFAULT_BINARY_CACHE="$vcpkgCacheUnix" 
 export VCPKG_DEFAULT_TRIPLET="x64-mingw-dynamic-degoras"
 export VCPKG_DEFAULT_HOST_TRIPLET="x64-mingw-dynamic-degoras"
+unset http_proxy
+unset https_proxy
+unset HTTP_PROXY
+unset HTTPS_PROXY
 ./vcpkg install $pkg
 "@
 

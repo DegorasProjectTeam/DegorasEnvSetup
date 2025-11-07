@@ -1,0 +1,745 @@
+=================================================================
+  DEGORAS-PROJECT VCPKG DEPS SETUP SCRIPT
+-----------------------------------------------------------------
+  Author:  Angel Vera Herrera
+  Updated: 26/10/2025
+  Version: 251026
+=================================================================
+Parameters:
+-----------------------------------------------------------------
+Install Drive    = E
+MSYS2 bin path   = E:\msys64\usr\bin
+-----------------------------------------------------------------
+[2025-11-07T01:47:15Z][INFO][STEP 1: Initial checks and preparations.]
+[2025-11-07T01:47:15Z][INFO][Checking permissions...]
+[2025-11-07T01:47:15Z][INFO][Checking letter format...]
+[2025-11-07T01:47:15Z][INFO][Checking if Dev Drive exists...]
+[2025-11-07T01:47:15Z][INFO][Dev Drive detected at E:\]
+[2025-11-07T01:47:15Z][INFO][Checking if msys2 bash exists...]
+[2025-11-07T01:47:15Z][INFO][STEP 1: OK]
+[2025-11-07T01:47:15Z][INFO][STEP 2: Install example lib 'fmt' with triplet 'x64-mingw-dynamic-degoras']
+Computing installation plan...
+The following packages are already installed:
+    fmt:x64-mingw-dynamic-degoras@12.1.0
+Total install time: 184 us
+The package fmt provides CMake targets:
+
+    find_package(fmt CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE fmt::fmt)
+
+    # Or use the header-only version
+    find_package(fmt CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE fmt::fmt-header-only)
+
+All requested installations completed successfully in: 184 us
+warning: The vcpkg E:\vcpkg\vcpkg.exe is using detected vcpkg root E:\vcpkg and ignoring mismatched VCPKG_ROOT environment value S:\vcpkg. To suppress this message, unset the environment variable or use the --vcpkg-root command line switch.
+fmt:x64-mingw-dynamic-degoras                     12.1.0              {fmt} is an open-source formatting library provi...
+[2025-11-07T01:47:16Z][INFO][Installed fmt version: 12.1.0]
+[2025-11-07T01:47:16Z][INFO][STEP 2: OK]
+[2025-11-07T01:47:16Z][INFO][STEP 3: Install required packages with triplet 'x64-mingw-dynamic-degoras']
+[2025-11-07T01:47:16Z][INFO][Installing 'fmt'...]
+Computing installation plan...
+The following packages are already installed:
+    fmt:x64-mingw-dynamic-degoras@12.1.0
+Total install time: 192 us
+The package fmt provides CMake targets:
+
+    find_package(fmt CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE fmt::fmt)
+
+    # Or use the header-only version
+    find_package(fmt CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE fmt::fmt-header-only)
+
+All requested installations completed successfully in: 192 us
+[2025-11-07T01:47:17Z][INFO]['fmt' installed successfully.]
+[2025-11-07T01:47:17Z][INFO][Installing 'pkgconf'...]
+Computing installation plan...
+The following packages will be built and installed:
+    pkgconf:x64-mingw-dynamic-degoras@2.5.1#4
+  * vcpkg-cmake-get-vars:x64-mingw-dynamic-degoras@2025-05-29
+  * vcpkg-tool-meson:x64-mingw-dynamic-degoras@1.9.0#3
+Additional packages (*) will be modified to complete this operation.
+Detecting compiler hash for triplet x64-mingw-dynamic-degoras...
+-- Setting "%HTTP_PROXY%" environment variables to "http://proxy.roa:8080".
+Compiler found: E:/msys64/ucrt64/bin/x86_64-w64-mingw32-g++.exe
+Restored 0 package(s) from E:\packages\vcpkg in 53.7 us. Use --debug to see more details.
+Installing 1/3 vcpkg-cmake-get-vars:x64-mingw-dynamic-degoras@2025-05-29...
+Building vcpkg-cmake-get-vars:x64-mingw-dynamic-degoras@2025-05-29...
+E:\vcpkg\triplets\community\x64-mingw-dynamic-degoras.cmake: info: loaded community triplet from here. Community triplets are not built in the curated registry and are thus less likely to succeed.
+-- [DEGORAS] Using DEGORAS-PROJECT custom triplet
+-- Installing: E:/vcpkg/packages/vcpkg-cmake-get-vars_x64-mingw-dynamic-degoras/share/vcpkg-cmake-get-vars/vcpkg_cmake_get_vars.cmake
+-- Installing: E:/vcpkg/packages/vcpkg-cmake-get-vars_x64-mingw-dynamic-degoras/share/vcpkg-cmake-get-vars/cmake_get_vars
+-- Installing: E:/vcpkg/packages/vcpkg-cmake-get-vars_x64-mingw-dynamic-degoras/share/vcpkg-cmake-get-vars/cmake_get_vars/CMakeLists.txt
+-- Installing: E:/vcpkg/packages/vcpkg-cmake-get-vars_x64-mingw-dynamic-degoras/share/vcpkg-cmake-get-vars/cmake-get-vars.cmake.in
+-- Installing: E:/vcpkg/packages/vcpkg-cmake-get-vars_x64-mingw-dynamic-degoras/share/vcpkg-cmake-get-vars/vcpkg-port-config.cmake
+-- Installing: E:/vcpkg/packages/vcpkg-cmake-get-vars_x64-mingw-dynamic-degoras/share/vcpkg-cmake-get-vars/copyright
+-- Performing post-build validation
+Starting submission of vcpkg-cmake-get-vars:x64-mingw-dynamic-degoras@2025-05-29 to 1 binary cache(s) in the background
+Elapsed time to handle vcpkg-cmake-get-vars:x64-mingw-dynamic-degoras: 50 ms
+vcpkg-cmake-get-vars:x64-mingw-dynamic-degoras package ABI: 20b193816557ea765405664877aeb57a7f8230e9845c2db0dd42fab125ef8110
+Installing 2/3 vcpkg-tool-meson:x64-mingw-dynamic-degoras@1.9.0#3...
+Building vcpkg-tool-meson:x64-mingw-dynamic-degoras@1.9.0#3...
+E:\vcpkg\triplets\community\x64-mingw-dynamic-degoras.cmake: info: loaded community triplet from here. Community triplets are not built in the curated registry and are thus less likely to succeed.
+-- [DEGORAS] Using DEGORAS-PROJECT custom triplet
+-- Installing: E:/vcpkg/packages/vcpkg-tool-meson_x64-mingw-dynamic-degoras/share/vcpkg-tool-meson/copyright
+Downloading https://github.com/mesonbuild/meson/archive/1.9.0.tar.gz -> meson-1.9.0.tar.gz
+Successfully downloaded meson-1.9.0.tar.gz
+-- Applying patch E:/vcpkg/packages/vcpkg-tool-meson_x64-mingw-dynamic-degoras/share/vcpkg-tool-meson/meson-intl.patch
+-- Applying patch E:/vcpkg/packages/vcpkg-tool-meson_x64-mingw-dynamic-degoras/share/vcpkg-tool-meson/adjust-python-dep.patch
+-- Applying patch E:/vcpkg/packages/vcpkg-tool-meson_x64-mingw-dynamic-degoras/share/vcpkg-tool-meson/adjust-args.patch
+-- Applying patch E:/vcpkg/packages/vcpkg-tool-meson_x64-mingw-dynamic-degoras/share/vcpkg-tool-meson/remove-pkgconfig-specialization.patch
+-- Applying patch E:/vcpkg/packages/vcpkg-tool-meson_x64-mingw-dynamic-degoras/share/vcpkg-tool-meson/meson-56879d5.diff
+-- Found Python version '3.12.12 at E:/msys64/ucrt64/bin/python.exe'
+-- Using meson: E:/vcpkg/downloads/tools/meson-1.9.0-d1fcc2/meson.py
+-- Performing post-build validation
+Starting submission of vcpkg-tool-meson:x64-mingw-dynamic-degoras@1.9.0#3 to 1 binary cache(s) in the background
+Elapsed time to handle vcpkg-tool-meson:x64-mingw-dynamic-degoras: 2.3 s
+vcpkg-tool-meson:x64-mingw-dynamic-degoras package ABI: 1c050adf10e1a30b15f7a73f537ca5bb65db40dfa4b2a8394c0bfeff72390191
+Completed submission of vcpkg-cmake-get-vars:x64-mingw-dynamic-degoras@2025-05-29 to 1 binary cache(s) in 32.9 ms
+Installing 3/3 pkgconf:x64-mingw-dynamic-degoras@2.5.1#4...
+Building pkgconf:x64-mingw-dynamic-degoras@2.5.1#4...
+E:\vcpkg\triplets\community\x64-mingw-dynamic-degoras.cmake: info: loaded community triplet from here. Community triplets are not built in the curated registry and are thus less likely to succeed.
+-- [DEGORAS] Using DEGORAS-PROJECT custom triplet
+-- Found Python version '3.12.12 at E:/msys64/ucrt64/bin/python.exe'
+-- Using meson: E:/vcpkg/downloads/tools/meson-1.9.0-d1fcc2/meson.py
+Downloading https://github.com/pkgconf/pkgconf/archive/pkgconf-2.5.1.tar.gz -> pkgconf-pkgconf-pkgconf-2.5.1.tar.gz
+Successfully downloaded pkgconf-pkgconf-pkgconf-2.5.1.tar.gz
+-- Extracting source E:/vcpkg/downloads/pkgconf-pkgconf-pkgconf-2.5.1.tar.gz
+-- Applying patch 001-unveil-fixes.patch
+-- Using source at E:/vcpkg/buildtrees/pkgconf/src/conf-2.5.1-5bc6f0da3f.clean
+-- Configuring x64-mingw-dynamic-degoras-rel
+-- Getting CMake variables for x64-mingw-dynamic-degoras
+-- Loading CMake variables from E:/vcpkg/buildtrees/pkgconf/cmake-get-vars_C_CXX-x64-mingw-dynamic-degoras.cmake.log
+-- Configuring x64-mingw-dynamic-degoras-rel done
+-- Package x64-mingw-dynamic-degoras-rel
+-- Fixing pkgconfig file: E:/vcpkg/packages/pkgconf_x64-mingw-dynamic-degoras/lib/pkgconfig/libpkgconf.pc
+-- Installing: E:/vcpkg/packages/pkgconf_x64-mingw-dynamic-degoras/share/pkgconf/copyright
+-- Performing post-build validation
+Starting submission of pkgconf:x64-mingw-dynamic-degoras@2.5.1#4 to 1 binary cache(s) in the background
+Elapsed time to handle pkgconf:x64-mingw-dynamic-degoras: 17 s
+pkgconf:x64-mingw-dynamic-degoras package ABI: 297774d580dbf9d3c1e6edca8df9384fb9055606920ec0bfacbb2c4527042418
+Total install time: 19 s
+Installed contents are licensed to you by owners. Microsoft is not responsible for, nor does it grant any licenses to, third-party packages.
+Some packages did not declare an SPDX license. Check the `copyright` file for each package for more information about their licensing.
+Packages installed in this vcpkg installation declare the following licenses:
+Apache-2.0
+MIT
+pkgconf provides pkg-config modules:
+
+  # a library for accessing and manipulating development framework configuration
+  libpkgconf
+
+Completed submission of vcpkg-tool-meson:x64-mingw-dynamic-degoras@1.9.0#3 to 1 binary cache(s) in 41.1 ms
+Waiting for 1 remaining binary cache submissions...
+Completed submission of pkgconf:x64-mingw-dynamic-degoras@2.5.1#4 to 1 binary cache(s) in 87.1 ms (1/1)
+All requested installations completed successfully in: 19 s
+[2025-11-07T01:47:39Z][INFO]['pkgconf' installed successfully.]
+[2025-11-07T01:47:39Z][INFO][Installing 'nlohmann-json'...]
+Computing installation plan...
+The following packages will be built and installed:
+    nlohmann-json:x64-mingw-dynamic-degoras@3.12.0#1
+Detecting compiler hash for triplet x64-mingw-dynamic-degoras...
+-- Setting "%HTTP_PROXY%" environment variables to "http://proxy.roa:8080".
+Compiler found: E:/msys64/ucrt64/bin/x86_64-w64-mingw32-g++.exe
+Restored 0 package(s) from E:\packages\vcpkg in 41.7 us. Use --debug to see more details.
+Installing 1/1 nlohmann-json:x64-mingw-dynamic-degoras@3.12.0#1...
+Building nlohmann-json:x64-mingw-dynamic-degoras@3.12.0#1...
+E:\vcpkg\triplets\community\x64-mingw-dynamic-degoras.cmake: info: loaded community triplet from here. Community triplets are not built in the curated registry and are thus less likely to succeed.
+-- [DEGORAS] Using DEGORAS-PROJECT custom triplet
+Downloading https://github.com/nlohmann/json/archive/v3.12.0.tar.gz -> nlohmann-json-v3.12.0.tar.gz
+Successfully downloaded nlohmann-json-v3.12.0.tar.gz
+-- Extracting source E:/vcpkg/downloads/nlohmann-json-v3.12.0.tar.gz
+-- Applying patch fix-4742_std_optional.patch
+-- Using source at E:/vcpkg/buildtrees/nlohmann-json/src/v3.12.0-087f34fe5c.clean
+-- Configuring x64-mingw-dynamic-degoras
+-- Building x64-mingw-dynamic-degoras-rel
+-- Fixing pkgconfig file: E:/vcpkg/packages/nlohmann-json_x64-mingw-dynamic-degoras/share/pkgconfig/nlohmann_json.pc
+-- Using cached msys2-mingw-w64-x86_64-pkgconf-1~2.4.3-1-any.pkg.tar.zst
+-- Using cached msys2-msys2-runtime-3.6.2-2-x86_64.pkg.tar.zst
+-- Using msys root at E:/vcpkg/downloads/tools/msys2/9272adbcaf19caef
+-- Installing: E:/vcpkg/packages/nlohmann-json_x64-mingw-dynamic-degoras/share/nlohmann-json/copyright
+-- Performing post-build validation
+Starting submission of nlohmann-json:x64-mingw-dynamic-degoras@3.12.0#1 to 1 binary cache(s) in the background
+Elapsed time to handle nlohmann-json:x64-mingw-dynamic-degoras: 2.7 s
+nlohmann-json:x64-mingw-dynamic-degoras package ABI: 5f2e007c4633be0f1a0c52d7b6c71bf1df77f8baa70f47831eaf2733751708af
+Total install time: 2.7 s
+Installed contents are licensed to you by owners. Microsoft is not responsible for, nor does it grant any licenses to, third-party packages.
+Packages installed in this vcpkg installation declare the following licenses:
+MIT
+The package nlohmann-json provides CMake targets:
+
+    find_package(nlohmann_json CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE nlohmann_json::nlohmann_json)
+
+The package nlohmann-json can be configured to not provide implicit conversions via a custom triplet file:
+
+    set(nlohmann-json_IMPLICIT_CONVERSIONS OFF)
+
+For more information, see the docs here:
+    
+    https://json.nlohmann.me/api/macros/json_use_implicit_conversions/
+
+Waiting for 1 remaining binary cache submissions...
+Completed submission of nlohmann-json:x64-mingw-dynamic-degoras@3.12.0#1 to 1 binary cache(s) in 86.6 ms (1/1)
+All requested installations completed successfully in: 2.7 s
+[2025-11-07T01:47:44Z][INFO]['nlohmann-json' installed successfully.]
+[2025-11-07T01:47:44Z][INFO][Installing 'libbson'...]
+Computing installation plan...
+The following packages will be built and installed:
+    libbson:x64-mingw-dynamic-degoras@1.30.6
+Detecting compiler hash for triplet x64-mingw-dynamic-degoras...
+-- Setting "%HTTP_PROXY%" environment variables to "http://proxy.roa:8080".
+Compiler found: E:/msys64/ucrt64/bin/x86_64-w64-mingw32-g++.exe
+Restored 0 package(s) from E:\packages\vcpkg in 43.2 us. Use --debug to see more details.
+Installing 1/1 libbson:x64-mingw-dynamic-degoras@1.30.6...
+Building libbson:x64-mingw-dynamic-degoras@1.30.6...
+E:\vcpkg\triplets\community\x64-mingw-dynamic-degoras.cmake: info: loaded community triplet from here. Community triplets are not built in the curated registry and are thus less likely to succeed.
+-- [DEGORAS] Using DEGORAS-PROJECT custom triplet
+Downloading https://github.com/mongodb/mongo-c-driver/archive/1.30.6.tar.gz -> mongodb-mongo-c-driver-1.30.6.tar.gz
+Successfully downloaded mongodb-mongo-c-driver-1.30.6.tar.gz
+-- Extracting source E:/vcpkg/downloads/mongodb-mongo-c-driver-1.30.6.tar.gz
+-- Applying patch fix-include-directory.patch
+-- Using source at E:/vcpkg/buildtrees/libbson/src/1.30.6-fdc7277c1c.clean
+-- Configuring x64-mingw-dynamic-degoras-rel
+-- Building x64-mingw-dynamic-degoras-rel
+-- Fixing pkgconfig file: E:/vcpkg/packages/libbson_x64-mingw-dynamic-degoras/lib/pkgconfig/libbson-1.0.pc
+-- Using cached msys2-mingw-w64-x86_64-pkgconf-1~2.4.3-1-any.pkg.tar.zst
+-- Using cached msys2-msys2-runtime-3.6.2-2-x86_64.pkg.tar.zst
+-- Using msys root at E:/vcpkg/downloads/tools/msys2/9272adbcaf19caef
+-- Installing: E:/vcpkg/packages/libbson_x64-mingw-dynamic-degoras/share/libbson/usage
+-- Performing post-build validation
+Starting submission of libbson:x64-mingw-dynamic-degoras@1.30.6 to 1 binary cache(s) in the background
+Elapsed time to handle libbson:x64-mingw-dynamic-degoras: 12 s
+libbson:x64-mingw-dynamic-degoras package ABI: aa3a71913ef671473ec1d7414d752ceb9f018c5bb6ce659bdb070fa3aa6c2e37
+Total install time: 12 s
+Installed contents are licensed to you by owners. Microsoft is not responsible for, nor does it grant any licenses to, third-party packages.
+Some packages did not declare an SPDX license. Check the `copyright` file for each package for more information about their licensing.
+libbson provides CMake targets:
+
+    find_package(bson-1.0 CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE $<IF:$<TARGET_EXISTS:mongo::bson_static>,mongo::bson_static,mongo::bson_shared>)
+
+Waiting for 1 remaining binary cache submissions...
+Completed submission of libbson:x64-mingw-dynamic-degoras@1.30.6 to 1 binary cache(s) in 147 ms (1/1)
+All requested installations completed successfully in: 12 s
+[2025-11-07T01:47:58Z][INFO]['libbson' installed successfully.]
+[2025-11-07T01:47:58Z][INFO][Installing 'openssl'...]
+Computing installation plan...
+The following packages will be built and installed:
+    openssl:x64-mingw-dynamic-degoras@3.6.0#2
+Detecting compiler hash for triplet x64-mingw-dynamic-degoras...
+-- Setting "%HTTP_PROXY%" environment variables to "http://proxy.roa:8080".
+Compiler found: E:/msys64/ucrt64/bin/x86_64-w64-mingw32-g++.exe
+Restored 0 package(s) from E:\packages\vcpkg in 40.9 us. Use --debug to see more details.
+Installing 1/1 openssl:x64-mingw-dynamic-degoras@3.6.0#2...
+Building openssl:x64-mingw-dynamic-degoras@3.6.0#2...
+E:\vcpkg\triplets\community\x64-mingw-dynamic-degoras.cmake: info: loaded community triplet from here. Community triplets are not built in the curated registry and are thus less likely to succeed.
+-- [DEGORAS] Using DEGORAS-PROJECT custom triplet
+Downloading https://github.com/openssl/openssl/archive/openssl-3.6.0.tar.gz -> openssl-openssl-openssl-3.6.0.tar.gz
+Successfully downloaded openssl-openssl-openssl-3.6.0.tar.gz
+-- Extracting source E:/vcpkg/downloads/openssl-openssl-openssl-3.6.0.tar.gz
+-- Applying patch cmake-config.patch
+-- Applying patch command-line-length.patch
+-- Applying patch script-prefix.patch
+-- Applying patch aes_cfb128_vaes_encdec_wrapper.diff
+-- Applying patch windows/install-layout.patch
+-- Applying patch windows/install-pdbs.patch
+-- Applying patch windows/install-programs.diff
+-- Applying patch unix/android-cc.patch
+-- Applying patch unix/move-openssldir.patch
+-- Applying patch unix/no-empty-dirs.patch
+-- Applying patch unix/no-static-libs-for-shared.patch
+-- Using source at E:/vcpkg/buildtrees/openssl/src/nssl-3.6.0-e5f21250ea.clean
+-- Getting CMake variables for x64-mingw-dynamic-degoras
+-- Loading CMake variables from E:/vcpkg/buildtrees/openssl/cmake-get-vars_C_CXX-x64-mingw-dynamic-degoras.cmake.log
+Downloading msys2-make-4.4.1-2-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/make-4.4.1-2-x86_64.pkg.tar.zst
+Successfully downloaded msys2-make-4.4.1-2-x86_64.pkg.tar.zst
+Downloading msys2-perl-5.38.4-2-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/perl-5.38.4-2-x86_64.pkg.tar.zst
+Successfully downloaded msys2-perl-5.38.4-2-x86_64.pkg.tar.zst
+Downloading msys2-bash-5.2.037-2-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/bash-5.2.037-2-x86_64.pkg.tar.zst
+Successfully downloaded msys2-bash-5.2.037-2-x86_64.pkg.tar.zst
+Downloading msys2-coreutils-8.32-5-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/coreutils-8.32-5-x86_64.pkg.tar.zst
+Successfully downloaded msys2-coreutils-8.32-5-x86_64.pkg.tar.zst
+Downloading msys2-file-5.46-2-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/file-5.46-2-x86_64.pkg.tar.zst
+Successfully downloaded msys2-file-5.46-2-x86_64.pkg.tar.zst
+Downloading msys2-gawk-5.3.2-1-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/gawk-5.3.2-1-x86_64.pkg.tar.zst
+Successfully downloaded msys2-gawk-5.3.2-1-x86_64.pkg.tar.zst
+Downloading msys2-grep-1~3.0-7-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/grep-1~3.0-7-x86_64.pkg.tar.zst
+Successfully downloaded msys2-grep-1~3.0-7-x86_64.pkg.tar.zst
+Downloading msys2-gzip-1.14-1-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/gzip-1.14-1-x86_64.pkg.tar.zst
+Successfully downloaded msys2-gzip-1.14-1-x86_64.pkg.tar.zst
+Downloading msys2-diffutils-3.12-1-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/diffutils-3.12-1-x86_64.pkg.tar.zst
+Successfully downloaded msys2-diffutils-3.12-1-x86_64.pkg.tar.zst
+Downloading msys2-pkgconf-2.4.3-1-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/pkgconf-2.4.3-1-x86_64.pkg.tar.zst
+Successfully downloaded msys2-pkgconf-2.4.3-1-x86_64.pkg.tar.zst
+Downloading msys2-sed-4.9-1-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/sed-4.9-1-x86_64.pkg.tar.zst
+Successfully downloaded msys2-sed-4.9-1-x86_64.pkg.tar.zst
+-- Using cached msys2-msys2-runtime-3.6.2-2-x86_64.pkg.tar.zst
+Downloading msys2-libintl-0.22.5-1-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/libintl-0.22.5-1-x86_64.pkg.tar.zst
+Successfully downloaded msys2-libintl-0.22.5-1-x86_64.pkg.tar.zst
+Downloading msys2-libxcrypt-4.4.38-1-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/libxcrypt-4.4.38-1-x86_64.pkg.tar.zst
+Successfully downloaded msys2-libxcrypt-4.4.38-1-x86_64.pkg.tar.zst
+Downloading msys2-libiconv-1.18-1-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/libiconv-1.18-1-x86_64.pkg.tar.zst
+Successfully downloaded msys2-libiconv-1.18-1-x86_64.pkg.tar.zst
+Downloading msys2-gmp-6.3.0-1-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/gmp-6.3.0-1-x86_64.pkg.tar.zst
+Successfully downloaded msys2-gmp-6.3.0-1-x86_64.pkg.tar.zst
+Downloading msys2-gcc-libs-13.3.0-1-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/gcc-libs-13.3.0-1-x86_64.pkg.tar.zst
+Successfully downloaded msys2-gcc-libs-13.3.0-1-x86_64.pkg.tar.zst
+Downloading msys2-libbz2-1.0.8-4-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/libbz2-1.0.8-4-x86_64.pkg.tar.zst
+Successfully downloaded msys2-libbz2-1.0.8-4-x86_64.pkg.tar.zst
+Downloading msys2-liblzma-5.8.1-1-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/liblzma-5.8.1-1-x86_64.pkg.tar.zst
+Successfully downloaded msys2-liblzma-5.8.1-1-x86_64.pkg.tar.zst
+Downloading msys2-libzstd-1.5.7-1-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/libzstd-1.5.7-1-x86_64.pkg.tar.zst
+Successfully downloaded msys2-libzstd-1.5.7-1-x86_64.pkg.tar.zst
+Downloading msys2-zlib-1.3.1-1-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/zlib-1.3.1-1-x86_64.pkg.tar.zst
+Successfully downloaded msys2-zlib-1.3.1-1-x86_64.pkg.tar.zst
+Downloading msys2-libreadline-8.2.013-1-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/libreadline-8.2.013-1-x86_64.pkg.tar.zst
+Successfully downloaded msys2-libreadline-8.2.013-1-x86_64.pkg.tar.zst
+Downloading msys2-mpfr-4.2.2-1-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/mpfr-4.2.2-1-x86_64.pkg.tar.zst
+Successfully downloaded msys2-mpfr-4.2.2-1-x86_64.pkg.tar.zst
+Downloading msys2-libpcre-8.45-5-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/libpcre-8.45-5-x86_64.pkg.tar.zst
+Successfully downloaded msys2-libpcre-8.45-5-x86_64.pkg.tar.zst
+Downloading msys2-ncurses-6.5.20240831-2-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/ncurses-6.5.20240831-2-x86_64.pkg.tar.zst
+Successfully downloaded msys2-ncurses-6.5.20240831-2-x86_64.pkg.tar.zst
+-- Using msys root at E:/vcpkg/downloads/tools/msys2/f08f440edf60c8a9
+-- Getting CMake variables for x64-mingw-dynamic-degoras
+Downloading msys2-autoconf-wrapper-20240607-1-any.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/autoconf-wrapper-20240607-1-any.pkg.tar.zst
+Successfully downloaded msys2-autoconf-wrapper-20240607-1-any.pkg.tar.zst
+Downloading msys2-automake-wrapper-20240607-1-any.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/automake-wrapper-20240607-1-any.pkg.tar.zst
+Successfully downloaded msys2-automake-wrapper-20240607-1-any.pkg.tar.zst
+Downloading msys2-binutils-2.44-1-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/binutils-2.44-1-x86_64.pkg.tar.zst
+Successfully downloaded msys2-binutils-2.44-1-x86_64.pkg.tar.zst
+Downloading msys2-libtool-2.5.4-1-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/libtool-2.5.4-1-x86_64.pkg.tar.zst
+Successfully downloaded msys2-libtool-2.5.4-1-x86_64.pkg.tar.zst
+-- Using cached msys2-make-4.4.1-2-x86_64.pkg.tar.zst
+-- Using cached msys2-pkgconf-2.4.3-1-x86_64.pkg.tar.zst
+Downloading msys2-which-2.23-4-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/which-2.23-4-x86_64.pkg.tar.zst
+Successfully downloaded msys2-which-2.23-4-x86_64.pkg.tar.zst
+-- Using cached msys2-bash-5.2.037-2-x86_64.pkg.tar.zst
+-- Using cached msys2-coreutils-8.32-5-x86_64.pkg.tar.zst
+-- Using cached msys2-file-5.46-2-x86_64.pkg.tar.zst
+-- Using cached msys2-gawk-5.3.2-1-x86_64.pkg.tar.zst
+-- Using cached msys2-grep-1~3.0-7-x86_64.pkg.tar.zst
+-- Using cached msys2-gzip-1.14-1-x86_64.pkg.tar.zst
+-- Using cached msys2-diffutils-3.12-1-x86_64.pkg.tar.zst
+-- Using cached msys2-sed-4.9-1-x86_64.pkg.tar.zst
+-- Using cached msys2-msys2-runtime-3.6.2-2-x86_64.pkg.tar.zst
+Downloading msys2-autoconf2.72-2.72-3-any.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/autoconf2.72-2.72-3-any.pkg.tar.zst
+Successfully downloaded msys2-autoconf2.72-2.72-3-any.pkg.tar.zst
+Downloading msys2-automake1.16-1.16.5-1-any.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/automake1.16-1.16.5-1-any.pkg.tar.zst
+Successfully downloaded msys2-automake1.16-1.16.5-1-any.pkg.tar.zst
+Downloading msys2-automake1.17-1.17-1-any.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/automake1.17-1.17-1-any.pkg.tar.zst
+Successfully downloaded msys2-automake1.17-1.17-1-any.pkg.tar.zst
+-- Using cached msys2-libiconv-1.18-1-x86_64.pkg.tar.zst
+-- Using cached msys2-libintl-0.22.5-1-x86_64.pkg.tar.zst
+-- Using cached msys2-zlib-1.3.1-1-x86_64.pkg.tar.zst
+Downloading msys2-findutils-4.10.0-2-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/findutils-4.10.0-2-x86_64.pkg.tar.zst
+Successfully downloaded msys2-findutils-4.10.0-2-x86_64.pkg.tar.zst
+Downloading msys2-tar-1.35-2-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/tar-1.35-2-x86_64.pkg.tar.zst
+Successfully downloaded msys2-tar-1.35-2-x86_64.pkg.tar.zst
+-- Using cached msys2-gmp-6.3.0-1-x86_64.pkg.tar.zst
+-- Using cached msys2-gcc-libs-13.3.0-1-x86_64.pkg.tar.zst
+-- Using cached msys2-libbz2-1.0.8-4-x86_64.pkg.tar.zst
+-- Using cached msys2-liblzma-5.8.1-1-x86_64.pkg.tar.zst
+-- Using cached msys2-libzstd-1.5.7-1-x86_64.pkg.tar.zst
+-- Using cached msys2-libreadline-8.2.013-1-x86_64.pkg.tar.zst
+-- Using cached msys2-mpfr-4.2.2-1-x86_64.pkg.tar.zst
+-- Using cached msys2-libpcre-8.45-5-x86_64.pkg.tar.zst
+Downloading msys2-m4-1.4.19-2-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/m4-1.4.19-2-x86_64.pkg.tar.zst
+Successfully downloaded msys2-m4-1.4.19-2-x86_64.pkg.tar.zst
+-- Using cached msys2-perl-5.38.4-2-x86_64.pkg.tar.zst
+-- Using cached msys2-ncurses-6.5.20240831-2-x86_64.pkg.tar.zst
+-- Using cached msys2-libxcrypt-4.4.38-1-x86_64.pkg.tar.zst
+-- Applying patch E:/vcpkg/scripts/cmake/compile_wrapper_consider_clang-cl.patch
+-- Using msys root at E:/vcpkg/downloads/tools/msys2/7c55719f9ca5acf6
+-- Using cached msys2-mingw-w64-x86_64-pkgconf-1~2.4.3-1-any.pkg.tar.zst
+-- Using cached msys2-msys2-runtime-3.6.2-2-x86_64.pkg.tar.zst
+-- Using msys root at E:/vcpkg/downloads/tools/msys2/9272adbcaf19caef
+-- Configuring x64-mingw-dynamic-degoras-rel
+-- Building x64-mingw-dynamic-degoras-rel
+-- Installing x64-mingw-dynamic-degoras-rel
+-- Fixing pkgconfig file: E:/vcpkg/packages/openssl_x64-mingw-dynamic-degoras/lib/pkgconfig/libcrypto.pc
+-- Fixing pkgconfig file: E:/vcpkg/packages/openssl_x64-mingw-dynamic-degoras/lib/pkgconfig/libssl.pc
+-- Fixing pkgconfig file: E:/vcpkg/packages/openssl_x64-mingw-dynamic-degoras/lib/pkgconfig/openssl.pc
+-- Installing: E:/vcpkg/packages/openssl_x64-mingw-dynamic-degoras/share/openssl/usage
+-- Installing: E:/vcpkg/packages/openssl_x64-mingw-dynamic-degoras/share/openssl/copyright
+-- Performing post-build validation
+E:\vcpkg\ports\openssl\portfile.cmake: warning: There should be no installed empty directories. Empty directories are not representable to several binary cache providers, git repositories, and are not considered semantic build outputs. You should either create a regular file inside each empty directory, or delete them with the following CMake. To suppress this message, add set(VCPKG_POLICY_ALLOW_EMPTY_FOLDERS enabled)
+E:\vcpkg\packages\openssl_x64-mingw-dynamic-degoras: note: the directories are relative to ${CURRENT_PACKAGES_DIR} here
+note: file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/etc/ssl/misc")
+E:\vcpkg\ports\openssl\portfile.cmake: warning: Found 1 post-build check problem(s). These are usually caused by bugs in portfile.cmake or the upstream build system. Please correct these before submitting this port to the curated registry.
+Starting submission of openssl:x64-mingw-dynamic-degoras@3.6.0#2 to 1 binary cache(s) in the background
+Elapsed time to handle openssl:x64-mingw-dynamic-degoras: 4.2 min
+openssl:x64-mingw-dynamic-degoras package ABI: 6d6767f5de32e55fa327d72f182e91a510c447c674ee751e25845ff8ea8ef821
+Total install time: 4.2 min
+Installed contents are licensed to you by owners. Microsoft is not responsible for, nor does it grant any licenses to, third-party packages.
+Packages installed in this vcpkg installation declare the following licenses:
+Apache-2.0
+openssl is compatible with built-in CMake targets:
+
+  find_package(OpenSSL REQUIRED)
+  target_link_libraries(main PRIVATE OpenSSL::SSL)
+  target_link_libraries(main PRIVATE OpenSSL::Crypto)
+
+Waiting for 1 remaining binary cache submissions...
+Completed submission of openssl:x64-mingw-dynamic-degoras@3.6.0#2 to 1 binary cache(s) in 991 ms (1/1)
+All requested installations completed successfully in: 4.2 min
+[2025-11-07T01:52:12Z][INFO]['openssl' installed successfully.]
+[2025-11-07T01:52:12Z][INFO][Installing 'spdlog'...]
+Computing installation plan...
+The following packages will be built and installed:
+    spdlog:x64-mingw-dynamic-degoras@1.16.0
+Detecting compiler hash for triplet x64-mingw-dynamic-degoras...
+-- Setting "%HTTP_PROXY%" environment variables to "http://proxy.roa:8080".
+Compiler found: E:/msys64/ucrt64/bin/x86_64-w64-mingw32-g++.exe
+Restored 0 package(s) from E:\packages\vcpkg in 40.7 us. Use --debug to see more details.
+Installing 1/1 spdlog:x64-mingw-dynamic-degoras@1.16.0...
+Building spdlog:x64-mingw-dynamic-degoras@1.16.0...
+E:\vcpkg\triplets\community\x64-mingw-dynamic-degoras.cmake: info: loaded community triplet from here. Community triplets are not built in the curated registry and are thus less likely to succeed.
+-- [DEGORAS] Using DEGORAS-PROJECT custom triplet
+Downloading https://github.com/gabime/spdlog/archive/v1.16.0.tar.gz -> gabime-spdlog-v1.16.0.tar.gz
+Successfully downloaded gabime-spdlog-v1.16.0.tar.gz
+-- Extracting source E:/vcpkg/downloads/gabime-spdlog-v1.16.0.tar.gz
+-- Using source at E:/vcpkg/buildtrees/spdlog/src/v1.16.0-e349c3b9b7.clean
+-- Configuring x64-mingw-dynamic-degoras
+-- Building x64-mingw-dynamic-degoras-rel
+-- Fixing pkgconfig file: E:/vcpkg/packages/spdlog_x64-mingw-dynamic-degoras/lib/pkgconfig/spdlog.pc
+-- Using cached msys2-mingw-w64-x86_64-pkgconf-1~2.4.3-1-any.pkg.tar.zst
+-- Using cached msys2-msys2-runtime-3.6.2-2-x86_64.pkg.tar.zst
+-- Using msys root at E:/vcpkg/downloads/tools/msys2/9272adbcaf19caef
+-- Installing: E:/vcpkg/packages/spdlog_x64-mingw-dynamic-degoras/share/spdlog/usage
+-- Installing: E:/vcpkg/packages/spdlog_x64-mingw-dynamic-degoras/share/spdlog/copyright
+-- Performing post-build validation
+Starting submission of spdlog:x64-mingw-dynamic-degoras@1.16.0 to 1 binary cache(s) in the background
+Elapsed time to handle spdlog:x64-mingw-dynamic-degoras: 10 s
+spdlog:x64-mingw-dynamic-degoras package ABI: 8b8f4a8eda06e231d96b433086c39cc7b9a7dab07f5e3f6cbb8f6edc6c14f0c1
+Total install time: 10 s
+Installed contents are licensed to you by owners. Microsoft is not responsible for, nor does it grant any licenses to, third-party packages.
+Packages installed in this vcpkg installation declare the following licenses:
+MIT
+The package spdlog provides CMake targets:
+
+    find_package(spdlog CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE spdlog::spdlog)
+
+    # Or use the header-only version
+    find_package(spdlog CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE spdlog::spdlog_header_only)
+
+Waiting for 1 remaining binary cache submissions...
+Completed submission of spdlog:x64-mingw-dynamic-degoras@1.16.0 to 1 binary cache(s) in 163 ms (1/1)
+All requested installations completed successfully in: 10 s
+[2025-11-07T01:52:24Z][INFO]['spdlog' installed successfully.]
+[2025-11-07T01:52:24Z][INFO][Installing 'zlib'...]
+Computing installation plan...
+The following packages will be built and installed:
+    zlib:x64-mingw-dynamic-degoras@1.3.1
+Detecting compiler hash for triplet x64-mingw-dynamic-degoras...
+-- Setting "%HTTP_PROXY%" environment variables to "http://proxy.roa:8080".
+Compiler found: E:/msys64/ucrt64/bin/x86_64-w64-mingw32-g++.exe
+Restored 0 package(s) from E:\packages\vcpkg in 42.8 us. Use --debug to see more details.
+Installing 1/1 zlib:x64-mingw-dynamic-degoras@1.3.1...
+Building zlib:x64-mingw-dynamic-degoras@1.3.1...
+E:\vcpkg\triplets\community\x64-mingw-dynamic-degoras.cmake: info: loaded community triplet from here. Community triplets are not built in the curated registry and are thus less likely to succeed.
+-- [DEGORAS] Using DEGORAS-PROJECT custom triplet
+Downloading https://github.com/madler/zlib/archive/v1.3.1.tar.gz -> madler-zlib-v1.3.1.tar.gz
+Successfully downloaded madler-zlib-v1.3.1.tar.gz
+-- Extracting source E:/vcpkg/downloads/madler-zlib-v1.3.1.tar.gz
+-- Applying patch 0001-Prevent-invalid-inclusions-when-HAVE_-is-set-to-0.patch
+-- Applying patch 0002-build-static-or-shared-not-both.patch
+-- Applying patch 0003-android-and-mingw-fixes.patch
+-- Using source at E:/vcpkg/buildtrees/zlib/src/v1.3.1-2e5db616bf.clean
+-- Configuring x64-mingw-dynamic-degoras
+-- Building x64-mingw-dynamic-degoras-rel
+-- Installing: E:/vcpkg/packages/zlib_x64-mingw-dynamic-degoras/share/zlib/vcpkg-cmake-wrapper.cmake
+-- Fixing pkgconfig file: E:/vcpkg/packages/zlib_x64-mingw-dynamic-degoras/lib/pkgconfig/zlib.pc
+-- Using cached msys2-mingw-w64-x86_64-pkgconf-1~2.4.3-1-any.pkg.tar.zst
+-- Using cached msys2-msys2-runtime-3.6.2-2-x86_64.pkg.tar.zst
+-- Using msys root at E:/vcpkg/downloads/tools/msys2/9272adbcaf19caef
+-- Installing: E:/vcpkg/packages/zlib_x64-mingw-dynamic-degoras/share/zlib/copyright
+-- Performing post-build validation
+Starting submission of zlib:x64-mingw-dynamic-degoras@1.3.1 to 1 binary cache(s) in the background
+Elapsed time to handle zlib:x64-mingw-dynamic-degoras: 4.8 s
+zlib:x64-mingw-dynamic-degoras package ABI: cbfe7b3d225773a5e3e1d5f5eea6d1f9b289a3ed5c4e671ef8f9e1d195238929
+Total install time: 4.8 s
+Installed contents are licensed to you by owners. Microsoft is not responsible for, nor does it grant any licenses to, third-party packages.
+Packages installed in this vcpkg installation declare the following licenses:
+Zlib
+The package zlib is compatible with built-in CMake targets:
+
+    find_package(ZLIB REQUIRED)
+    target_link_libraries(main PRIVATE ZLIB::ZLIB)
+
+Waiting for 1 remaining binary cache submissions...
+Completed submission of zlib:x64-mingw-dynamic-degoras@1.3.1 to 1 binary cache(s) in 63 ms (1/1)
+All requested installations completed successfully in: 4.8 s
+[2025-11-07T01:52:31Z][INFO]['zlib' installed successfully.]
+[2025-11-07T01:52:31Z][INFO][Installing 'curl'...]
+Computing installation plan...
+The following packages will be built and installed:
+    curl[core,non-http,ssl,sspi]:x64-mingw-dynamic-degoras@8.16.0
+Detecting compiler hash for triplet x64-mingw-dynamic-degoras...
+-- Setting "%HTTP_PROXY%" environment variables to "http://proxy.roa:8080".
+Compiler found: E:/msys64/ucrt64/bin/x86_64-w64-mingw32-g++.exe
+Restored 0 package(s) from E:\packages\vcpkg in 40.2 us. Use --debug to see more details.
+Installing 1/1 curl[core,non-http,ssl,sspi]:x64-mingw-dynamic-degoras@8.16.0...
+Building curl[core,non-http,ssl,sspi]:x64-mingw-dynamic-degoras@8.16.0...
+E:\vcpkg\triplets\community\x64-mingw-dynamic-degoras.cmake: info: loaded community triplet from here. Community triplets are not built in the curated registry and are thus less likely to succeed.
+-- [DEGORAS] Using DEGORAS-PROJECT custom triplet
+Downloading https://github.com/curl/curl/archive/curl-8_16_0.tar.gz -> curl-curl-curl-8_16_0.tar.gz
+Successfully downloaded curl-curl-curl-8_16_0.tar.gz
+-- Extracting source E:/vcpkg/downloads/curl-curl-curl-8_16_0.tar.gz
+-- Applying patch dependencies.patch
+-- Applying patch pkgconfig-curl-config.patch
+-- Using source at E:/vcpkg/buildtrees/curl/src/url-8_16_0-5a5b13de3a.clean
+-- Using cached msys2-mingw-w64-x86_64-pkgconf-1~2.4.3-1-any.pkg.tar.zst
+-- Using cached msys2-msys2-runtime-3.6.2-2-x86_64.pkg.tar.zst
+-- Using msys root at E:/vcpkg/downloads/tools/msys2/9272adbcaf19caef
+-- Configuring x64-mingw-dynamic-degoras
+-- Building x64-mingw-dynamic-degoras-rel
+-- Fixing pkgconfig file: E:/vcpkg/packages/curl_x64-mingw-dynamic-degoras/lib/pkgconfig/libcurl.pc
+-- Installing: E:/vcpkg/packages/curl_x64-mingw-dynamic-degoras/share/curl/vcpkg-cmake-wrapper.cmake
+-- Installing: E:/vcpkg/packages/curl_x64-mingw-dynamic-degoras/share/curl/usage
+-- Performing post-build validation
+Starting submission of curl[core,non-http,ssl,sspi]:x64-mingw-dynamic-degoras@8.16.0 to 1 binary cache(s) in the background
+Elapsed time to handle curl:x64-mingw-dynamic-degoras: 16 s
+curl:x64-mingw-dynamic-degoras package ABI: d8d4a9f481402891c6a4b33b0666935b3fce41104007ffdab5c07ce78e383e81
+Total install time: 16 s
+Installed contents are licensed to you by owners. Microsoft is not responsible for, nor does it grant any licenses to, third-party packages.
+Packages installed in this vcpkg installation declare the following licenses:
+BSD-3-Clause
+ISC
+curl
+curl is compatible with built-in CMake targets:
+
+    find_package(CURL REQUIRED)
+    target_link_libraries(main PRIVATE CURL::libcurl)
+
+Waiting for 1 remaining binary cache submissions...
+Completed submission of curl[core,non-http,ssl,sspi]:x64-mingw-dynamic-degoras@8.16.0 to 1 binary cache(s) in 237 ms (1/1)
+All requested installations completed successfully in: 16 s
+[2025-11-07T01:52:49Z][INFO]['curl' installed successfully.]
+[2025-11-07T01:52:49Z][INFO][Installing 'mongo-c-driver'...]
+Computing installation plan...
+The following packages will be built and installed:
+    mongo-c-driver:x64-mingw-dynamic-degoras@1.30.6
+  * utf8proc:x64-mingw-dynamic-degoras@2.11.0
+Additional packages (*) will be modified to complete this operation.
+Detecting compiler hash for triplet x64-mingw-dynamic-degoras...
+-- Setting "%HTTP_PROXY%" environment variables to "http://proxy.roa:8080".
+Compiler found: E:/msys64/ucrt64/bin/x86_64-w64-mingw32-g++.exe
+Restored 0 package(s) from E:\packages\vcpkg in 72.2 us. Use --debug to see more details.
+Installing 1/2 utf8proc:x64-mingw-dynamic-degoras@2.11.0...
+Building utf8proc:x64-mingw-dynamic-degoras@2.11.0...
+E:\vcpkg\triplets\community\x64-mingw-dynamic-degoras.cmake: info: loaded community triplet from here. Community triplets are not built in the curated registry and are thus less likely to succeed.
+-- [DEGORAS] Using DEGORAS-PROJECT custom triplet
+Downloading https://github.com/JuliaLang/utf8proc/archive/v2.11.0.tar.gz -> JuliaLang-utf8proc-v2.11.0.tar.gz
+Successfully downloaded JuliaLang-utf8proc-v2.11.0.tar.gz
+-- Extracting source E:/vcpkg/downloads/JuliaLang-utf8proc-v2.11.0.tar.gz
+-- Using source at E:/vcpkg/buildtrees/utf8proc/src/v2.11.0-24cc9595a0.clean
+-- Configuring x64-mingw-dynamic-degoras
+-- Building x64-mingw-dynamic-degoras-rel
+-- Fixing pkgconfig file: E:/vcpkg/packages/utf8proc_x64-mingw-dynamic-degoras/lib/pkgconfig/libutf8proc.pc
+-- Using cached msys2-mingw-w64-x86_64-pkgconf-1~2.4.3-1-any.pkg.tar.zst
+-- Using cached msys2-msys2-runtime-3.6.2-2-x86_64.pkg.tar.zst
+-- Using msys root at E:/vcpkg/downloads/tools/msys2/9272adbcaf19caef
+-- Installing: E:/vcpkg/packages/utf8proc_x64-mingw-dynamic-degoras/share/unofficial-utf8proc/unofficial-utf8proc-config.cmake
+-- Installing: E:/vcpkg/packages/utf8proc_x64-mingw-dynamic-degoras/share/utf8proc/copyright
+-- Performing post-build validation
+Starting submission of utf8proc:x64-mingw-dynamic-degoras@2.11.0 to 1 binary cache(s) in the background
+Elapsed time to handle utf8proc:x64-mingw-dynamic-degoras: 3.1 s
+utf8proc:x64-mingw-dynamic-degoras package ABI: 71610e403847110ab69256f6abb180b17e22d88b38ad04ed34a6870cfdc3837c
+Installing 2/2 mongo-c-driver:x64-mingw-dynamic-degoras@1.30.6...
+Building mongo-c-driver:x64-mingw-dynamic-degoras@1.30.6...
+E:\vcpkg\triplets\community\x64-mingw-dynamic-degoras.cmake: info: loaded community triplet from here. Community triplets are not built in the curated registry and are thus less likely to succeed.
+-- [DEGORAS] Using DEGORAS-PROJECT custom triplet
+-- Using cached mongodb-mongo-c-driver-1.30.6.tar.gz
+-- Extracting source E:/vcpkg/downloads/mongodb-mongo-c-driver-1.30.6.tar.gz
+-- Applying patch disable-dynamic-when-static.patch
+-- Applying patch fix-dependencies.patch
+-- Applying patch fix-include-directory.patch
+-- Applying patch fix-mingw.patch
+-- Applying patch remove_abs_patch.cmake
+-- Using source at E:/vcpkg/buildtrees/mongo-c-driver/src/1.30.6-26fe744273.clean
+-- Using cached msys2-mingw-w64-x86_64-pkgconf-1~2.4.3-1-any.pkg.tar.zst
+-- Using cached msys2-msys2-runtime-3.6.2-2-x86_64.pkg.tar.zst
+-- Using msys root at E:/vcpkg/downloads/tools/msys2/9272adbcaf19caef
+-- Configuring x64-mingw-dynamic-degoras-rel
+-- Building x64-mingw-dynamic-degoras-rel
+-- Fixing pkgconfig file: E:/vcpkg/packages/mongo-c-driver_x64-mingw-dynamic-degoras/lib/pkgconfig/libmongoc-1.0.pc
+-- Fixing pkgconfig file: E:/vcpkg/packages/mongo-c-driver_x64-mingw-dynamic-degoras/lib/pkgconfig/libmongoc-ssl-1.0.pc
+-- Installing: E:/vcpkg/packages/mongo-c-driver_x64-mingw-dynamic-degoras/share/mongo-c-driver/usage
+-- Performing post-build validation
+Starting submission of mongo-c-driver:x64-mingw-dynamic-degoras@1.30.6 to 1 binary cache(s) in the background
+Elapsed time to handle mongo-c-driver:x64-mingw-dynamic-degoras: 17 s
+mongo-c-driver:x64-mingw-dynamic-degoras package ABI: 5f7068eaefcb003baa41a7a51ec63d8ff50128b5f364cec9a28efa01b9167460
+Total install time: 20 s
+Installed contents are licensed to you by owners. Microsoft is not responsible for, nor does it grant any licenses to, third-party packages.
+Packages installed in this vcpkg installation declare the following licenses:
+Apache-2.0
+MIT
+mongo-c-driver provides CMake targets:
+
+  find_package(mongoc-1.0 CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE $<IF:$<TARGET_EXISTS:mongo::mongoc_shared>,mongo::mongoc_shared,mongo::mongoc_static>)
+
+Completed submission of utf8proc:x64-mingw-dynamic-degoras@2.11.0 to 1 binary cache(s) in 95.1 ms
+Waiting for 1 remaining binary cache submissions...
+Completed submission of mongo-c-driver:x64-mingw-dynamic-degoras@1.30.6 to 1 binary cache(s) in 261 ms (1/1)
+All requested installations completed successfully in: 20 s
+[2025-11-07T01:53:11Z][INFO]['mongo-c-driver' installed successfully.]
+[2025-11-07T01:53:11Z][INFO][Installing 'xerces-c'...]
+Computing installation plan...
+The following packages will be built and installed:
+    xerces-c[core,network]:x64-mingw-dynamic-degoras@3.3.0
+Detecting compiler hash for triplet x64-mingw-dynamic-degoras...
+-- Setting "%HTTP_PROXY%" environment variables to "http://proxy.roa:8080".
+Compiler found: E:/msys64/ucrt64/bin/x86_64-w64-mingw32-g++.exe
+Restored 0 package(s) from E:\packages\vcpkg in 39.3 us. Use --debug to see more details.
+Installing 1/1 xerces-c[core,network]:x64-mingw-dynamic-degoras@3.3.0...
+Building xerces-c[core,network]:x64-mingw-dynamic-degoras@3.3.0...
+E:\vcpkg\triplets\community\x64-mingw-dynamic-degoras.cmake: info: loaded community triplet from here. Community triplets are not built in the curated registry and are thus less likely to succeed.
+-- [DEGORAS] Using DEGORAS-PROJECT custom triplet
+Downloading https://github.com/apache/xerces-c/archive/v3.3.0.tar.gz -> apache-xerces-c-v3.3.0.tar.gz
+Successfully downloaded apache-xerces-c-v3.3.0.tar.gz
+-- Extracting source E:/vcpkg/downloads/apache-xerces-c-v3.3.0.tar.gz
+-- Applying patch dependencies.patch
+-- Applying patch disable-tests.patch
+-- Applying patch remove-dll-export-macro.patch
+-- Using source at E:/vcpkg/buildtrees/xerces-c/src/v3.3.0-90f725f51f.clean
+-- Configuring x64-mingw-dynamic-degoras
+-- Building x64-mingw-dynamic-degoras-rel
+-- Fixing pkgconfig file: E:/vcpkg/packages/xerces-c_x64-mingw-dynamic-degoras/lib/pkgconfig/xerces-c.pc
+-- Using cached msys2-mingw-w64-x86_64-pkgconf-1~2.4.3-1-any.pkg.tar.zst
+-- Using cached msys2-msys2-runtime-3.6.2-2-x86_64.pkg.tar.zst
+-- Using msys root at E:/vcpkg/downloads/tools/msys2/9272adbcaf19caef
+-- Installing: E:/vcpkg/packages/xerces-c_x64-mingw-dynamic-degoras/share/xerces-c/copyright
+-- Installing: E:/vcpkg/packages/xerces-c_x64-mingw-dynamic-degoras/share/xerces-c/usage
+-- Performing post-build validation
+Starting submission of xerces-c[core,network]:x64-mingw-dynamic-degoras@3.3.0 to 1 binary cache(s) in the background
+Elapsed time to handle xerces-c:x64-mingw-dynamic-degoras: 1.1 min
+xerces-c:x64-mingw-dynamic-degoras package ABI: 788e17dca7e3fba8b2b527537a456c5a839be2542890895e02ceb69acb18ca9c
+Total install time: 1.1 min
+Installed contents are licensed to you by owners. Microsoft is not responsible for, nor does it grant any licenses to, third-party packages.
+Packages installed in this vcpkg installation declare the following licenses:
+Apache-2.0
+The package xerces-c is compatible with built-in CMake targets:
+
+    find_package(XercesC REQUIRED)
+    target_link_libraries(main PRIVATE XercesC::XercesC)
+
+Waiting for 1 remaining binary cache submissions...
+Completed submission of xerces-c[core,network]:x64-mingw-dynamic-degoras@3.3.0 to 1 binary cache(s) in 1.2 s (1/1)
+All requested installations completed successfully in: 1.1 min
+[2025-11-07T01:54:23Z][INFO]['xerces-c' installed successfully.]
+[2025-11-07T01:54:23Z][INFO][Installing 'zeromq'...]
+Computing installation plan...
+The following packages will be built and installed:
+    zeromq:x64-mingw-dynamic-degoras@4.3.5#2
+Detecting compiler hash for triplet x64-mingw-dynamic-degoras...
+-- Setting "%HTTP_PROXY%" environment variables to "http://proxy.roa:8080".
+Compiler found: E:/msys64/ucrt64/bin/x86_64-w64-mingw32-g++.exe
+Restored 0 package(s) from E:\packages\vcpkg in 55.5 us. Use --debug to see more details.
+Installing 1/1 zeromq:x64-mingw-dynamic-degoras@4.3.5#2...
+Building zeromq:x64-mingw-dynamic-degoras@4.3.5#2...
+E:\vcpkg\triplets\community\x64-mingw-dynamic-degoras.cmake: info: loaded community triplet from here. Community triplets are not built in the curated registry and are thus less likely to succeed.
+-- [DEGORAS] Using DEGORAS-PROJECT custom triplet
+Downloading https://github.com/zeromq/libzmq/archive/v4.3.5.tar.gz -> zeromq-libzmq-v4.3.5.tar.gz
+Successfully downloaded zeromq-libzmq-v4.3.5.tar.gz
+-- Extracting source E:/vcpkg/downloads/zeromq-libzmq-v4.3.5.tar.gz
+-- Applying patch fix-arm.patch
+-- Using source at E:/vcpkg/buildtrees/zeromq/src/v4.3.5-37c87b6b8c.clean
+-- Using cached msys2-mingw-w64-x86_64-pkgconf-1~2.4.3-1-any.pkg.tar.zst
+-- Using cached msys2-msys2-runtime-3.6.2-2-x86_64.pkg.tar.zst
+-- Using msys root at E:/vcpkg/downloads/tools/msys2/9272adbcaf19caef
+-- Configuring x64-mingw-dynamic-degoras
+-- Building x64-mingw-dynamic-degoras-rel
+-- Installing: E:/vcpkg/packages/zeromq_x64-mingw-dynamic-degoras/share/zeromq/copyright
+-- Fixing pkgconfig file: E:/vcpkg/packages/zeromq_x64-mingw-dynamic-degoras/lib/pkgconfig/libzmq.pc
+-- Performing post-build validation
+Starting submission of zeromq:x64-mingw-dynamic-degoras@4.3.5#2 to 1 binary cache(s) in the background
+Elapsed time to handle zeromq:x64-mingw-dynamic-degoras: 30 s
+zeromq:x64-mingw-dynamic-degoras package ABI: f9a5a0b10b34a4fc421b2b760d8082b60cf9719a46864b7cba0311945109b5af
+Total install time: 30 s
+Installed contents are licensed to you by owners. Microsoft is not responsible for, nor does it grant any licenses to, third-party packages.
+Packages installed in this vcpkg installation declare the following licenses:
+MPL-2.0
+zeromq provides CMake targets:
+
+  # this is heuristically generated, and may not be correct
+  find_package(ZeroMQ CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE libzmq libzmq-static)
+
+zeromq provides pkg-config modules:
+
+  # 0MQ c++ library
+  libzmq
+
+Waiting for 1 remaining binary cache submissions...
+Completed submission of zeromq:x64-mingw-dynamic-degoras@4.3.5#2 to 1 binary cache(s) in 191 ms (1/1)
+All requested installations completed successfully in: 30 s
+[2025-11-07T01:54:55Z][INFO]['zeromq' installed successfully.]
+[2025-11-07T01:54:55Z][INFO][Installing 'cppzmq'...]
+Computing installation plan...
+The following packages will be built and installed:
+    cppzmq:x64-mingw-dynamic-degoras@4.11.0
+Detecting compiler hash for triplet x64-mingw-dynamic-degoras...
+-- Setting "%HTTP_PROXY%" environment variables to "http://proxy.roa:8080".
+Compiler found: E:/msys64/ucrt64/bin/x86_64-w64-mingw32-g++.exe
+Restored 0 package(s) from E:\packages\vcpkg in 43.5 us. Use --debug to see more details.
+Installing 1/1 cppzmq:x64-mingw-dynamic-degoras@4.11.0...
+Building cppzmq:x64-mingw-dynamic-degoras@4.11.0...
+E:\vcpkg\triplets\community\x64-mingw-dynamic-degoras.cmake: info: loaded community triplet from here. Community triplets are not built in the curated registry and are thus less likely to succeed.
+-- [DEGORAS] Using DEGORAS-PROJECT custom triplet
+Downloading https://github.com/zeromq/cppzmq/archive/v4.11.0.tar.gz -> zeromq-cppzmq-v4.11.0.tar.gz
+Successfully downloaded zeromq-cppzmq-v4.11.0.tar.gz
+-- Extracting source E:/vcpkg/downloads/zeromq-cppzmq-v4.11.0.tar.gz
+-- Using source at E:/vcpkg/buildtrees/cppzmq/src/v4.11.0-2f51f6a272.clean
+-- Configuring x64-mingw-dynamic-degoras
+-- Building x64-mingw-dynamic-degoras-rel
+-- Fixing pkgconfig file: E:/vcpkg/packages/cppzmq_x64-mingw-dynamic-degoras/lib/pkgconfig/cppzmq.pc
+-- Using cached msys2-mingw-w64-x86_64-pkgconf-1~2.4.3-1-any.pkg.tar.zst
+-- Using cached msys2-msys2-runtime-3.6.2-2-x86_64.pkg.tar.zst
+-- Using msys root at E:/vcpkg/downloads/tools/msys2/9272adbcaf19caef
+-- Installing: E:/vcpkg/packages/cppzmq_x64-mingw-dynamic-degoras/share/cppzmq/copyright
+-- Performing post-build validation
+Starting submission of cppzmq:x64-mingw-dynamic-degoras@4.11.0 to 1 binary cache(s) in the background
+Elapsed time to handle cppzmq:x64-mingw-dynamic-degoras: 2.7 s
+cppzmq:x64-mingw-dynamic-degoras package ABI: 69c62367dfdc7f060f5da38913a33ab7ddc102fc5c0f76d7264e4dfcd0124b45
+Total install time: 2.7 s
+Installed contents are licensed to you by owners. Microsoft is not responsible for, nor does it grant any licenses to, third-party packages.
+Packages installed in this vcpkg installation declare the following licenses:
+MIT
+cppzmq provides CMake targets:
+
+  # this is heuristically generated, and may not be correct
+  find_package(cppzmq CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE cppzmq cppzmq-static)
+
+cppzmq provides pkg-config modules:
+
+  # C++ binding for libzmq
+  cppzmq
+
+Waiting for 1 remaining binary cache submissions...
+Completed submission of cppzmq:x64-mingw-dynamic-degoras@4.11.0 to 1 binary cache(s) in 44.7 ms (1/1)
+All requested installations completed successfully in: 2.7 s
+[2025-11-07T01:55:00Z][INFO]['cppzmq' installed successfully.]
+[2025-11-07T01:55:00Z][INFO][STEP 3: OK]
+[2025-11-07T01:55:00Z][INFO][STEP 4: Retrieve versions of installed packages]
+[2025-11-07T01:55:00Z][INFO][Installed: cppzmq version 4.11.0]
+[2025-11-07T01:55:00Z][INFO][Installed: curl version 8.16.0]
+[2025-11-07T01:55:00Z][INFO][Installed: fmt version 12.1.0]
+[2025-11-07T01:55:00Z][INFO][Installed: libbson version 1.30.6]
+[2025-11-07T01:55:00Z][INFO][Installed: mongo-c-driver version 1.30.6]
+[2025-11-07T01:55:00Z][INFO][Installed: nlohmann-json version 3.12.0#1]
+[2025-11-07T01:55:00Z][INFO][Installed: openssl version 3.6.0#2]
+[2025-11-07T01:55:00Z][INFO][Installed: pkgconf version 2.5.1#4]
+[2025-11-07T01:55:00Z][INFO][Installed: spdlog version 1.16.0]
+[2025-11-07T01:55:00Z][INFO][Installed: xerces-c version 3.3.0]
+[2025-11-07T01:55:00Z][INFO][Installed: zeromq version 4.3.5#2]
+[2025-11-07T01:55:00Z][INFO][Installed: zlib version 1.3.1]
+[2025-11-07T01:55:00Z][INFO][STEP 4: OK]
+[2025-11-07T01:55:00Z][INFO][DEGORAS-PROJECT VCPKG deps setup completed successfully.]
+[2025-11-07T01:55:00Z][INFO][TOTAL EXECUTION TIME: 465.6870839 seconds  (00:07:45)]
