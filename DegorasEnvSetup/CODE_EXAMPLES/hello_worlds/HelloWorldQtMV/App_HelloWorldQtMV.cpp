@@ -50,9 +50,9 @@ int main(int argc, char** argv)
     QObject::connect(&model_thread, &QThread::finished, model, &QObject::deleteLater);
 	
 	// Exit
-	QObject::connect(&app, &QGuiApplication::lastWindowClosed, model, &Model::requestStop, Qt::DirectConnection);
-    QObject::connect(&app, &QGuiApplication::lastWindowClosed, &model_thread, &QThread::requestInterruption, Qt::DirectConnection);
-    QObject::connect(&app, &QCoreApplication::aboutToQuit, &model_thread, &QThread::quit, Qt::DirectConnection);
+	QObject::connect(&app, &QGuiApplication::lastWindowClosed, model, &Model::requestStop);
+    QObject::connect(&app, &QGuiApplication::lastWindowClosed, &model_thread, &QThread::requestInterruption);
+    QObject::connect(&app, &QCoreApplication::aboutToQuit, &model_thread, &QThread::quit);
 	
 	// Start the thread.
     model_thread.start();
