@@ -8,11 +8,13 @@ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
 # --- 2. DESMONTAR UNIDAD DEV DRIVE EXISTENTE ---
 # Cierra todas las aplicaciones que estén usando la unidad antes de desmontar
 Dismount-DiskImage -ImagePath "C:\DevDrives\DEGORAS_DEV.vhdx"
-Dismount-DiskImage -Image Path "C:\DevDrives\DEGORAS_PROJECT_DEVELOP.vhdx"
+Dismount-DiskImage -ImagePath "C:\DevDrives\DEGORAS_PROJECT_DEVELOP.vhdx"
+Dismount-DiskImage -ImagePath "C:\DevDrives\DEGORAS_TEST.vhdx"
 
 # --- 3. ELIMINAR ARCHIVO DE DISCO (SI DESEA RECREARLO) ---
 Remove-Item -Path "C:\DevDrives\DEGORAS_DEV.vhdx" -Force
 Remove-Item -Path "C:\DevDrives\DEGORAS_PROJECT_DEVELOP.vhdx" -Force
+Remove-Item -Path "H:\DevDrives\DEGORAS_TEST.vhdx" -Force
 
 # --- 4. MONTAR MANUALMENTE UN DEV DRIVE EXISTENTE ---
 Mount-DiskImage -ImagePath "C:\DevDrives\DEGORAS_DEV.vhdx"
@@ -23,18 +25,6 @@ Resize-VHD -Path "C:\DevDrives\DEGORAS_PROJECT_DEVELOP.vhdx" -SizeBytes 40GB
 
 # --- 6. VERIFICAR TAMAÑO ACTUAL DEL DISCO ---
 Get-VHD -Path "C:\DevDrives\DEGORAS_PROJECT_DEVELOP.vhdx" | Select Path, FileSize, Size
-
-# =====================================================================
-# DEGORAS PROJECT - INSTALL QWT 6.3 USING VCPKG TRIPLET
-# =====================================================================
-
-TODO Automatic process with local port
-
-In the environment:
-
-cd /d/workspace
-git clone https://git.code.sf.net/p/qwt/git qwt
-
 
 
 # =====================================================================

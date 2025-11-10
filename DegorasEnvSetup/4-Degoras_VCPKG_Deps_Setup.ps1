@@ -2,8 +2,8 @@
 # DEGORAS-PROJECT VCPKG DEPS SETUP SCRIPT
 # --------------------------------------------------------------------
 # Author: Angel Vera Herrera
-# Updated: 26/10/2025
-# Version: 251026
+# Updated: 08/11/2025
+# Version: 0.9.0
 # --------------------------------------------------------------------
 # © Degoras Project Team
 # ====================================================================
@@ -13,8 +13,8 @@
 
 param
 (
-    [string]$devDrive = "E",
-	[string]$msys64BinPath = "E:\msys64\usr\bin"
+    [string]$devDrive = "T",
+	[string]$msys64BinPath = "T:\msys64\usr\bin"
 )
 
 # FUNCTIONS
@@ -115,8 +115,8 @@ Write-NoFormat "================================================================
 Write-NoFormat "  DEGORAS-PROJECT VCPKG DEPS SETUP SCRIPT"
 Write-NoFormat "-----------------------------------------------------------------"
 Write-NoFormat "  Author:  Angel Vera Herrera"
-Write-NoFormat "  Updated: 26/10/2025"
-Write-NoFormat "  Version: 251026"
+Write-NoFormat "  Updated: 08/11/2025"
+Write-NoFormat "  Version: 0.9.0"
 Write-NoFormat "================================================================="
 Write-NoFormat "Parameters:"
 Write-NoFormat "-----------------------------------------------------------------"
@@ -182,18 +182,17 @@ $vcpkgCache = "${devDrive}\packages\vcpkg"
 $installRootUnix = $installRoot -replace '\\', '/' -replace '^([A-Za-z]):', '/$1'
 $vcpkgCacheUnix = $vcpkgCache -replace '\\', '/' -replace '^([A-Za-z]):', '/$1'
 
+$driveLetter = $devDrive.Substring(0,1).ToLower()
+$devDriveUnix = "/$driveLetter" 
+
 # Script bash para entorno mingw64
 $bashScript = @"
 source shell ucrt64
+set -a
+source ${devDriveUnix}/degoras-env-variables.env
+set +a
 cd $installRootUnix
-export VCPKG_ROOT="$installRootUnix" 
-export VCPKG_DEFAULT_BINARY_CACHE="$vcpkgCacheUnix" 
-export VCPKG_DEFAULT_TRIPLET="x64-mingw-dynamic-degoras"
-export VCPKG_DEFAULT_HOST_TRIPLET="x64-mingw-dynamic-degoras"
-unset http_proxy
-unset https_proxy
-unset HTTP_PROXY
-unset HTTPS_PROXY
+unset http_proxy https_proxy HTTP_PROXY HTTPS_PROXY
 ./vcpkg install fmt
 "@
 
@@ -220,7 +219,6 @@ if ($proc.ExitCode -ne 0)
 
 # Get fmt installed version
 $fmtVersionScript = @"
-source /etc/profile
 source shell ucrt64
 cd $installRootUnix
 ./vcpkg list | grep '^fmt:x64-mingw-dynamic-degoras'
@@ -257,12 +255,13 @@ $packages =
 	"fmt",
 	"pkgconf",
     "nlohmann-json",
-	"libbson",
 	"openssl",
 	"spdlog",
 	"zlib",
 	"curl",
-    "mongo-c-driver",
+	"libbson",
+    "mongo-c-driver[openssl]",
+	"mongo-cxx-driver",
 	"xerces-c",
 	"zeromq",
 	"cppzmq"
@@ -277,11 +276,13 @@ $targetPackages =
 	"spdlog",
 	"zlib",
 	"curl",
+	"utf8proc",
+	"libbson",
+    "mongo-c-driver[openssl]",
+	"mongo-cxx-driver",
 	"xerces-c",
 	"zeromq",
-	"cppzmq",
-	"libbson",
-    "mongo-c-driver"
+	"cppzmq"
 )
 
 foreach ($pkg in $packages) 
@@ -290,15 +291,11 @@ foreach ($pkg in $packages)
 
     $bashScript = @"
 source shell ucrt64
+set -a
+source ${devDriveUnix}/degoras-env-variables.env
+set +a
 cd $installRootUnix
-export VCPKG_ROOT="$installRootUnix" 
-export VCPKG_DEFAULT_BINARY_CACHE="$vcpkgCacheUnix" 
-export VCPKG_DEFAULT_TRIPLET="x64-mingw-dynamic-degoras"
-export VCPKG_DEFAULT_HOST_TRIPLET="x64-mingw-dynamic-degoras"
-unset http_proxy
-unset https_proxy
-unset HTTP_PROXY
-unset HTTPS_PROXY
+unset http_proxy https_proxy HTTP_PROXY HTTPS_PROXY
 ./vcpkg install $pkg
 "@
 

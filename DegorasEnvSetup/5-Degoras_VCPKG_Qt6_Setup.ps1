@@ -2,8 +2,8 @@
 # DEGORAS-PROJECT VCPKG QT6 SETUP SCRIPT
 # --------------------------------------------------------------------
 # Author: Angel Vera Herrera
-# Updated: 26/10/2025
-# Version: 251026
+# Updated: 08/11/2025
+# Version: 0.9.0
 # --------------------------------------------------------------------
 # © Degoras Project Team
 # ====================================================================
@@ -13,8 +13,8 @@
 
 param
 (
-    [string]$devDrive = "E",
-	[string]$msys64BinPath = "E:\msys64\usr\bin"
+    [string]$devDrive = "T",
+	[string]$msys64BinPath = "T:\msys64\usr\bin"
 )
 
 # FUNCTIONS
@@ -115,8 +115,8 @@ Write-NoFormat "================================================================
 Write-NoFormat "  DEGORAS-PROJECT VCPKG QT6 SETUP SCRIPT"
 Write-NoFormat "-----------------------------------------------------------------"
 Write-NoFormat "  Author:  Angel Vera Herrera"
-Write-NoFormat "  Updated: 26/10/2025"
-Write-NoFormat "  Version: 251026"
+Write-NoFormat "  Updated: 08/11/2025"
+Write-NoFormat "  Version: 0.9.0"
 Write-NoFormat "================================================================="
 Write-NoFormat "Parameters:"
 Write-NoFormat "-----------------------------------------------------------------"
@@ -209,21 +209,22 @@ $targetPackages =
 	"qtsvg"
 )
 
+$driveLetter = $devDrive.Substring(0,1).ToLower()
+$devDriveUnix = "/$driveLetter" 
+
+Write-Info "$devDriveUnix"
+
 foreach ($pkg in $packages) 
 {
     Write-Info "Installing '$pkg'..."
 
     $bashScript = @"
 source shell ucrt64
+set -a
+source ${devDriveUnix}/degoras-env-variables.env
+set +a
 cd $installRootUnix
-export VCPKG_ROOT="$installRootUnix" 
-export VCPKG_DEFAULT_BINARY_CACHE="$vcpkgCacheUnix" 
-export VCPKG_DEFAULT_TRIPLET="x64-mingw-dynamic-degoras"
-export VCPKG_DEFAULT_HOST_TRIPLET="x64-mingw-dynamic-degoras"
-unset http_proxy
-unset https_proxy
-unset HTTP_PROXY
-unset HTTPS_PROXY
+unset http_proxy https_proxy HTTP_PROXY HTTPS_PROXY
 ./vcpkg install $pkg
 "@
 
@@ -258,7 +259,7 @@ Write-Info "STEP 3: Retrieve versions of installed packages"
 $versionScript = @"
 source shell ucrt64
 cd $installRootUnix
-./vcpkg list | grep ':x64-mingw-dynamic'
+./vcpkg list | grep ':x64-mingw-dynamic-degoras'
 "@
 
 $tempVersionScript = Join-Path $env:TEMP "vcpkg_check_versions.sh"

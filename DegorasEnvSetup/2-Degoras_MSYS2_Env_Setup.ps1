@@ -2,8 +2,8 @@
 # DEGORAS-PROJECT MSYS2 ENVIRONMENT SETUP SCRIPT
 # --------------------------------------------------------------------
 # Author: Angel Vera Herrera
-# Updated: 26/10/2025
-# Version: 251026
+# Updated: 08/11/2025
+# Version: 0.9.0
 # --------------------------------------------------------------------
 # © Degoras Project Team
 # ====================================================================
@@ -13,16 +13,14 @@
 
 param 
 (
-    [string]$devDrive   = "E",
+    [string]$devDrive   = "T",
     [string]$msys2Url   = "https://repo.msys2.org/distrib/msys2-x86_64-latest.sfx.exe",
     [string]$ninjaUrl   = "https://repo.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-ninja-1.12.1-1-any.pkg.tar.zst",
     [string]$gdbUrl     = "https://repo.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-gdb-16.2-1-any.pkg.tar.zst",
     [string]$gccUrl     = "https://repo.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-gcc-15.2.0-8-any.pkg.tar.zst",
     [string]$gccLibsUrl = "https://repo.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-gcc-libs-15.2.0-8-any.pkg.tar.zst",
     [string]$makeUrl    = "https://repo.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-make-4.4.1-2-any.pkg.tar.zst",
-    [string]$cmakeUrl   = "https://repo.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-cmake-4.1.2-1-any.pkg.tar.zst",
-	[string]$doxygenUrl = "https://repo.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-doxygen-1.12.0-1-any.pkg.tar.zst",
-    [string]$graphvizUrl = "https://repo.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-graphviz-12.2.1-1-any.pkg.tar.zst"
+    [string]$cmakeUrl   = "https://repo.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-cmake-4.1.2-1-any.pkg.tar.zst"
   )
 
 # FUNCTIONS
@@ -123,8 +121,8 @@ Write-NoFormat "================================================================
 Write-NoFormat "  DEGORAS-PROJECT MSYS2 UCRT64 ENVIRONMENT SETUP SCRIPT"
 Write-NoFormat "-----------------------------------------------------------------"
 Write-NoFormat "  Author:  Angel Vera Herrera"
-Write-NoFormat "  Updated: 26/10/2025"
-Write-NoFormat "  Version: 251026"
+Write-NoFormat "  Updated: 08/11/2025"
+Write-NoFormat "  Version: 0.9.0"
 Write-NoFormat "================================================================="
 Write-NoFormat "Parameters:"
 Write-NoFormat "-----------------------------------------------------------------"
@@ -136,8 +134,6 @@ Write-NoFormat "GCC URL          = $gccUrl"
 Write-NoFormat "GCC Libs URL     = $gccLibsUrl"
 Write-NoFormat "GDB URL          = $gdbUrl"
 Write-NoFormat "Make URL         = $makeUrl"
-Write-NoFormat "Doxygen URL      = $doxygenUrl"
-Write-NoFormat "Graphviz URL     = $graphvizUrl"
 Write-NoFormat "Current Path     = $scriptDir"
 Write-NoFormat "MSYS2 Packs Path = $localPkgDir"
 Write-NoFormat "================================================================="
@@ -216,8 +212,6 @@ $gdbPkg         = Join-Path $localPkgDir (Get-FileNameFromUrl $gdbUrl)
 $cmakePkg       = Join-Path $localPkgDir (Get-FileNameFromUrl $cmakeUrl)
 $gccPkg         = Join-Path $localPkgDir (Get-FileNameFromUrl $gccUrl)
 $gccLibsPkg     = Join-Path $localPkgDir (Get-FileNameFromUrl $gccLibsUrl)
-$doxygenPkg     = Join-Path $localPkgDir (Get-FileNameFromUrl $doxygenUrl)
-$graphvizPkg    = Join-Path $localPkgDir (Get-FileNameFromUrl $graphvizUrl)
 $msys2Installer = Join-Path $localPkgDir (Get-FileNameFromUrl $msys2Url)
 
 $downloads = @(
@@ -227,9 +221,7 @@ $downloads = @(
     @{ Url = $gdbUrl;       Path = $gdbPkg },
     @{ Url = $cmakeUrl;     Path = $cmakePkg },
     @{ Url = $gccUrl;       Path = $gccPkg },
-    @{ Url = $gccLibsUrl;   Path = $gccLibsPkg },
-    @{ Url = $doxygenUrl;   Path = $doxygenPkg },
-    @{ Url = $graphvizUrl;  Path = $graphvizPkg }
+    @{ Url = $gccLibsUrl;   Path = $gccLibsPkg }
 )
 
 foreach ($item in $downloads) 
@@ -388,32 +380,6 @@ Start-Process -FilePath $bashPath -ArgumentList "-l", "-c", "`"pacman -U --nocon
 
 Write-Info "STEP 5: OK"
 
-<# # STEP 5.5: Removing non-UCRT shells and directories
-# --------------------------------------------------------------------
-
-Write-Info "STEP 5.5: Removing non-UCRT shells and directories."
-
-$toDelete = @(
-  (Join-Path $msys2Path "mingw32"),
-  (Join-Path $msys2Path "mingw64"),
-  (Join-Path $msys2Path "clang32"),
-  (Join-Path $msys2Path "clang64"),
-  (Join-Path $msys2Path "clangarm64"),
-  (Join-Path $msys2Path "mingw32.exe"),
-  (Join-Path $msys2Path "mingw64.exe"),
-  (Join-Path $msys2Path "clang32.exe"),
-  (Join-Path $msys2Path "clang64.exe"),
-  (Join-Path $msys2Path "clangarm64.exe")
-)
-foreach ($p in $toDelete) {
-  if (Test-Path $p) {
-    Write-Info "Deleting $p"
-    Remove-Item -Recurse -Force $p
-  }
-}
-
-Write-Info "STEP 5.5: OK" #>
-
 # STEP 6: Show toolchain versions
 # --------------------------------------------------------------------
 
@@ -428,7 +394,7 @@ echo "CMake - $(/ucrt64/bin/cmake --version | head -n1)"
 echo "Ninja - $(/ucrt64/bin/ninja --version | head -n1)"
 echo "Make  - $(/ucrt64/bin/make --version | head -n1)"
 echo "GDB   - $(/ucrt64/bin/gdb --version | head -n1)"
-echo "Git   - $(/ucrt64/bin/git --version | head -n1)"
+echo "Git   - $(/ucrt64/bin/git --version)"
 '@
 
 # Convert path to MSYS format
@@ -454,7 +420,9 @@ $installDocCmd = @"
 set -e
 pacman -S --noconfirm --needed \
   mingw-w64-ucrt-x86_64-doxygen \
-  mingw-w64-ucrt-x86_64-curl 
+  mingw-w64-ucrt-x86_64-curl \
+  mingw-w64-ucrt-x86_64-ripgrep \
+  mingw-w64-ucrt-x86_64-diffutils
 "@
 
 $proc = Start-Process -FilePath $bashPath `
@@ -489,11 +457,15 @@ Write-Info "STEP 7: OK"
 # STEP 8: Setup environment variables and shorcout
 # --------------------------------------------------------------------
 
-Write-Info "STEP 7: Setup environment variables and shortcout."
+Write-Info "STEP 8: Setup environment variables and shortcout."
 
-$envFilePath = Join-Path "$devDrive" "degoras-env-variables.env"
-$mingw64Path =  Join-Path "$msys2Path" "ucrt64"
-$msys2BashPath = Join-Path "$msys2Path" "usr\bin\bash.exe"
+# Normalize MSYS2 path to forward slashes for cross-shell compatibility
+$msys2Path = $msys2Path -replace '\\', '/'
+
+$envFilePath   = Join-Path "$devDrive" "degoras-env-variables.env"
+$mingw64Path   = "$msys2Path/ucrt64"
+$msys2BashPath = "$msys2Path/usr/bin/bash.exe"
+$msys2RootPath = "$msys2Path"
 
 Write-Info "UCRT64_ROOT=${mingw64Path}"
 Write-Info "MINGW_ROOT=${mingw64Path}"
@@ -564,7 +536,7 @@ $shortcut.Save()
 
 Write-Info "Shortcut created on desktop: DEGORAS-PROJECT Environment"
 
-Write-Info "STEP 7: OK"
+Write-Info "STEP 8: OK"
 
 # FINALIZATION
 # --------------------------------------------------------------------

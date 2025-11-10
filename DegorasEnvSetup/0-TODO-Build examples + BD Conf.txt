@@ -1,32 +1,43 @@
-# -----------------------------------
+# --------------------------------------
 # FOR MANUAL DB INITIALIZATION -> TODO
 
 -> Check Windows services.
 
-# -----------------------------------
-# FOR COMPILE DEBUG
+# --------------------------------------
+# FOR MANUAL COMPILE AND EXEC
 
--> Launch new Degoras Environment.
+-> Exec the Degoras environment launcher.
+degoras-env-launcher.bat
 
-cd workspace/HelloWorldQwt/RigesCoreProject
-cmake --preset rigescore-env-mingw64-debug
-cmake --build 
+cd ${DEGORAS_DEVDRIVE}/workspace/HelloWorlds/HelloWorldMongoC
+cmake --preset dp-ucrt64-rel
+cmake --preset dp-ucrt64-deb
+cmake --build --preset dp-ucrt64-rel
+cmake --build --preset dp-ucrt64-deb
+${DEGORAS_DEVDRIVE}/builds/HelloWorldMongoC/dp-ucrt64-rel/App_HelloWorldMongoC.exe
+${DEGORAS_DEVDRIVE}/builds/HelloWorldMongoC/dp-ucrt64-deb/App_HelloWorldMongoC.exe
 
-# -----------------------------------
-# FOR COMPILE RELEASE
+cd ${DEGORAS_DEVDRIVE}/workspace/HelloWorlds/HelloWorldMongoCxx
+cmake --preset dp-ucrt64-rel
+cmake --preset dp-ucrt64-deb
+cmake --build --preset dp-ucrt64-rel
+cmake --build --preset dp-ucrt64-deb
+${DEGORAS_DEVDRIVE}/builds/HelloWorldMongoCxx/dp-ucrt64-rel/App_HelloWorldMongoCxx.exe
+${DEGORAS_DEVDRIVE}/builds/HelloWorldMongoCxx/dp-ucrt64-deb/App_HelloWorldMongoCxx.exe
 
--> Launch new RIGES-CORE Environment.
+cd ${DEGORAS_DEVDRIVE}/workspace/HelloWorlds/HelloWorldQtMV
+cmake --preset dp-ucrt64-rel
+cmake --preset dp-ucrt64-deb
+cmake --build --preset dp-ucrt64-rel
+cmake --build --preset dp-ucrt64-deb
+${DEGORAS_DEVDRIVE}/builds/HelloWorldQtMV/dp-ucrt64-rel/App_HelloWorldQtMV.exe
+${DEGORAS_DEVDRIVE}/builds/HelloWorldQtMV/dp-ucrt64-deb/App_HelloWorldQtMV.exe
 
-cd /v/workspace/RigesCoreProject/RigesCoreProject
-cmake --preset rigescore-env-mingw64-release
-cmake --build 
-
-# -----------------------------------
-# FOR DEBUG
-
-
-
-# -----------------------------------
-# FOR RELEASE
-
+cd ${DEGORAS_DEVDRIVE}/workspace/HelloWorlds/HelloWorldQwt
+cmake --preset dp-ucrt64-rel
+cmake --preset dp-ucrt64-deb
+cmake --build --preset dp-ucrt64-rel
+cmake --build --preset dp-ucrt64-deb
+${DEGORAS_DEVDRIVE}/builds/HelloWorldQwt/dp-ucrt64-rel/App_HelloWorldQwt.exe
+${DEGORAS_DEVDRIVE}/builds/HelloWorldQwt/dp-ucrt64-deb/App_HelloWorldQwt.exe
 

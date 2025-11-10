@@ -2,8 +2,8 @@
 # DEGORAS-PROJECT DEVELOPMENT DRIVE SETUP SCRIPT
 # --------------------------------------------------------------------
 # Author: Ángel Vera Herrera
-# Updated: 26/10/2025
-# Version: 251026
+# Updated: 08/11/2025
+# Version: 0.9.0
 # --------------------------------------------------------------------
 # © Degoras Project Team
 # ====================================================================
@@ -15,10 +15,10 @@
 
 param 
 (
-    [string]$driveLabel = "DEGORAS_DEV",
-    [string]$driveLetter = "E",
-    [int]   $sizeGB = 100,
-    [string]$vhdPath = "C:\DevDrives"
+    [string]$driveLabel = "DEGORAS_TEST",
+    [string]$driveLetter = "T",
+    [int]   $sizeGB = 40,
+    [string]$vhdPath = "H:\DevDrives"
 )
 
 # FUNCTIONS
@@ -91,7 +91,7 @@ $scriptStart = Get-Date
 $scriptDir = Get-ScriptDirectory
 $vhdFilePath = Join-Path $vhdPath "${driveLabel}.vhdx"
 $vhdRoot = [System.IO.Path]::GetPathRoot($vhdPath)
-$testExamplesDir = Join-Path $scriptDir "code_examples"
+$testHelloWorldsDir = Join-Path $scriptDir "code_examples/hello_worlds"
 $setupScriptsDir = Join-Path $scriptDir "scripts_env"
 
 # Prepare logging.
@@ -112,8 +112,8 @@ Write-NoFormat "==========================================================="
 Write-NoFormat "  DEGORAS-PROJECT DEVELOPMENT DRIVE SETUP SCRIPT"
 Write-NoFormat "-----------------------------------------------------------------"
 Write-NoFormat "  Author:  Angel Vera Herrera"
-Write-NoFormat "  Updated: 26/10/2025"
-Write-NoFormat "  Version: 251026"
+Write-NoFormat "  Updated: 08/11/2025"
+Write-NoFormat "  Version: 0.9.0"
 Write-NoFormat "================================================================="
 Write-NoFormat "Parameters:"
 Write-NoFormat "-----------------------------------------------------------------"
@@ -124,7 +124,7 @@ Write-NoFormat "VHDX Root          = $vhdRoot"
 Write-NoFormat "VHDX Path          = $vhdPath"
 Write-NoFormat "VHDX Filepath      = $vhdFilePath"
 Write-NoFormat "Current Path       = $scriptDir"
-Write-NoFormat "Test Examples Path = $testExamplesDir"
+Write-NoFormat "Test Examples Path = $testHelloWorldsDir"
 Write-NoFormat "Setup Scripts Path = $setupScriptsDir"
 Write-NoFormat "================================================================="
 
@@ -197,9 +197,9 @@ if (!(Test-Path $vhdPath))
 
 # Checking examples dir.
 Write-Info "Checking examples folder..."
-if (-not (Test-Path $testExamplesDir)) 
+if (-not (Test-Path $testHelloWorldsDir)) 
 {
-    Write-Error "Examples folder not found at: $testExamplesDir"
+    Write-Error "Examples folder not found at: $testHelloWorldsDir"
     Abort-WithError
 }
 
@@ -345,8 +345,12 @@ $folders =
 @(
     "${driveLetter}:\deploys",
 	"${driveLetter}:\builds",
+	"${driveLetter}:\logs\env",
     "${driveLetter}:\packages\vcpkg",
-    "${driveLetter}:\workspace"
+	"${driveLetter}:\overlays\triplets",
+	"${driveLetter}:\overlays\ports",
+    "${driveLetter}:\workspace",
+	"${driveLetter}:\workspace\HelloWorlds"
 )
 
 foreach ($f in $folders) 
@@ -402,22 +406,26 @@ foreach ($script in $scriptFiles)
 
 # --
 
-Write-Info "Copying examples..."
+Write-Info "Copying hello worlds examples..."
 
-$targetDir = "${driveLetter}:\workspace"
-$zipFiles = Get-ChildItem -Path $testExamplesDir -Filter "*.zip"
-foreach ($zip in $zipFiles) 
+$targetDir = "${driveLetter}:\workspace\HelloWorlds"
+$srcDirs = Get-ChildItem -Path $testHelloWorldsDir -Directory
+
+foreach ($dir in $srcDirs) 
 {
-    $zipPath = $zip.FullName
-    Write-Info "Extracting test example: $($zip.Name) to $targetDir"
-    try 
-    {
-        Expand-Archive -Path $zipPath -DestinationPath $targetDir -Force
-        Write-Info "Extracted: $($zip.Name)"
+    $srcPath = $dir.FullName
+    $dstPath = Join-Path $targetDir $dir.Name
+
+    Write-Info "Copying test example: $($dir.Name) → $dstPath"
+    try {
+        if (Test-Path $dstPath) {
+            Remove-Item -Path $dstPath -Recurse -Force
+        }
+        Copy-Item -Path $srcPath -Destination $dstPath -Recurse -Force
+        Write-Info "Copied: $($dir.Name)"
     }
-    catch 
-    {
-        Write-Error "Failed to extract $($zip.Name): $_"
+    catch {
+        Write-Error "Failed to copy $($dir.Name): $_"
         Abort-WithError
     }
 }
@@ -444,9 +452,9 @@ Write-Info "STEP 8: Setup environment variables and shortcout."
 
 $envFilePath = Join-Path "$driveLetter`:" "degoras-env-variables.env"
 
-$deploysDir = "${driveLetter}:\deploys"
-$vcpkgCacheDir = "${driveLetter}:\packages\vcpkg"
-$workspaceDir = "${driveLetter}:\workspace"
+$deploysDir = "${driveLetter}:/deploys"
+$vcpkgCacheDir = "${driveLetter}:/packages/vcpkg"
+$workspaceDir = "${driveLetter}:/workspace"
 
 Write-Info "DEGORAS_DEVDRIVE = ${driveLetter}:"
 Write-Info "DEGORAS_DEPLOYS = $deploysDir"
@@ -463,7 +471,7 @@ if (-not (Test-Path $envFilePath))
 
 # Write all environment variables to a file for later use
 $envLines = @(
-	"DEGORAS_DEVDRIVE=${driveLetter}:\"
+	"DEGORAS_DEVDRIVE=${driveLetter}:"
 	"DEGORAS_DEPLOYS=$deploysDir"
 	"DEGORAS_WORKSPACE=$workspaceDir"
 )
@@ -505,7 +513,7 @@ Start-Sleep -Milliseconds 200
 
 Write-Info "STEP 9: Configure automatic mount at startup."
 
-$taskName = "MountDEGORASDevDrive"
+$taskName = $volumeLabel
 $taskExists = Get-ScheduledTask -TaskName $taskName -ErrorAction SilentlyContinue
 
 if ($taskExists) 

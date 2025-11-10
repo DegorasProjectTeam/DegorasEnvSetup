@@ -2,8 +2,8 @@
 # DEGORAS-PROJECT VCPKG CLONE SETUP SCRIPT
 # --------------------------------------------------------------------
 # Author: Angel Vera Herrera
-# Updated: 26/10/2025
-# Version: 251026
+# Updated: 08/11/2025
+# Version: 0.9.0
 # --------------------------------------------------------------------
 # © Degoras Project Team
 # ====================================================================
@@ -13,7 +13,6 @@
 # Baseline HEAD: 446682c6c338d68ed986972ffc3529f7d63c1555
 # ====================================================================
 
-
 # PARAMETERS
 # --------------------------------------------------------------------
 
@@ -21,8 +20,8 @@ param
 (
 	[string]$vcpkgGitUrl = "https://github.com/microsoft/vcpkg.git",
 	[string]$vcpkgBaseline = "446682c6c338d68ed986972ffc3529f7d63c1555",
-    [string]$devDrive = "E",
-	[string]$msys64BinPath = "E:\msys64\usr\bin"
+    [string]$devDrive = "T",
+	[string]$msys64BinPath = "T:\msys64\usr\bin"
 )
 
 # FUNCTIONS
@@ -124,8 +123,8 @@ Write-NoFormat "================================================================
 Write-NoFormat "  DEGORAS-PROJECT VCPKG CLONE SETUP SCRIPT"
 Write-NoFormat "-----------------------------------------------------------------"
 Write-NoFormat "  Author:  Angel Vera Herrera"
-Write-NoFormat "  Updated: 26/10/2025"
-Write-NoFormat "  Version: 251026"
+Write-NoFormat "  Updated: 08/11/2025"
+Write-NoFormat "  Version: 0.9.0"
 Write-NoFormat "================================================================="
 Write-NoFormat "Parameters:"
 Write-NoFormat "-----------------------------------------------------------------"
@@ -158,6 +157,7 @@ if ($devDrive -notmatch '^[A-Z]$')
 
 # Normalize format to end with colon and backslash (e.g. V:\)
 $driveLetterOnly = $devDrive.ToUpper()
+$devDriveOnly = $devDrive
 $devDrive = "$driveLetterOnly`:\"
 
 # Check Dev Drive exists and is mounted
@@ -196,7 +196,7 @@ Write-Info "STEP 1: OK"
 
 Write-Info "STEP 2: Clone vcpkg repository."
 
-$installRoot = "${devDrive}\vcpkg"
+$installRoot = "${devDrive}vcpkg"
 
 if (Test-Path $installRoot) 
 {
@@ -323,18 +323,31 @@ Write-Info "STEP 3: OK"
 
 Write-Info "STEP 4: Setup environment variables."
 
-$envFilePath = Join-Path "$devDrive" "degoras-env-variables.env"
+$envFilePath = Join-Path "${devDriveOnly}:" "degoras-env-variables.env"
 
-$vcpkgCacheDir = "${devDrive}packages\vcpkg"
-$vcpkgRoot = "${devDrive}vcpkg"
+# Usa forward slashes explícitos
+$vcpkgCacheDir = "${devDriveOnly}:/packages/vcpkg"
+$vcpkgRoot     = "${devDriveOnly}:/vcpkg"
+$vcpkgPorts    = "${devDriveOnly}:/overlays/ports"
+$vcpkgTriplets = "${devDriveOnly}:/overlays/triplets"
+$vcpkgBinPath  = "${vcpkgRoot}/installed/x64-mingw-dynamic-degoras/bin"
 
-Write-Info "VCPKG_ROOT = $vcpkgRoot"
-Write-Info "VCPKG_DEFAULT_BINARY_CACHE = $vcpkgCacheDir"
+Write-Info "VCPKG_ROOT=$vcpkgRoot"
+Write-Info "VCPKG_DEFAULT_BINARY_CACHE=$vcpkgCacheDir"
+Write-Info "VCPKG_DEFAULT_TRIPLET=x64-mingw-dynamic-degoras"
+Write-Info "VCPKG_DEFAULT_HOST_TRIPLET=x64-mingw-dynamic-degoras"
+Write-Info "VCPKG_OVERLAY_PORTS=$vcpkgPorts"
+Write-Info "VCPKG_OVERLAY_TRIPLETS=$vcpkgTriplets"
+Write-Info "PATH=${vcpkgBinPath}:`$PATH"
 
 # Write all environment variables to a file for later use
 $envLines = @(
-	"VCPKG_ROOT=$vcpkgRoot"
+    "VCPKG_ROOT=$vcpkgRoot"
     "VCPKG_DEFAULT_BINARY_CACHE=$vcpkgCacheDir"
+    "VCPKG_DEFAULT_TRIPLET=x64-mingw-dynamic-degoras"
+    "VCPKG_DEFAULT_HOST_TRIPLET=x64-mingw-dynamic-degoras"
+    "VCPKG_OVERLAY_PORTS=$vcpkgPorts"
+    "VCPKG_OVERLAY_TRIPLETS=$vcpkgTriplets"
 )
 
 Write-Info "Appending environment variables to $envFilePath"
@@ -345,70 +358,101 @@ $stream.Close()
 
 Write-Info "STEP 4: OK"
 
-# STEP 5: Install controlled DEGORAS triplet from script folder
+# STEP 5: Install controlled DEGORAS triplet from folder
 # --------------------------------------------------------------------------
 
 Write-Info "STEP 5: Installing controlled triplet 'x64-mingw-dynamic-degoras'..."
 
-# Paths.
+# Sources in script folder
 $tripletSourcePath = Join-Path $scriptDir "vcpkg_triplets\x64-mingw-dynamic-degoras.cmake"
 $tripletShaPath    = Join-Path $scriptDir "vcpkg_triplets\x64-mingw-dynamic-degoras.sha256"
-$tripletDestPath   = Join-Path $installRoot "triplets\community\x64-mingw-dynamic-degoras.cmake"
 
-if (-not (Test-Path $tripletSourcePath)) 
+# Destination in overlay-triplets (already-existing folder)
+$overlayTripletsRoot = "${devDrive}overlays\triplets"
+$tripletDestPath     = Join-Path $overlayTripletsRoot "x64-mingw-dynamic-degoras.cmake"
+
+# Guards
+if (-not (Test-Path $tripletSourcePath)) { Write-Error "Controlled triplet not found: $tripletSourcePath"; Abort-WithError }
+if (-not (Test-Path $tripletShaPath))    { Write-Error "Triplet SHA256 file not found: $tripletShaPath";  Abort-WithError }
+
+# Ensure destination folder exists
+if (-not (Test-Path $overlayTripletsRoot)) 
 {
-    Write-Error "Controlled triplet not found: $tripletSourcePath"
-    Abort-WithError
+    New-Item -ItemType Directory -Path $overlayTripletsRoot -Force | Out-Null
+    Write-Info "Created overlay triplets directory: $overlayTripletsRoot"
 }
 
-if (-not (Test-Path $tripletShaPath)) 
-{
-    Write-Error "Triplet SHA256 file not found: $tripletShaPath"
-    Abort-WithError
-}
-
-# Check SHA256 in vcpkg folder file.
+# Compare SHA256 to decide copy
 $shouldCopy = $true
 if (Test-Path $tripletDestPath) 
 {
-    $actualHash = Get-FileHash -Path $tripletDestPath -Algorithm SHA256
-    $expectedHash = Get-Content $tripletShaPath -Raw | ForEach-Object { $_.Trim() }
-
-    if ($actualHash.Hash -eq $expectedHash) 
-	{
-        Write-Info "Triplet already up-to-date. Skipping copy."
+    $actualHash   = (Get-FileHash -Path $tripletDestPath -Algorithm SHA256).Hash
+    $expectedHash = (Get-Content $tripletShaPath -Raw).Trim()
+    if ($actualHash -eq $expectedHash) {
+        Write-Info "Triplet already up-to-date in overlay. Skipping copy."
         $shouldCopy = $false
     } else {
-        Write-Info "Triplet hash mismatch. Overwriting destination file..."
+        Write-Info "Triplet hash mismatch in overlay. Overwriting..."
     }
 }
 
 if ($shouldCopy) 
 {
     Copy-Item -Path $tripletSourcePath -Destination $tripletDestPath -Force
-    Write-Info "Triplet copied to: $tripletDestPath"
+    Write-Info "Triplet copied to overlay: $tripletDestPath"
 }
 
 Write-Info "STEP 5: OK"
 
-# STEP 6: Append VCPKG environment exports for MSYS2/Unix compatibility
+# STEP 6: Install controlled overlay ports from folder
 # --------------------------------------------------------------------------
 
-Write-Info "STEP 6: Adding VCPKG environment exports..."
+Write-Info "STEP 6: Installing controlled overlay ports..."
 
-Write-Info "VCPKG_DEFAULT_TRIPLET=x64-mingw-dynamic-degoras"
-Write-Info "VCPKG_DEFAULT_HOST_TRIPLET=x64-mingw-dynamic-degoras"
+# Source: script folder
+$overlayPortsSrc = Join-Path $scriptDir "vcpkg_overlays"
 
-$envLinesUnix = @(
-    "VCPKG_DEFAULT_TRIPLET=x64-mingw-dynamic-degoras"
-    "VCPKG_DEFAULT_HOST_TRIPLET=x64-mingw-dynamic-degoras"
-)
+# Destination: env overlays
+$overlayPortsDst = "${devDrive}overlays\ports"
 
-$stream = [System.IO.StreamWriter]::new($envFilePath, $true, $utf8NoBom)
-foreach ($line in $envLinesUnix) { $stream.WriteLine($line) }
-$stream.Close()
+# Guards
+if (-not (Test-Path $overlayPortsSrc)) 
+{
+    Write-Error "Overlay ports source not found: $overlayPortsSrc"
+    Abort-WithError
+}
 
-Write-Info "Environment exports appended to $envFilePath"
+# Ensure destination folder exists
+if (-not (Test-Path $overlayPortsDst)) 
+{
+    New-Item -ItemType Directory -Path $overlayPortsDst -Force | Out-Null
+    Write-Info "Created overlay ports directory: $overlayPortsDst"
+}
+
+# Copy each port folder recursively
+$srcPortDirs = Get-ChildItem -Path $overlayPortsSrc -Directory
+foreach ($dir in $srcPortDirs) 
+{
+    $srcPath = $dir.FullName
+    $dstPath = Join-Path $overlayPortsDst $dir.Name
+
+    Write-Info "Installing overlay port: $($dir.Name) → $dstPath"
+    try 
+	{
+        if (Test-Path $dstPath) 
+		{
+            Remove-Item -Path $dstPath -Recurse -Force
+        }
+        Copy-Item -Path $srcPath -Destination $dstPath -Recurse -Force
+        Write-Info "Overlay port installed: $($dir.Name)"
+    }
+    catch 
+	{
+        Write-Error "Failed to install overlay port $($dir.Name): $_"
+        Abort-WithError
+    }
+}
+
 Write-Info "STEP 6: OK"
 
 # FINALIZATION
