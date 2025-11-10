@@ -37,7 +37,8 @@
     }
   ],
 
-  "buildPresets": [
+  "buildPresets": 
+  [
     {
       "name": "usr-dp-ucrt64-deb",
       "configurePreset": "usr-dp-ucrt64-deb"

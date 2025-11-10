@@ -422,7 +422,11 @@ pacman -S --noconfirm --needed \
   mingw-w64-ucrt-x86_64-doxygen \
   mingw-w64-ucrt-x86_64-curl \
   mingw-w64-ucrt-x86_64-ripgrep \
-  mingw-w64-ucrt-x86_64-diffutils
+  mingw-w64-ucrt-x86_64-diffutils \
+  mingw-w64-ucrt-x86_64-ccache \
+  mingw-w64-ucrt-x86_64-lld \
+  mingw-w64-ucrt-x86_64-7zip \ 
+  mingw-w64-ucrt-x86_64-ntldd
 "@
 
 $proc = Start-Process -FilePath $bashPath `
@@ -432,25 +436,6 @@ if ($proc.ExitCode -ne 0) {
     Write-Error "Installation failed (exit code $($proc.ExitCode))."
     Abort-WithError
 }
-
-# Verify installations
-Write-Info "Verifying documentation and utility toolchain versions..."
-
-$tempVerifyDocScript = Join-Path $env:TEMP "verify_doc_tools.sh"
-Set-Content -Path $tempVerifyDocScript -Encoding ASCII -Value @'
-echo "------------------------------------------------------------"
-echo "Verifying installations..."
-echo "------------------------------------------------------------"
-echo "Doxygen  - $(/ucrt64/bin/doxygen --version)"
-echo "curl     - $(/ucrt64/bin/curl --version | head -n1)"
-'@
-
-$verifyDocUnix = $tempVerifyDocScript -replace '\\', '/' -replace '^([A-Za-z]):', '/$1'
-$docOutput = & "$bashPath" -l -c "bash $verifyDocUnix"
-
-foreach ($line in $docOutput) { Write-Info $line }
-
-Remove-Item $tempVerifyDocScript -Force
 
 Write-Info "STEP 7: OK"
 

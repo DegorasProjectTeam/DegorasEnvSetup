@@ -1,0 +1,590 @@
+{
+  "7zip:x64-mingw-dynamic-degoras": {
+    "package_name": "7zip",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "25.1",
+    "port_version": 1,
+    "features": [],
+    "desc": [
+      "Library for archiving file with a high compression ratio."
+    ]
+  },
+  "brotli:x64-mingw-dynamic-degoras": {
+    "package_name": "brotli",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "1.2.0",
+    "port_version": 0,
+    "features": [],
+    "desc": [
+      "a generic-purpose lossless compression algorithm that compresses data using a combination of a modern variant of the LZ77 algorithm, Huffman coding and 2nd order context modeling."
+    ]
+  },
+  "bzip2:x64-mingw-dynamic-degoras": {
+    "package_name": "bzip2",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "1.0.8",
+    "port_version": 6,
+    "features": [
+      "tool"
+    ],
+    "desc": [
+      "bzip2 is a freely available, patent free, high-quality data compressor. It typically compresses files to within 10% to 15% of the best available techniques (the PPM family of statistical compressors), whilst being around twice as fast at compression and six times faster at decompression."
+    ]
+  },
+  "cppzmq:x64-mingw-dynamic-degoras": {
+    "package_name": "cppzmq",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "4.11.0",
+    "port_version": 0,
+    "features": [],
+    "desc": [
+      "Header-only C++ binding for ZeroMQ"
+    ]
+  },
+  "curl:x64-mingw-dynamic-degoras": {
+    "package_name": "curl",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "8.16.0",
+    "port_version": 0,
+    "features": [
+      "non-http",
+      "ssl",
+      "sspi"
+    ],
+    "desc": [
+      "A library for transferring data with URLs"
+    ]
+  },
+  "dbus:x64-mingw-dynamic-degoras": {
+    "package_name": "dbus",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "1.16.2",
+    "port_version": 2,
+    "features": [],
+    "desc": [
+      "D-Bus specification and reference implementation, including libdbus and dbus-daemon"
+    ]
+  },
+  "double-conversion:x64-mingw-dynamic-degoras": {
+    "package_name": "double-conversion",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "3.3.1",
+    "port_version": 0,
+    "features": [],
+    "desc": [
+      "Efficient binary-decimal and decimal-binary conversion routines for IEEE doubles."
+    ]
+  },
+  "egl-registry:x64-mingw-dynamic-degoras": {
+    "package_name": "egl-registry",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "2024-01-25",
+    "port_version": 0,
+    "features": [],
+    "desc": [
+      "EGL API and Extension Registry"
+    ]
+  },
+  "expat:x64-mingw-dynamic-degoras": {
+    "package_name": "expat",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "2.7.3",
+    "port_version": 0,
+    "features": [],
+    "desc": [
+      "XML parser library written in C"
+    ]
+  },
+  "fmt:x64-mingw-dynamic-degoras": {
+    "package_name": "fmt",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "12.1.0",
+    "port_version": 0,
+    "features": [],
+    "desc": [
+      "{fmt} is an open-source formatting library providing a fast and safe alternative to C stdio and C++ iostreams."
+    ]
+  },
+  "freetype:x64-mingw-dynamic-degoras": {
+    "package_name": "freetype",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "2.13.3",
+    "port_version": 0,
+    "features": [
+      "brotli",
+      "bzip2",
+      "png",
+      "zlib"
+    ],
+    "desc": [
+      "A library to render fonts."
+    ]
+  },
+  "harfbuzz:x64-mingw-dynamic-degoras": {
+    "package_name": "harfbuzz",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "11.3.3",
+    "port_version": 0,
+    "features": [
+      "freetype"
+    ],
+    "desc": [
+      "HarfBuzz OpenType text shaping engine"
+    ]
+  },
+  "icu:x64-mingw-dynamic-degoras": {
+    "package_name": "icu",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "74.2",
+    "port_version": 6,
+    "features": [
+      "tools"
+    ],
+    "desc": [
+      "Mature and widely used Unicode and localization library."
+    ]
+  },
+  "libbson:x64-mingw-dynamic-degoras": {
+    "package_name": "libbson",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "1.30.6",
+    "port_version": 0,
+    "features": [],
+    "desc": [
+      "libbson is a library providing useful routines related to building, parsing, and iterating BSON documents."
+    ]
+  },
+  "libbson:x64-mingw-static-degoras": {
+    "package_name": "libbson",
+    "triplet": "x64-mingw-static-degoras",
+    "version": "1.30.6",
+    "port_version": 0,
+    "features": [],
+    "desc": [
+      "libbson is a library providing useful routines related to building, parsing, and iterating BSON documents."
+    ]
+  },
+  "libjpeg-turbo:x64-mingw-dynamic-degoras": {
+    "package_name": "libjpeg-turbo",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "3.1.2",
+    "port_version": 0,
+    "features": [],
+    "desc": [
+      "libjpeg-turbo is a JPEG image codec that uses SIMD instructions (MMX, SSE2, NEON, AltiVec) to accelerate baseline JPEG compression and decompression on x86, x86-64, ARM, and PowerPC systems."
+    ]
+  },
+  "libpng:x64-mingw-dynamic-degoras": {
+    "package_name": "libpng",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "1.6.50",
+    "port_version": 0,
+    "features": [],
+    "desc": [
+      "libpng is a library implementing an interface for reading and writing PNG (Portable Network Graphics) format files"
+    ]
+  },
+  "libpq:x64-mingw-dynamic-degoras": {
+    "package_name": "libpq",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "16.9",
+    "port_version": 1,
+    "features": [
+      "lz4",
+      "openssl",
+      "zlib"
+    ],
+    "desc": [
+      "The official database access API of postgresql"
+    ]
+  },
+  "lz4:x64-mingw-dynamic-degoras": {
+    "package_name": "lz4",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "1.10.0",
+    "port_version": 0,
+    "features": [],
+    "desc": [
+      "Lossless compression algorithm, providing compression speed at 400 MB/s per core."
+    ]
+  },
+  "mongo-c-driver:x64-mingw-dynamic-degoras": {
+    "package_name": "mongo-c-driver",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "1.30.6",
+    "port_version": 0,
+    "features": [
+      "openssl"
+    ],
+    "desc": [
+      "Client library written in C for MongoDB."
+    ]
+  },
+  "mongo-cxx-driver:x64-mingw-dynamic-degoras": {
+    "package_name": "mongo-cxx-driver",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "4.0.0",
+    "port_version": 0,
+    "features": [],
+    "desc": [
+      "C++ Driver for MongoDB (Degoras static variant)"
+    ]
+  },
+  "nlohmann-json:x64-mingw-dynamic-degoras": {
+    "package_name": "nlohmann-json",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "3.12.0",
+    "port_version": 1,
+    "features": [],
+    "desc": [
+      "JSON for Modern C++"
+    ]
+  },
+  "opengl-registry:x64-mingw-dynamic-degoras": {
+    "package_name": "opengl-registry",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "2024-02-10",
+    "port_version": 1,
+    "features": [],
+    "desc": [
+      "OpenGL, OpenGL ES, and OpenGL ES-SC API and Extension Registry"
+    ]
+  },
+  "opengl:x64-mingw-dynamic-degoras": {
+    "package_name": "opengl",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "2022-12-04",
+    "port_version": 3,
+    "features": [],
+    "desc": [
+      "Open Graphics Library (OpenGL)[3][4][5] is a cross-language, cross-platform application programming interface (API) for rendering 2D and 3D vector graphics."
+    ]
+  },
+  "openssl:x64-mingw-dynamic-degoras": {
+    "package_name": "openssl",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "3.6.0",
+    "port_version": 2,
+    "features": [],
+    "desc": [
+      "OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols. It is also a general-purpose cryptography library."
+    ]
+  },
+  "pcre2:x64-mingw-dynamic-degoras": {
+    "package_name": "pcre2",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "10.47",
+    "port_version": 0,
+    "features": [
+      "jit",
+      "platform-default-features"
+    ],
+    "desc": [
+      "Regular Expression pattern matching using the same syntax and semantics as Perl 5."
+    ]
+  },
+  "pkgconf:x64-mingw-dynamic-degoras": {
+    "package_name": "pkgconf",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "2.5.1",
+    "port_version": 4,
+    "features": [],
+    "desc": [
+      "pkgconf is a program which helps to configure compiler and linker flags for development libraries. It is similar to pkg-config from freedesktop.org."
+    ]
+  },
+  "qt-advanced-docking-system:x64-mingw-dynamic-degoras": {
+    "package_name": "qt-advanced-docking-system",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "4.4.1",
+    "port_version": 0,
+    "features": [],
+    "desc": [
+      "Create customizable layouts using an advanced window docking system similar to what is found in many popular IDEs such as Visual Studio"
+    ]
+  },
+  "qt5compat:x64-mingw-dynamic-degoras": {
+    "package_name": "qt5compat",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "6.9.1",
+    "port_version": 0,
+    "features": [
+      "big-codecs",
+      "codecs",
+      "qml",
+      "textcodec"
+    ],
+    "desc": [
+      "The Qt 5 Core Compat module contains the Qt 5 Core APIs that were removed in Qt 6. The module facilitates the transition to Qt 6."
+    ]
+  },
+  "qtbase:x64-mingw-dynamic-degoras": {
+    "package_name": "qtbase",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "6.9.1",
+    "port_version": 1,
+    "features": [
+      "brotli",
+      "concurrent",
+      "dbus",
+      "dnslookup",
+      "doubleconversion",
+      "freetype",
+      "gui",
+      "harfbuzz",
+      "icu",
+      "jpeg",
+      "network",
+      "opengl",
+      "openssl",
+      "pcre2",
+      "png",
+      "sql-psql",
+      "sql-sqlite",
+      "sql",
+      "testlib",
+      "thread",
+      "widgets",
+      "zstd"
+    ],
+    "desc": [
+      "Qt Base (Core, Gui, Widgets, Network, ...)"
+    ]
+  },
+  "qtcharts:x64-mingw-dynamic-degoras": {
+    "package_name": "qtcharts",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "6.9.1",
+    "port_version": 0,
+    "features": [],
+    "desc": [
+      "The Qt Charts module provides a set of easy-to-use chart components. It uses the Qt Graphics View Framework to integrate charts with modern user interfaces."
+    ]
+  },
+  "qtdeclarative:x64-mingw-dynamic-degoras": {
+    "package_name": "qtdeclarative",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "6.9.1",
+    "port_version": 0,
+    "features": [],
+    "desc": [
+      "Qt Declarative (Quick 2)"
+    ]
+  },
+  "qtlanguageserver:x64-mingw-dynamic-degoras": {
+    "package_name": "qtlanguageserver",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "6.9.1",
+    "port_version": 0,
+    "features": [],
+    "desc": [
+      "An implementation of the Language Server Protocol."
+    ]
+  },
+  "qtmultimedia:x64-mingw-dynamic-degoras": {
+    "package_name": "qtmultimedia",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "6.9.1",
+    "port_version": 0,
+    "features": [
+      "widgets"
+    ],
+    "desc": [
+      "Qt Multimedia is an add-on module that provides a rich set of QML types and C++ classes to handle multimedia content."
+    ]
+  },
+  "qtnetworkauth:x64-mingw-dynamic-degoras": {
+    "package_name": "qtnetworkauth",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "6.9.1",
+    "port_version": 0,
+    "features": [],
+    "desc": [
+      "Qt Network Authorization provides a set of APIs that enable Qt applications to obtain limited access to online accounts and HTTP services without exposing users' passwords."
+    ]
+  },
+  "qtshadertools:x64-mingw-dynamic-degoras": {
+    "package_name": "qtshadertools",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "6.9.1",
+    "port_version": 0,
+    "features": [],
+    "desc": [
+      "The Qt Shader Tools module is designed to provide a set of tools and utilities to work with graphics shaders."
+    ]
+  },
+  "qtsvg:x64-mingw-dynamic-degoras": {
+    "package_name": "qtsvg",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "6.9.1",
+    "port_version": 0,
+    "features": [],
+    "desc": [
+      "Qt SVG provides classes for rendering and displaying SVG drawings in widgets and on other paint devices."
+    ]
+  },
+  "qwt:x64-mingw-dynamic-degoras": {
+    "package_name": "qwt",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "6.3.0",
+    "port_version": 0,
+    "features": [],
+    "desc": [
+      "Widgets library for technical applications"
+    ]
+  },
+  "snappy:x64-mingw-dynamic-degoras": {
+    "package_name": "snappy",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "1.2.2",
+    "port_version": 1,
+    "features": [],
+    "desc": [
+      "A fast compressor/decompressor."
+    ]
+  },
+  "spdlog:x64-mingw-dynamic-degoras": {
+    "package_name": "spdlog",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "1.16.0",
+    "port_version": 0,
+    "features": [],
+    "desc": [
+      "Very fast, header-only/compiled, C++ logging library."
+    ]
+  },
+  "sqlite3:x64-mingw-dynamic-degoras": {
+    "package_name": "sqlite3",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "3.50.4",
+    "port_version": 0,
+    "features": [
+      "json1"
+    ],
+    "desc": [
+      "SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine."
+    ]
+  },
+  "utf8proc:x64-mingw-dynamic-degoras": {
+    "package_name": "utf8proc",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "2.11.0",
+    "port_version": 0,
+    "features": [],
+    "desc": [
+      "Clean C library for processing UTF-8 Unicode data."
+    ]
+  },
+  "utf8proc:x64-mingw-static-degoras": {
+    "package_name": "utf8proc",
+    "triplet": "x64-mingw-static-degoras",
+    "version": "2.11.0",
+    "port_version": 0,
+    "features": [],
+    "desc": [
+      "Clean C library for processing UTF-8 Unicode data."
+    ]
+  },
+  "vcpkg-cmake-config:x64-mingw-dynamic-degoras": {
+    "package_name": "vcpkg-cmake-config",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "2024-05-23",
+    "port_version": 0,
+    "features": [],
+    "desc": []
+  },
+  "vcpkg-cmake-get-vars:x64-mingw-dynamic-degoras": {
+    "package_name": "vcpkg-cmake-get-vars",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "2025-05-29",
+    "port_version": 0,
+    "features": [],
+    "desc": []
+  },
+  "vcpkg-cmake:x64-mingw-dynamic-degoras": {
+    "package_name": "vcpkg-cmake",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "2024-04-23",
+    "port_version": 0,
+    "features": [],
+    "desc": []
+  },
+  "vcpkg-make:x64-mingw-dynamic-degoras": {
+    "package_name": "vcpkg-make",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "2025-10-26",
+    "port_version": 0,
+    "features": [],
+    "desc": []
+  },
+  "vcpkg-qmake:x64-mingw-dynamic-degoras": {
+    "package_name": "vcpkg-qmake",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "2025-05-19",
+    "port_version": 0,
+    "features": [],
+    "desc": []
+  },
+  "vcpkg-tool-meson:x64-mingw-dynamic-degoras": {
+    "package_name": "vcpkg-tool-meson",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "1.9.0",
+    "port_version": 3,
+    "features": [],
+    "desc": [
+      "Meson build system"
+    ]
+  },
+  "xerces-c:x64-mingw-dynamic-degoras": {
+    "package_name": "xerces-c",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "3.3.0",
+    "port_version": 0,
+    "features": [
+      "network"
+    ],
+    "desc": [
+      "Xerces-C++ is a XML parser, for parsing, generating, manipulating, and validating XML documents using the DOM, SAX, and SAX2 APIs."
+    ]
+  },
+  "zeromq:x64-mingw-dynamic-degoras": {
+    "package_name": "zeromq",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "4.3.5",
+    "port_version": 2,
+    "features": [],
+    "desc": [
+      "The ZeroMQ lightweight messaging kernel is a library which extends the standard socket interfaces with features traditionally provided by specialised messaging middleware products"
+    ]
+  },
+  "zlib:x64-mingw-dynamic-degoras": {
+    "package_name": "zlib",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "1.3.1",
+    "port_version": 0,
+    "features": [],
+    "desc": [
+      "A compression library"
+    ]
+  },
+  "zlib:x64-mingw-static-degoras": {
+    "package_name": "zlib",
+    "triplet": "x64-mingw-static-degoras",
+    "version": "1.3.1",
+    "port_version": 0,
+    "features": [],
+    "desc": [
+      "A compression library"
+    ]
+  },
+  "zstd:x64-mingw-dynamic-degoras": {
+    "package_name": "zstd",
+    "triplet": "x64-mingw-dynamic-degoras",
+    "version": "1.5.7",
+    "port_version": 0,
+    "features": [],
+    "desc": [
+      "Zstandard - Fast real-time compression algorithm"
+    ]
+  }
+}

@@ -249,6 +249,8 @@ Write-Info "STEP 3: Install required packages with triplet 'x64-mingw-dynamic-de
 # FULL PACKAGES FOR DEGORAS (TODO)
 # protobuf ?? FOR FUTURE?
 # grpc     ?? FOR FUTURE?
+# alpaca ?? FOR FUTURE?
+# flatbuffers ?? FOR FUTURE?
 
 $packages = 
 @(

@@ -2,7 +2,7 @@
   "name": "mongo-cxx-driver",
   "version": "4.0.0",
   "port-version": 0,
-  "description": "C++ Driver for MongoDB (Degoras static variant)",
+  "description": "[DEGORAS - Overlay for static build] C++ Driver for MongoDB",
   "homepage": "https://github.com/mongodb/mongo-cxx-driver",
   "dependencies": 
   [
