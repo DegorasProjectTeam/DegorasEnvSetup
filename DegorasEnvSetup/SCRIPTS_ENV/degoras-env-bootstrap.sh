@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # ====================================================================
-# DEGORAS-PROJECT ENVIRONMENT BOOTSTRAP FOR MSYS2/UCRT64
+# DEGORAS ENVIRONMENT BOOTSTRAP FOR MSYS2/UCRT64
 # --------------------------------------------------------------------
 # Author: Angel Vera Herrera
 # Updated: 07/11/2025
@@ -10,7 +10,7 @@
 # © Degoras Project Team
 # ====================================================================
 
-echo "[INFO] DEGORAS-PROJECT ENVIRONMENT BOOTSTRAP FOR MSYS2/UCRT64"
+echo "[INFO] DEGORAS ENVIRONMENT BOOTSTRAP FOR MSYS2/UCRT64"
 
 # Resolve script directory and env file
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
@@ -27,13 +27,13 @@ echo "[INFO] Loading UCRT64 environment..."
 source shell ucrt64
 
 # Restore custom title
-printf "\033]0;DEGORAS-PROJECT ENV\007"
+printf "\033]0;DEGORAS ENV\007"
 
 # Prompt and colors
-PS1="\[\033]0;DEGORAS-PROJECT ENV\007\]\[\033[1;32m\][DEGORAS-ENV]\$\[\033[0m\] \[\033[1;35m\]\w\[\033[0m\]\n\$ "
+PS1="\[\033]0;DEGORAS ENV\007\]\[\033[1;32m\][DEGORAS-ENV]\$\[\033[0m\] \[\033[1;35m\]\w\[\033[0m\]\n\$ "
 export PS1
 
-echo "[INFO] Loading DEGORAS-PROJECT environment from: $ENV_FILE"
+echo "[INFO] Loading DEGORAS environment from: $ENV_FILE"
 
 # Load key=value pairs from env file, converting Windows paths
 while IFS= read -r line || [[ -n "$line" ]]; do

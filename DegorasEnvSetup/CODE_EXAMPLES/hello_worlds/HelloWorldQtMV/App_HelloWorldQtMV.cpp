@@ -37,18 +37,22 @@ int main(int argc, char** argv)
 	// Move to the model thread.
 	model->moveToThread(&model_thread);
 
-	// Connections. UI <-signal- model
+    // Connections UI <- Model
     QObject::connect(model, &Model::var1TextChanged, &view, &View::setVar1Text);
     QObject::connect(model, &Model::var2TextChanged, &view, &View::setVar2Text);
     QObject::connect(model, &Model::statusTextChanged, &view, &View::setStatusText);
 	
-	// Connections. UI ->slot-> model  (Auto/Queued)
+	// Connections UI -> Model (Auto/Queued)
     QObject::connect(&view, &View::shortActionButtonClicked, model, &Model::shortActionReq);
     QObject::connect(&view, &View::longActionButtonClicked, model, &Model::longActionReq);
 
 	// Clean.
     QObject::connect(&model_thread, &QThread::finished, model, &QObject::deleteLater);
-    QObject::connect(&app, &QCoreApplication::aboutToQuit, &model_thread, &QThread::quit);
+	
+	// Exit
+	QObject::connect(&app, &QGuiApplication::lastWindowClosed, model, &Model::requestStop, Qt::DirectConnection);
+    QObject::connect(&app, &QGuiApplication::lastWindowClosed, &model_thread, &QThread::requestInterruption, Qt::DirectConnection);
+    QObject::connect(&app, &QCoreApplication::aboutToQuit, &model_thread, &QThread::quit, Qt::DirectConnection);
 	
 	// Start the thread.
     model_thread.start();
@@ -58,7 +62,6 @@ int main(int argc, char** argv)
     const int ret = app.exec();
 	
     // Thread close.
-    model_thread.quit();
     model_thread.wait();
 
 	// Return.

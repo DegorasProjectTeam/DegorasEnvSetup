@@ -46,6 +46,6 @@ echo [INFO] Bootstrap script: %BOOTSTRAP_SCRIPT%
 echo.
 
 REM Launch MSYS2 Bash in a new window with custom title
-start "DEGORAS-PROJECT ENVIRONMENT" "%MSYS2_BASH%" --login -i -c "source \"$(cygpath -u \"%BOOTSTRAP_SCRIPT%\")\" && exec bash"
+start "DEGORAS ENV" "%MSYS2_BASH%" --login -i -c "source \"$(cygpath -u \"%BOOTSTRAP_SCRIPT%\")\" && exec bash"
 
 exit /b 0
