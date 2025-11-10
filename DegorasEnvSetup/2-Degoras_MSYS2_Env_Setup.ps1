@@ -493,8 +493,12 @@ $stream = [System.IO.StreamWriter]::new($envFilePath, $true, $utf8NoBom)
 foreach ($line in $envLines) {$stream.WriteLine($line)}
 $stream.Close()
  
+$volume = Get-Volume -DriveLetter $driveLetterOnly -ErrorAction SilentlyContinue
+$volumeLabel = if ($volume -and $volume.FileSystemLabel) { $volume.FileSystemLabel } else { $driveLetterOnly }
+
 # Shortcut to MSYS2 MinGW64 shell
-$shortcutPath = [System.IO.Path]::Combine([Environment]::GetFolderPath("Desktop"), "MSYS2 ucrt64.lnk")
+$shortcutName = "${volumeLabel} UCRT64.lnk"
+$shortcutPath = [System.IO.Path]::Combine([Environment]::GetFolderPath("Desktop"), $shortcutName)
 $targetPath = Join-Path $msys2Path "ucrt64.exe"
 
 Write-Info "Creating shortcuts"
@@ -517,7 +521,7 @@ $shortcut.Save()
 Write-Info "Shortcut created on desktop: MSYS2 UCRT64"
 
 # Shortcut 2: DEGORAS Environment Launcher (.bat)
-$shortcutPath = [System.IO.Path]::Combine([Environment]::GetFolderPath("Desktop"), "DEGORAS-PROJECT Environment.lnk")
+$shortcutPath = [System.IO.Path]::Combine([Environment]::GetFolderPath("Desktop"), "${volumeLabel} Environment.lnk")
 $targetPath = Join-Path "$devDrive" "degoras-env-launcher.bat"
 
 if (Test-Path $shortcutPath) 
