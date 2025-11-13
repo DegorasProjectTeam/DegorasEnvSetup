@@ -418,14 +418,13 @@ Write-Info "STEP 7: Install other utilities."
 
 $installDocCmd = @"
 set -e
-pacman -S --noconfirm --needed \
+pacman -S --noconfirm --needed --disable-download-timeout \
   mingw-w64-ucrt-x86_64-doxygen \
   mingw-w64-ucrt-x86_64-curl \
   mingw-w64-ucrt-x86_64-ripgrep \
   mingw-w64-ucrt-x86_64-diffutils \
-  mingw-w64-ucrt-x86_64-ccache \
   mingw-w64-ucrt-x86_64-lld \
-  mingw-w64-ucrt-x86_64-7zip \ 
+  mingw-w64-ucrt-x86_64-7zip \
   mingw-w64-ucrt-x86_64-ntldd
 "@
 

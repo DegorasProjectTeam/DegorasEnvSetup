@@ -141,6 +141,49 @@ if (-not (Test-IsAdministrator))
     Abort-WithError
 }
 
+# Check OS compatibility (Windows 11 required).
+Write-Info "Checking OS compatibility..."
+try {
+    $osInfo = Get-ComputerInfo | Select-Object WindowsProductName, WindowsVersion, OsBuildNumber
+    Write-Info "Detected OS: $($osInfo.WindowsProductName) | Version: $($osInfo.WindowsVersion) | Build: $($osInfo.OsBuildNumber)"
+
+    if ($osInfo.WindowsProductName -notmatch "Windows 11") {
+        Write-Error "This feature requires Windows 11. Current OS detected: $($osInfo.WindowsProductName)"
+        Abort-WithError
+    }
+
+    if ([int]$osInfo.OsBuildNumber -lt 22000) 
+    {
+        Write-Error "Windows 11 build too old. Build 22000 or newer required."
+        Abort-WithError
+    }
+}
+catch {
+    Write-Error "Could not determine OS version."
+    Abort-WithError
+}
+
+# Check Hyper-V PowerShell availability (required for VHD cmdlets).
+Write-Info "Checking Hyper-V PowerShell module..."
+try 
+{
+    $hvCmd = Get-Command New-VHD -ErrorAction SilentlyContinue
+    if (-not $hvCmd) 
+    {
+        Write-Error "Hyper-V PowerShell module not found. Cmdlets like New-VHD are unavailable."
+        Write-Error "Please enable Hyper-V Management Tools:"
+        Write-Error "Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-Management-PowerShell -All"
+        Abort-WithError
+    }
+
+    Write-Info "Hyper-V PowerShell module available."
+}
+catch 
+{
+    Write-Error "Error checking Hyper-V module."
+    Abort-WithError
+}
+
 # Check drive letter format.
 Write-Info "Checking letter format..."
 if ($driveLetter -notmatch '^[A-Z]$') 
