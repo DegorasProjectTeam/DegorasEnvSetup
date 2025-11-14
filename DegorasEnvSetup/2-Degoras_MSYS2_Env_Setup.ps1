@@ -2,8 +2,8 @@
 # DEGORAS-PROJECT MSYS2 ENVIRONMENT SETUP SCRIPT
 # --------------------------------------------------------------------
 # Author: Angel Vera Herrera
-# Updated: 08/11/2025
-# Version: 0.9.0
+# Updated: 14/11/2025
+# Version: 0.9.1
 # --------------------------------------------------------------------
 # © Degoras Project Team
 # ====================================================================
@@ -13,14 +13,15 @@
 
 param 
 (
-    [string]$devDrive   = "T",
+    [string]$devDrive   = "E",
     [string]$msys2Url   = "https://repo.msys2.org/distrib/msys2-x86_64-latest.sfx.exe",
     [string]$ninjaUrl   = "https://repo.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-ninja-1.12.1-1-any.pkg.tar.zst",
     [string]$gdbUrl     = "https://repo.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-gdb-16.2-1-any.pkg.tar.zst",
     [string]$gccUrl     = "https://repo.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-gcc-15.2.0-8-any.pkg.tar.zst",
     [string]$gccLibsUrl = "https://repo.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-gcc-libs-15.2.0-8-any.pkg.tar.zst",
     [string]$makeUrl    = "https://repo.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-make-4.4.1-2-any.pkg.tar.zst",
-    [string]$cmakeUrl   = "https://repo.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-cmake-4.1.2-1-any.pkg.tar.zst"
+    [string]$cmakeUrl   = "https://repo.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-cmake-4.1.2-1-any.pkg.tar.zst",
+	[string]$proxyUrl   = ""
   )
 
 # FUNCTIONS
@@ -91,6 +92,81 @@ function Get-FileNameFromUrl($url)
 function Convert-ToMSYSPath($winPath) 
 {
     return $winPath -replace '\\', '/' -replace '^([A-Za-z]):', '/$1'
+}
+
+function Configure-MSYS2Proxy
+{
+    param(
+        [Parameter(Mandatory=$true)][string]$Msys2Root,
+        [Parameter(Mandatory=$true)][string]$Proxy
+    )
+
+    if ([string]::IsNullOrWhiteSpace($Proxy))
+    {
+        Write-Info "No proxy configured for MSYS2 (proxyUrl is empty)."
+        return
+    }
+
+    Write-Info "Configuring MSYS2 proxy environment..."
+
+    # 1) Proxy para shells / pacman vía profile.d
+    $profileDir = Join-Path $Msys2Root "etc\profile.d"
+    if (-not (Test-Path $profileDir))
+    {
+        New-Item -ItemType Directory -Path $profileDir | Out-Null
+    }
+
+    $proxyScriptPath = Join-Path $profileDir "degoras-proxy.sh"
+
+    $proxyLines = @(
+        "# Degoras Project - proxy configuration"
+        "export http_proxy=""$Proxy"""
+        "export https_proxy=""$Proxy"""
+        "export HTTP_PROXY=""$Proxy"""
+        "export HTTPS_PROXY=""$Proxy"""
+        # Si quieres también:
+        # "export no_proxy=""localhost,127.0.0.1"""
+    )
+
+    Set-Content -Path $proxyScriptPath -Encoding ASCII -Value $proxyLines
+    Write-Info "MSYS2 proxy env script created at: $proxyScriptPath"
+	
+	 # 2) Proxy para GnuPG/dirmngr (clave imprescindible para pacman-key)
+    Write-Info "Configuring dirmngr proxy..."
+
+    $gnupgDir = Join-Path $Msys2Root "etc\pacman.d\gnupg"
+    if (-not (Test-Path $gnupgDir))
+    {
+        New-Item -ItemType Directory -Path $gnupgDir | Out-Null
+    }
+
+    $dirmngrConf = Join-Path $gnupgDir "dirmngr.conf"
+
+    $dirmngrLines = @(
+        "honor-http-proxy"
+        "http-proxy $Proxy"
+    )
+
+    Set-Content -Path $dirmngrConf -Encoding ASCII -Value $dirmngrLines
+    Write-Info "dirmngr.conf created at: $dirmngrConf"
+
+    # Aplicar permisos seguros (600)
+    try {
+        & "$Msys2Root\usr\bin\bash.exe" -l -c "chmod 600 /etc/pacman.d/gnupg/dirmngr.conf"
+        Write-Info "Permissions set to 600 for dirmngr.conf"
+    }
+    catch {
+        Write-Error "Failed to chmod dirmngr.conf inside MSYS2"
+    }
+
+    # Reiniciar dirmngr para forzar uso del nuevo proxy
+    try {
+        & "$Msys2Root\usr\bin\bash.exe" -l -c "gpgconf --kill dirmngr"
+        Write-Info "dirmngr restarted."
+    }
+    catch {
+        Write-Error "Failed to restart dirmngr"
+    }
 }
 
 # INITIAL PREPARATION
@@ -266,6 +342,8 @@ catch
 	Write-Error "Extraction failed."
 	Abort-WithError
 }
+
+Configure-MSYS2Proxy -Msys2Root $msys2Path -Proxy $proxyUrl
 
 if (-Not (Test-Path $trustDbPath)) 
 {
