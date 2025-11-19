@@ -13,8 +13,8 @@
 
 param
 (
-    [string]$devDrive = "T",
-	[string]$msys64BinPath = "T:\msys64\usr\bin"
+    [string]$devDrive = "E",
+	[string]$msys64BinPath = "E:\msys64\usr\bin"
 )
 
 # FUNCTIONS
@@ -110,7 +110,7 @@ $globalLogFileUnix = $globalLogFile -replace '\\', '/' -replace '^([A-Za-z]):', 
 # Clear and initial logs.
 Clear-Host
 $originalTitle = $host.UI.RawUI.WindowTitle
-$host.UI.RawUI.WindowTitle = "DEGORAS VCPKG QT6 Setup"
+$host.UI.RawUI.WindowTitle = "DEGORAS-PROJECT VCPKG QT6 Setup"
 Write-NoFormat "================================================================="
 Write-NoFormat "  DEGORAS-PROJECT VCPKG QT6 SETUP SCRIPT"
 Write-NoFormat "-----------------------------------------------------------------"
@@ -182,10 +182,7 @@ $vcpkgCache = "${devDrive}\packages\vcpkg"
 $installRootUnix = $installRoot -replace '\\', '/' -replace '^([A-Za-z]):', '/$1'
 $vcpkgCacheUnix = $vcpkgCache -replace '\\', '/' -replace '^([A-Za-z]):', '/$1'
 
-# FULL PACKAGES FOR DEGORAS (TODO)
-#  -> qml I think...
-# qwt
-# qt-advanced-docking-system
+# FULL PACKAGES FOR DEGORAS (TODO MORE QT6 DEPS?)
 
 $packages = 
 @(
@@ -224,7 +221,6 @@ set -a
 source ${devDriveUnix}/degoras-env-variables.env
 set +a
 cd $installRootUnix
-unset http_proxy https_proxy HTTP_PROXY HTTPS_PROXY
 ./vcpkg install $pkg
 "@
 

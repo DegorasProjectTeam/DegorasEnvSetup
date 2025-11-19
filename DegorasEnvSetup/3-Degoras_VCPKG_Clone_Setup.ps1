@@ -20,8 +20,8 @@ param
 (
 	[string]$vcpkgGitUrl = "https://github.com/microsoft/vcpkg.git",
 	[string]$vcpkgBaseline = "446682c6c338d68ed986972ffc3529f7d63c1555",
-    [string]$devDrive = "T",
-	[string]$msys64BinPath = "T:\msys64\usr\bin"
+    [string]$devDrive = "E",
+	[string]$msys64BinPath = "E:\msys64\usr\bin"
 )
 
 # FUNCTIONS
@@ -118,7 +118,7 @@ $globalLogFileUnix = $globalLogFile -replace '\\', '/' -replace '^([A-Za-z]):', 
 # Clear and initial logs.
 Clear-Host
 $originalTitle = $host.UI.RawUI.WindowTitle
-$host.UI.RawUI.WindowTitle = "DEGORAS VCPKG Clone Setup"
+$host.UI.RawUI.WindowTitle = "DEGORAS-PROJECT VCPKG Clone Setup"
 Write-NoFormat "================================================================="
 Write-NoFormat "  DEGORAS-PROJECT VCPKG CLONE SETUP SCRIPT"
 Write-NoFormat "-----------------------------------------------------------------"

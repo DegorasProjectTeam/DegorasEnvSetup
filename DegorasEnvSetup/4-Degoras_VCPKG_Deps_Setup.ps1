@@ -13,8 +13,8 @@
 
 param
 (
-    [string]$devDrive = "T",
-	[string]$msys64BinPath = "T:\msys64\usr\bin"
+    [string]$devDrive = "E",
+	[string]$msys64BinPath = "E:\msys64\usr\bin"
 )
 
 # FUNCTIONS
@@ -110,7 +110,7 @@ $globalLogFileUnix = $globalLogFile -replace '\\', '/' -replace '^([A-Za-z]):', 
 # Clear and initial logs.
 Clear-Host
 $originalTitle = $host.UI.RawUI.WindowTitle
-$host.UI.RawUI.WindowTitle = "DEGORAS VCPKG Deps Setup"
+$host.UI.RawUI.WindowTitle = "DEGORAS-PROJECT VCPKG Deps Setup"
 Write-NoFormat "================================================================="
 Write-NoFormat "  DEGORAS-PROJECT VCPKG DEPS SETUP SCRIPT"
 Write-NoFormat "-----------------------------------------------------------------"
@@ -192,7 +192,6 @@ set -a
 source ${devDriveUnix}/degoras-env-variables.env
 set +a
 cd $installRootUnix
-unset http_proxy https_proxy HTTP_PROXY HTTPS_PROXY
 ./vcpkg install fmt
 "@
 
@@ -297,7 +296,6 @@ set -a
 source ${devDriveUnix}/degoras-env-variables.env
 set +a
 cd $installRootUnix
-unset http_proxy https_proxy HTTP_PROXY HTTPS_PROXY
 ./vcpkg install $pkg
 "@
 

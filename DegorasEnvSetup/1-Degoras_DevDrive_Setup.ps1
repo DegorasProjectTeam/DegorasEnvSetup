@@ -119,7 +119,7 @@ $globalLogFileUnix = $globalLogFile -replace '\\', '/' -replace '^([A-Za-z]):', 
 
 Clear-Host
 $originalTitle = $host.UI.RawUI.WindowTitle
-$host.UI.RawUI.WindowTitle = "DEGORAS DevDrive Setup"
+$host.UI.RawUI.WindowTitle = "DEGORAS-PROJECT DevDrive Setup"
 
 Write-NoFormat "==========================================================="
 Write-NoFormat "  DEGORAS-PROJECT DEVELOPMENT DRIVE SETUP SCRIPT"

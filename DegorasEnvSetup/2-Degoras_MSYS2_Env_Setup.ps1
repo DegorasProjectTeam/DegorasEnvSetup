@@ -1,9 +1,9 @@
 # ====================================================================
-# DEGORAS-PROJECT MSYS2 ENVIRONMENT SETUP SCRIPT
+# DEGORAS-PROJECT MSYS2-UCRT64 ENVIRONMENT SETUP SCRIPT
 # --------------------------------------------------------------------
 # Author: Angel Vera Herrera
-# Updated: 14/11/2025
-# Version: 0.9.1
+# Updated: 19/11/2025
+# Version: 0.9.2
 # --------------------------------------------------------------------
 # © Degoras Project Team
 # ====================================================================
@@ -109,7 +109,7 @@ function Configure-MSYS2Proxy
 
     Write-Info "Configuring MSYS2 proxy environment..."
 
-    # 1) Proxy para shells / pacman vía profile.d
+    # 1) Proxy for shells / pacman using profile.d
     $profileDir = Join-Path $Msys2Root "etc\profile.d"
     if (-not (Test-Path $profileDir))
     {
@@ -124,14 +124,13 @@ function Configure-MSYS2Proxy
         "export https_proxy=""$Proxy"""
         "export HTTP_PROXY=""$Proxy"""
         "export HTTPS_PROXY=""$Proxy"""
-        # Si quieres también:
-        # "export no_proxy=""localhost,127.0.0.1"""
+        "export no_proxy=""localhost,127.0.0.1"""
     )
 
     Set-Content -Path $proxyScriptPath -Encoding ASCII -Value $proxyLines
     Write-Info "MSYS2 proxy env script created at: $proxyScriptPath"
 	
-	 # 2) Proxy para GnuPG/dirmngr (clave imprescindible para pacman-key)
+	# 2) Proxy for GnuPG/dirmngr (pacman-key)
     Write-Info "Configuring dirmngr proxy..."
 
     $gnupgDir = Join-Path $Msys2Root "etc\pacman.d\gnupg"
@@ -142,31 +141,10 @@ function Configure-MSYS2Proxy
 
     $dirmngrConf = Join-Path $gnupgDir "dirmngr.conf"
 
-    $dirmngrLines = @(
-        "honor-http-proxy"
-        "http-proxy $Proxy"
-    )
+    $dirmngrLines = @("http-proxy $Proxy")
 
     Set-Content -Path $dirmngrConf -Encoding ASCII -Value $dirmngrLines
     Write-Info "dirmngr.conf created at: $dirmngrConf"
-
-    # Aplicar permisos seguros (600)
-    try {
-        & "$Msys2Root\usr\bin\bash.exe" -l -c "chmod 600 /etc/pacman.d/gnupg/dirmngr.conf"
-        Write-Info "Permissions set to 600 for dirmngr.conf"
-    }
-    catch {
-        Write-Error "Failed to chmod dirmngr.conf inside MSYS2"
-    }
-
-    # Reiniciar dirmngr para forzar uso del nuevo proxy
-    try {
-        & "$Msys2Root\usr\bin\bash.exe" -l -c "gpgconf --kill dirmngr"
-        Write-Info "dirmngr restarted."
-    }
-    catch {
-        Write-Error "Failed to restart dirmngr"
-    }
 }
 
 # INITIAL PREPARATION
@@ -192,13 +170,13 @@ $globalLogFileUnix = $globalLogFile -replace '\\', '/' -replace '^([A-Za-z]):', 
 # Clear and initial logs.
 Clear-Host
 $originalTitle = $host.UI.RawUI.WindowTitle
-$host.UI.RawUI.WindowTitle = "DEGORAS MSYS2 Env Setup"
+$host.UI.RawUI.WindowTitle = "DEGORAS-PROJECT MSYS2-UCRT64 Env Setup"
 Write-NoFormat "================================================================="
-Write-NoFormat "  DEGORAS-PROJECT MSYS2 UCRT64 ENVIRONMENT SETUP SCRIPT"
+Write-NoFormat "  DEGORAS-PROJECT MSYS2-UCRT64 ENVIRONMENT SETUP SCRIPT"
 Write-NoFormat "-----------------------------------------------------------------"
 Write-NoFormat "  Author:  Angel Vera Herrera"
-Write-NoFormat "  Updated: 08/11/2025"
-Write-NoFormat "  Version: 0.9.0"
+Write-NoFormat "  Updated: 19/11/2025"
+Write-NoFormat "  Version: 0.9.2"
 Write-NoFormat "================================================================="
 Write-NoFormat "Parameters:"
 Write-NoFormat "-----------------------------------------------------------------"
@@ -212,6 +190,13 @@ Write-NoFormat "GDB URL          = $gdbUrl"
 Write-NoFormat "Make URL         = $makeUrl"
 Write-NoFormat "Current Path     = $scriptDir"
 Write-NoFormat "MSYS2 Packs Path = $localPkgDir"
+if ([string]::IsNullOrWhiteSpace($proxyUrl)) 
+{
+    Write-NoFormat "Proxy            = (none)"
+} else 
+{
+    Write-NoFormat "Proxy            = $proxyUrl"
+}
 Write-NoFormat "================================================================="
 
 # STEP 1: Initial checks and preparations.
@@ -307,7 +292,7 @@ foreach ($item in $downloads)
         Write-Info "Downloading: $($item.Url)"
         try 
 		{
-            Invoke-WebRequest -Uri $item.Url -OutFile $item.Path -UseBasicParsing
+            Invoke-WebRequest -Uri $item.Url -OutFile $item.Path -Proxy $proxyUrl
         } 
 		catch 
 		{
@@ -347,10 +332,41 @@ Configure-MSYS2Proxy -Msys2Root $msys2Path -Proxy $proxyUrl
 
 if (-Not (Test-Path $trustDbPath)) 
 {
-    Write-Info "Running MSYS2 bash for initial keyring setup..."
-    & "$bashPath" -l -c "true" 1>$null 2>$null
-    if ($LASTEXITCODE -ne 0) { Abort-WithError }
-    Write-Info "MSYS2 keyring initialized."
+ 
+	Write-Info "Running MSYS2 bash for initial setup..."
+
+	& "$bashPath" -l -c "true" 1>$null 2>$null
+	if ($LASTEXITCODE -ne 0) 
+	{
+		Write-Error "MSYS2 initial keyring setup failed."
+		Abort-WithError
+	}
+	
+	Write-Info "Initial setup done."
+	
+	if (-Not [string]::IsNullOrWhiteSpace($proxyUrl))
+    {
+        Write-Info "Initializing MSYS2 keyring explicitly (proxy mode)..."
+
+		$cmd = @"
+set -e
+gpgconf --kill dirmngr 2>/dev/null || true
+pacman-key --init
+pacman-key --populate
+"@
+
+		& "$bashPath" -l -c "$cmd" 1>$null 2>$null
+
+		if ($LASTEXITCODE -ne 0) 
+		{
+			Write-Error "MSYS2 keyring initialization failed (exit code: $LASTEXITCODE)"
+			Abort-WithError
+		}
+
+        Write-Info "MSYS2 keyring initialized via pacman-key (proxy mode)."
+    }
+	
+	Write-Info "MSYS2 initialized."
 } 
 else 
 {
@@ -358,24 +374,6 @@ else
 }
 
 Write-Info "STEP 3: OK"
-
-<# # STEP 3.5: Lock to UCRT64 only
-# --------------------------------------------------------------------
-
-Write-Info "STEP 3.5: Locking pacman repos to [msys] and [ucrt64] only."
-
-$pacmanConf = Join-Path $msys2Path "etc\pacman.conf"
-$confText = Get-Content -Raw -Path $pacmanConf
-
-# Comment out non-UCRT repo blocks entirely
-$pattern = '(?ms)^\[(mingw32|mingw64|clang32|clang64|clangarm64)\][\s\S]*?(?=^\[|\z)'
-$confText = [regex]::Replace($confText, $pattern, {
-    param($m)
-    ($m.Value -split "`r?`n") | ForEach-Object { if ($_ -match '^\s*$') { $_ } else { "# $_" } } | Out-String
-})
-
-Set-Content -Path $pacmanConf -Value $confText -Encoding ASCII
-Write-Info "Non-UCRT repo blocks disabled." #>
 
 # STEP 4: Upgrade MSYS2 core system
 # --------------------------------------------------------------------
