@@ -171,10 +171,10 @@ catch {
 Write-Info "Checking OS compatibility..."
 $useDevDrive = $false
 try {
-    $osInfo = Get-ComputerInfo | Select-Object WindowsProductName, WindowsVersion, OsBuildNumber
-    Write-Info "Detected OS: $($osInfo.WindowsProductName) | Version: $($osInfo.WindowsVersion) | Build: $($osInfo.OsBuildNumber)"
+    $osInfo = Get-ComputerInfo | Select-Object OsName, OsBuildNumber
+    Write-Info "Detected OS: $($osInfo.OsName) | Build: $($osInfo.OsBuildNumber)"
 
-    $osName  = $osInfo.WindowsProductName
+    $osName  = $osInfo.OsName
     $osBuild = [int]$osInfo.OsBuildNumber
     $isWin11 = $osName -match "Windows 11"
 
